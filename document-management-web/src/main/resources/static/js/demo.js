@@ -1,0 +1,6 @@
+"use strict";
+
+function sayHello() {
+  alert("Hello!");
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL2RvY3VtZW50LW1hbmFnZW1lbnQtY29udmVydGVyL3NyYy9zdGF0aWMvanMvZGVtby5qcyJdLCJuYW1lcyI6WyJzYXlIZWxsbyIsImFsZXJ0Il0sIm1hcHBpbmdzIjoiOztBQUFBLFNBQVNBLFFBQVQsR0FBb0I7QUFDbEJDLEVBQUFBLEtBQUssQ0FBQyxRQUFELENBQUw7QUFDRCIsInNvdXJjZXNDb250ZW50IjpbImZ1bmN0aW9uIHNheUhlbGxvKCkge1xuICBhbGVydChcIkhlbGxvIVwiKVxufSJdfQ==

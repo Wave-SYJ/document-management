@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "serve": "nodemon -e js,scss,css server.js",
-    "convert": "babel src -d ../document-management-web --source-maps inline & sass src:../document-management-web --embed-source-map",
-    "build": "babel src -d ../document-management-web & sass --no-source-map src:../document-management-web"
+    "convert": "babel src -d ../document-management-web/src/main/resources --source-maps inline & sass src:../document-management-web/src/main/resources --embed-source-map",
+    "build": "babel src -d ../document-management-web/src/main/resources & sass --no-source-map src:../document-management-web/src/main/resources"
   },
   "author": "",
   "license": "ISC",

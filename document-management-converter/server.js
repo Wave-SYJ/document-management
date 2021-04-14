@@ -5,5 +5,5 @@ cp.exec("npm run convert", (error, stdout) => {
     return;
   }
   console.log(stdout);
-  console.log("Successfully compiled sass files.\n")
+  console.log("Successfully compiled all scss files.\n")
 })
