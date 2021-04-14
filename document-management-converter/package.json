@@ -1,0 +1,19 @@
+{
+  "name": "document-management-converter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "nodemon server.js",
+    "convert": "babel src -d ../document-management-web --source-maps inline",
+    "build": "babel src -d ../document-management-web"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "nodemon": "^2.0.7"
+  }
+}
