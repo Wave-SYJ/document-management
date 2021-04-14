@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "nodemon server.js",
-    "convert": "babel src -d ../document-management-web --source-maps inline",
-    "build": "babel src -d ../document-management-web"
+    "serve": "nodemon -e js,scss,css server.js",
+    "convert": "babel src -d ../document-management-web --source-maps inline & sass src:../document-management-web --embed-source-map",
+    "build": "babel src -d ../document-management-web & sass --no-source-map src:../document-management-web"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +14,10 @@
     "@babel/cli": "^7.13.14",
     "@babel/core": "^7.13.15",
     "@babel/preset-env": "^7.13.15",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "sass": "^1.32.8"
+  },
+  "dependencies": {
+    "glob": "^7.1.6"
   }
 }
