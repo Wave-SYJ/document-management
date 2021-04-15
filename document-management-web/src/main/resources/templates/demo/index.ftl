@@ -7,8 +7,7 @@
 </head>
 <body>
 
-<h1>Hello ${name}!</h1>
-<button onclick="sayHello()">Click me!</button>
+<#list users as item><h1>Hello ${item.username}!</h1></#list>
 
 <script src="/js/demo.js"></script>
 
