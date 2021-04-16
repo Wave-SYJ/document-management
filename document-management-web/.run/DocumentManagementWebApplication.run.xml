@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="DocumentManagementWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="document-management-web" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="cn.edu.seu.cose.docmanage.DocumentManagementWebApplication" />
+    <option name="ACTIVE_PROFILES" value="dev" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
