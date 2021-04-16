@@ -55,7 +55,6 @@
     <#--      <input type="checkbox" value="remember-me"> Remember me-->
     <#--    </label>-->
     <#--  </div>-->
-  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
   <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
   <p class="mt-5 mb-3 text-muted">Copyright &copy; ${.now?string('yyyy')} All Rights Reserved</p>
 </form>

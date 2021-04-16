@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SystemController {
 
     @RequestMapping("/login")
-    @PreAuthorize("permitAll()")
     public String toLogin() {
         return "login";
+    }
+
+    @RequestMapping("/")
+    public String toIndex() {
+        return "index";
     }
 }
