@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.seu.cose.docmanage.mapper.UserMapper">
+    <resultMap id="userResultMap" type="User">
+        <id property="id" column="user_id" />
+        <result property="username" column="user_name" />
+        <result property="password" column="user_password" />
+        <collection property="roles" ofType="Role">
+            <id property="id" column="role_id" />
+            <result property="name" column="role_name" />
+            <result property="description" column="role_description" />
+        </collection>
+    </resultMap>
+
+    <select id="selectUserByUsername" resultMap="userResultMap">
+        select du.id          as 'user_id',
+               du.username    as 'user_name',
+               du.password    as 'user_password',
+               dr.id          as 'role_id',
+               dr.name        as 'role_name',
+               dr.description as 'role_description'
+        from dm_user du
+                 left join dm_user_role dur on du.id = dur.user_id
+                 left join dm_role dr on dur.role_id = dr.id
+        where username = #{username}
+    </select>
+    
+    <select id="selectAllUsers" resultMap="userResultMap">
+        select du.id          as 'user_id',
+               du.username    as 'user_name',
+               du.password    as 'user_password',
+               dr.id          as 'role_id',
+               dr.name        as 'role_name',
+               dr.description as 'role_description'
+        from dm_user du
+                 left join dm_user_role dur on du.id = dur.user_id
+                 left join dm_role dr on dur.role_id = dr.id
+    </select>
+</mapper>
