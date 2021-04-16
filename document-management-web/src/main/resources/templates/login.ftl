@@ -45,17 +45,17 @@
     </#if>
 
   <img class="mb-4" src="/img/bootstrap-solid.svg" alt="" width="72" height="72">
-  <h1 class="h3 mb-3 font-weight-normal">Please Login</h1>
-  <label for="inputUsername" class="sr-only">Username</label>
-  <input id="inputUsername" class="form-control" placeholder="Username" required autofocus name="username">
-  <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required name="password">
-    <#--  <div class="checkbox mb-3">-->
-    <#--    <label>-->
-    <#--      <input type="checkbox" value="remember-me"> Remember me-->
-    <#--    </label>-->
-    <#--  </div>-->
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+  <h1 class="h3 mb-3 font-weight-normal">文献搜索和管理系统</h1>
+  <label for="inputUsername" class="sr-only">用户名</label>
+  <input id="inputUsername" class="form-control" placeholder="用户名" required autofocus name="username">
+  <label for="inputPassword" class="sr-only">密码</label>
+  <input type="password" id="inputPassword" class="form-control" placeholder="密码" required name="password">
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" name="remember-me"> 记住我
+    </label>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
   <p class="mt-5 mb-3 text-muted">Copyright &copy; ${.now?string('yyyy')} All Rights Reserved</p>
 </form>
 

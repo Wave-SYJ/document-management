@@ -1,6 +1,5 @@
 package cn.edu.seu.cose.docmanage.controller;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,7 +11,7 @@ public class SystemController {
         return "login";
     }
 
-    @RequestMapping("/")
+    @RequestMapping({"/", "/index"})
     public String toIndex() {
         return "index";
     }
