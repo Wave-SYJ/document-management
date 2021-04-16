@@ -13,9 +13,9 @@ public class DemoController {
     @Autowired
     private UserMapper userMapper;
 
-    @PreAuthorize("permitAll()")
     @RequestMapping("demo")
-    public String demo(Model model) {
+    @PreAuthorize("permitAll()")
+    public String toDemo(Model model) {
         model.addAttribute("users", userMapper.selectAllUsers());
         return "/demo/index";
     }
