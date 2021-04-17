@@ -6,21 +6,18 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Data
 public class User implements UserDetails {
 
-    private String id;
+    private static final long serialVersionUID = 3180379779669720307L;
+
+    private UUID id;
     private String username;
     private String password;
-    private Date createTime;
     private List<Role> roles;
-    private Date modifyTime;
 
     @Override
     @JsonIgnore
