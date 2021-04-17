@@ -3,7 +3,6 @@ package cn.edu.seu.cose.docmanage.entity;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.UUID;
 
 @Data
