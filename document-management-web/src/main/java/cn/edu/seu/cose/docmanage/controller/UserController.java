@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
 
     @RequestMapping("/user")
-//    @PreAuthorize("hasAuthority(@Roles.ROLE_USER_ADMIN)")
+    @PreAuthorize("hasAnyAuthority(@Roles.ROLE_USER_ADMIN)")
     public String toUserIndex() {
         return "/user/index";
     }

@@ -1,3 +1,6 @@
-function sayHello() {
-  alert("Hello World!")
+const sayHello = () => {
+  const aaa = "hello";
+  alert(aaa);
 }
+
+alert()

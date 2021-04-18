@@ -1,5 +1,5 @@
 <#include "/components/layout.ftl"/>
 
-<@layout>
+<@layout title="hehehe">
     <h1>这里是主页</h1>
 </@layout>

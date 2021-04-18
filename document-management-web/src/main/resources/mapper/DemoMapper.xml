@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.seu.cose.docmanage.mapper.DemoMapper">
+    <select id="selectAllRoles" resultType="Role">
+        select * from dm_role
+    </select>
+    <insert id="insertUser" parameterType="User">
+        insert dm_user (id, username, password) VALUE (#{id}, #{username}, #{password})
+    </insert>
+
+</mapper>
