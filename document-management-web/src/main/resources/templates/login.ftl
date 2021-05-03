@@ -1,66 +1,79 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>登录</title>
+    <!-- Standard Meta -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
+    <!-- Site Properties -->
+    <title>登录 - 文献资源管理系统</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/semantic.css">
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/semantic.js"></script>
 
+    <style type="text/css">
+        body {
+            background-color: #DADADA;
+        }
 
-  <style>
-      .bd-placeholder-img {
-          font-size: 1.125rem;
-          text-anchor: middle;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-      }
+        body > .grid {
+            height: 100%;
+        }
 
-      @media (min-width: 768px) {
-          .bd-placeholder-img-lg {
-              font-size: 3.5rem;
-          }
-      }
-  </style>
+        .image {
+            margin-top: -100px;
+        }
 
+        .column {
+            max-width: 450px;
+        }
+    </style>
 
-  <!-- Custom styles for this template -->
-  <link href="/css/login.css" rel="stylesheet">
 </head>
-<body class="text-center">
+<body>
 
-<form class="form-signin" action="/auth" method="post">
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <h2 class="ui teal image header">
+            <div class="content">
+                登录
+            </div>
+        </h2>
+        <form class="ui large form" action="/auth" method="post">
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="username" placeholder="用户名">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="password" placeholder="密码">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui checkbox">
+                        <input id="remember-me-checkbox" type="checkbox">
+                        <label for="remember-me-checkbox" style="cursor: pointer">记住我</label>
+                    </div>
+                </div>
+                <button class="ui fluid large teal submit button">登录</button>
+            </div>
 
-    <#if RequestParameters.error??>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        用户名或密码错误，请重试。
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    </#if>
+            <div class="ui error message"></div>
 
-  <img class="mb-4" src="/img/bootstrap-solid.svg" alt="" width="72" height="72">
-  <h1 class="h3 mb-3 font-weight-normal">文献搜索和管理系统</h1>
-  <label for="inputUsername" class="sr-only">用户名</label>
-  <input id="inputUsername" class="form-control" placeholder="用户名" required autofocus name="username">
-  <label for="inputPassword" class="sr-only">密码</label>
-  <input type="password" id="inputPassword" class="form-control" placeholder="密码" required name="password">
-  <div class="checkbox mb-3">
-    <label>
-      <input type="checkbox" name="remember-me"> 记住我
-    </label>
-  </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
-  <p class="mt-5 mb-3 text-muted">Copyright &copy; ${.now?string('yyyy')} All Rights Reserved</p>
-</form>
+        </form>
 
-<script src="/js/jquery.slim.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
+        <div class="ui message">
+            没有账号？ <a href="#">注册</a>
+        </div>
+    </div>
+</div>
 
 </body>
+
 </html>

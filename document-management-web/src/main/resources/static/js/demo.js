@@ -1,9 +1,0 @@
-"use strict";
-
-var sayHello = function sayHello() {
-  var aaa = "hello";
-  alert(aaa);
-};
-
-alert();
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL2RvY3VtZW50LW1hbmFnZW1lbnQtY29udmVydGVyL3N0YXRpYy9qcy9kZW1vLmpzIl0sIm5hbWVzIjpbInNheUhlbGxvIiwiYWFhIiwiYWxlcnQiXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBTUEsUUFBUSxHQUFHLFNBQVhBLFFBQVcsR0FBTTtBQUNyQixNQUFNQyxHQUFHLEdBQUcsT0FBWjtBQUNBQyxFQUFBQSxLQUFLLENBQUNELEdBQUQsQ0FBTDtBQUNELENBSEQ7O0FBS0FDLEtBQUsiLCJzb3VyY2VzQ29udGVudCI6WyJjb25zdCBzYXlIZWxsbyA9ICgpID0+IHtcbiAgY29uc3QgYWFhID0gXCJoZWxsb1wiO1xuICBhbGVydChhYWEpO1xufVxuXG5hbGVydCgpXG4iXX0=
