@@ -57,7 +57,7 @@
                 </div>
                 <div class="field">
                     <div class="ui checkbox">
-                        <input id="remember-me-checkbox" type="checkbox">
+                        <input id="remember-me-checkbox" type="checkbox" name="remember-me">
                         <label for="remember-me-checkbox" style="cursor: pointer">记住我</label>
                     </div>
                 </div>

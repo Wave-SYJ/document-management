@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve": "nodemon -e js,scss,css server.js",
-    "convert": "node clear.js & node copy.js & babel static -d ../document-management-web/src/main/resources/static --source-maps inline & sass static:../document-management-web/src/main/resources/static --embed-source-map",
+    "convert": "node clear.js & node copy.js & babel static -d ../document-management-web/src/main/resources/static & sass static:../document-management-web/src/main/resources/static --no-source-map",
     "build": "node clear.js & node copy.js & babel --compact true static -d ../document-management-web/src/main/resources/static & sass --no-source-map static:../document-management-web/src/main/resources/static"
   },
   "author": "",

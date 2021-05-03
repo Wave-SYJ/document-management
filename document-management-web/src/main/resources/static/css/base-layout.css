@@ -1,0 +1,10 @@
+body {
+  background-color: #ffffff;
+}
+
+#layout-top-menu.ui.menu {
+  height: 55px;
+}
+#layout-top-menu.ui.menu .item img.logo {
+  margin-right: 1.5em;
+}
