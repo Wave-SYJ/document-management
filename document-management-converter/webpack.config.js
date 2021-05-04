@@ -4,32 +4,34 @@ const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
-const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
 
 const entry = {}
-glob.sync("./static/js/**.js").forEach(file => entry[file] = file);
-const outputDir = path.resolve(__dirname, '../document-management-web/src/main/resources/');
+const outputRoot = path.resolve(__dirname, '../document-management-web/src/main/resources/');
+glob.sync(path.resolve(outputRoot, "static_origin/js/**.js")).forEach(file => {
+  const path = "static" + file.substr(outputRoot.length + "static_origin/".length);
+  entry[path] = file;
+});
 
 module.exports = {
   entry: entry,
   output: {
-    path: outputDir,
+    path: outputRoot,
     filename: '[name]',
+  },
+  resolve: {
+    modules: [
+      path.resolve(__dirname, './node_modules')
+    ]
   },
   plugins: [
     new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: ['./static'] }),
-    new HotModuleReplacementPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         { from: "static_ignore", to: "./static" },
       ],
     }),
   ],
-  devtool: 'inline-source-map',
-  devServer: {
-    hot: true,
-    port: 3000
-  },
+  devtool: 'eval-cheap-module-source-map',
   performance: {
     hints: false
   },

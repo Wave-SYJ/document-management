@@ -8,4 +8,6 @@
         <p>${role.name}</p>
     </#list>
 
+    <script src="/js/test.js"></script>
+
 </@baseLayout>

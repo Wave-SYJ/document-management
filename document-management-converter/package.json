@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "convert": "webpack --mode production --no-devtool & sass static:../document-management-web/src/main/resources/static --no-source-map",
-    "serve": "nodemon -e * server.js",
-    "build": "webpack --mode production --no-devtool & sass static:../document-management-web/src/main/resources/static --no-source-map"
+    "convert": "node clear.js && node copy.js && webpack --mode production && sass ../document-management-web/src/main/resources/static_origin:../document-management-web/src/main/resources/static --embed-source-map",
+    "build": "node clear.js && node copy.js && webpack --mode production --no-devtool && sass ../document-management-web/src/main/resources/static_origin:../document-management-web/src/main/resources/static --no-source-map && node clear.js",
+    "serve": "nodemon -e * server.js"
   },
   "author": "",
   "license": "ISC",

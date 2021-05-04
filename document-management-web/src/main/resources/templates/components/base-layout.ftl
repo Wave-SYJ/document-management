@@ -10,6 +10,7 @@
         <!-- Site Properties -->
         <title>${title}</title>
 
+        <link rel="icon" type="image/png" href="/images/favicon.png"/>
         <link rel="stylesheet" type="text/css" href="/css/semantic.css">
         <link rel="stylesheet" type="text/css" href="/css/base-layout.css">
 

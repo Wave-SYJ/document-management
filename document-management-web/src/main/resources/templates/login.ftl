@@ -9,6 +9,7 @@
     <!-- Site Properties -->
     <title>登录 - 文献资源管理系统</title>
 
+    <link rel="icon" type="image/png" href="/images/favicon.png"/>
     <link rel="stylesheet" type="text/css" href="/css/semantic.css">
     <script src="/js/jquery-3.1.1.min.js"></script>
     <script src="/js/semantic.js"></script>
