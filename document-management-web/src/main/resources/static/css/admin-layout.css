@@ -1,4 +1,5 @@
 #admin-layout-sidebar {
+  top: 55px;
   width: 221px;
   border-right: 1px solid rgba(34, 36, 38, 0.15);
   z-index: 80;
@@ -9,4 +10,4 @@
   padding-left: 231px;
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../static_origin/css/admin-layout.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACE;EACA;EACA;;;AAGF;EACE;EACA%22,%22file%22:%22admin-layout.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../static_origin/css/admin-layout.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACE;EACA;EACA;EACA;;;AAGF;EACE;EACA%22,%22file%22:%22admin-layout.css%22%7D */
