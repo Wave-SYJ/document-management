@@ -12,9 +12,10 @@ import java.util.UUID;
 public interface UserMapper {
     User findUserByUsername(String username);
     List<User> findAllUsers();
-    Page<User> findUserPage();
+    Page<User> findUserPage(String searchKey, String searchValue);
     void insertUser(User user);
     void bindRoles(UUID userId, List<String> roleNames);
     void findRolesByUser(UUID userId);
+    void deleteUsers(List<UUID> userIds);
 
 }

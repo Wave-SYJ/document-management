@@ -1,5 +1,6 @@
 .admin-data-header {
   display: flex;
+  justify-content: space-between;
 }
 .admin-data-header > * {
   margin-right: 10px !important;

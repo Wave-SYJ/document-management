@@ -11,14 +11,18 @@
         <link rel="icon" type="image/png" href="/images/favicon.png"/>
         <link rel="stylesheet" type="text/css" href="/css/semantic.css">
         <link rel="stylesheet" type="text/css" href="/css/base-layout.css">
+        <link rel='stylesheet' type="text/css" href='/css/nprogress.css'/>
 
         <#list css as c>
             <link rel="stylesheet" type="text/css" href="${c}">
         </#list>
 
-
+        <script type="text/javascript" src='/js/nprogress.js'></script>
+        <script type="text/javascript" src='/js/axios.min.js'></script>
     </head>
     <body>
+
+    <script type="text/javascript" src="/js/base-layout.js"></script>
 
     <div id="layout-top-menu" class="ui fixed menu">
         <a href="/index" class="header item" style="width: 220px">
@@ -28,11 +32,13 @@
 
         <div class="right menu">
             <div class="ui dropdown item">
+                <i class="user icon"></i>
                 ${currentUser.username}
                 <i class="dropdown icon"></i>
                 <div class="menu">
                     <a class="item" href="/user">个人主页</a>
                     <a class="item" href="/admin">数据管理</a>
+                    <div class="ui divider"></div>
                     <a class="item" href="/logout">退出</a>
                 </div>
             </div>
@@ -45,6 +51,7 @@
 
     <script src="/js/jquery-3.1.1.min.js"></script>
     <script src="/js/semantic.js"></script>
+
     <script>
         $('.ui.dropdown')
             .dropdown()

@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -46,9 +47,13 @@ public class UserService implements UserDetailsService {
         userMapper.bindRoles(user.getId(), user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
     }
 
-    public Page<User> findUserPage(int pageNum, int pageSize) {
+    public Page<User> findUserPage(int pageNum, int pageSize, String searchKey, String searchValue) {
         PageHelper.startPage(pageNum, pageSize);
-        return userMapper.findUserPage();
+        return userMapper.findUserPage(searchKey, searchValue);
+    }
+
+    public void deleteUsers(List<UUID> ids) {
+        userMapper.deleteUsers(ids);
     }
 
 }

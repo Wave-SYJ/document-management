@@ -9,8 +9,10 @@
 
     <link rel="icon" type="image/png" href="/images/favicon.png"/>
     <link rel="stylesheet" type="text/css" href="/css/semantic.css">
+    <link rel='stylesheet' type="text/css" href='/css/nprogress.css'/>
     <script src="/js/jquery-3.1.1.min.js"></script>
     <script src="/js/semantic.js"></script>
+    <script type="text/javascript" src='/js/nprogress.js'></script>
 
     <style type="text/css">
         body {
@@ -32,6 +34,13 @@
 
 </head>
 <body>
+
+<script>
+    NProgress.start();
+    window.onload = function() {
+        NProgress.done();
+    }
+</script>
 
 <div class="ui middle aligned center aligned grid">
     <div class="column">

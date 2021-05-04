@@ -13,7 +13,7 @@
         <id property="id" column="user_id"/>
         <result property="username" column="user_name"/>
         <result property="password" column="user_password"/>
-        <collection property="roles" column="user_id" ofType="Role" select="findRolesByUser" />
+        <collection property="roles" column="user_id" ofType="Role" select="findRolesByUser"/>
     </resultMap>
 
     <select id="findAllUsers" resultMap="userResultMap">
@@ -28,6 +28,9 @@
                du.username as 'user_name',
                du.password as 'user_password'
         from dm_user du
+        <if test="searchKey == 'username' and searchValue != null">
+            where du.username like CONCAT('%', #{searchValue}, '%')
+        </if>
     </select>
 
     <select id="findUserByUsername" resultMap="userResultMap">
@@ -51,4 +54,11 @@
         </foreach>
         )
     </insert>
+
+    <delete id="deleteUsers">
+        delete from dm_user where id in
+        <foreach collection="userIds" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+    </delete>
 </mapper>

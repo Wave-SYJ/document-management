@@ -12,16 +12,23 @@ function checkAllChecked() {
     $('.data-item-checkbox-all').checkbox('set unchecked');
   else
     $('.data-item-checkbox-all').checkbox('set indeterminate');
+
+  if (selectedSet.size === 0)
+    $('#admin-data-delete-selected').addClass("disabled");
+  else
+    $('#admin-data-delete-selected').removeClass("disabled");
 }
+
+checkAllChecked();
 
 $('.data-item-checkbox-item')
   .checkbox({
     onChecked() {
-      selectedSet.add($(this).data("index"));
+      selectedSet.add($(this).data("id"));
       checkAllChecked();
     },
     onUnchecked() {
-      selectedSet.delete($(this).data("index"));
+      selectedSet.delete($(this).data("id"));
       checkAllChecked();
     }
   });
@@ -29,9 +36,19 @@ $('.data-item-checkbox-item')
 $('.data-item-checkbox-all')
   .checkbox({
     onChecked() {
-      $('.data-item-checkbox-item').checkbox('set checked')
+      $('.data-item-checkbox-item').checkbox('check')
     },
     onUnchecked() {
-      $('.data-item-checkbox-item').checkbox('set unchecked')
+      $('.data-item-checkbox-item').checkbox('uncheck')
     }
+  })
+
+$('#admin-data-delete-selected')
+  .click(async function () {
+    await axios({
+      url: '/user',
+      method: 'delete',
+      data: Array.from(selectedSet)
+    });
+    location.reload();
   })

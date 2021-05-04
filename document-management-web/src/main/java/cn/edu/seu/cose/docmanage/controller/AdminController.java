@@ -32,10 +32,11 @@ public class AdminController {
 
     @RequestMapping("/admin/user")
     @PreAuthorize("hasAuthority(@Roles.ROLE_USER_ADMIN)")
-    public String toAdminUser(Model model, Integer pageNum, Integer pageSize) {
+    public String toAdminUser(Model model, Integer pageNum, String searchKey, String searchValue) {
         pageNum = pageNum != null ? pageNum : 1;
-        pageSize = pageSize != null ? pageSize : 10;
-        model.addAttribute("dataPage", userService.findUserPage(pageNum, pageSize).toPageInfo());
+        model.addAttribute("dataPage", userService.findUserPage(pageNum, 10, searchKey, searchValue).toPageInfo());
+        model.addAttribute("searchKey", searchKey);
+        model.addAttribute("searchValue", searchValue);
         return "admin/user";
     }
 

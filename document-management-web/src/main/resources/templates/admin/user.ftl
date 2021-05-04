@@ -1,10 +1,18 @@
 <#include "/components/admin-layout.ftl"/>
 
-<@adminLayout currentPage="user" title="用户管理 - 文献搜索和管理系统" css=['/css/admin-data.css']>
+<@adminLayout currentPage="user" title="用户管理 - 文献搜索和管理系统" css=['/css/admin-user.css']>
 
     <div class="admin-data-header">
-        <button class="green ui button"><i class="add icon"></i>增添</button>
-        <button class="red ui button"><i class="trash alternate outline icon"></i> 删除选中</button>
+        <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 删除选中</button>
+
+        <form class="ui action input" action="/admin/user" method="get">
+            <input type="text" name="pageNum" value="${dataPage.pageNum}" hidden>
+            <input type="text" name="searchValue" placeholder="搜索..." value="${searchValue!}">
+            <select class="ui compact selection dropdown" name="searchKey">
+                <option value="username" ${(searchKey! == 'username')?then("selected", "")}>用户名</option>
+            </select>
+            <button class="ui basic button icon" type="submit"><i class="search icon"></i></button>
+        </form>
     </div>
 
     <table class="ui celled table">
@@ -55,26 +63,26 @@
                     </a>
 
                     <#if dataPage.pageNum gt 2>
-                        <a class="item" href="/admin/user?pageNum=1">1</a>
+                        <a class="item" href="/admin/user?pageNum=1&searchValue=${searchValue!}&searchKey=${searchKey!}">1</a>
                     </#if>
                     <#if dataPage.pageNum gt 3>
                         <span class="item">...</span>
                     </#if>
                     <#if dataPage.pageNum gt 1>
                         <a class="item"
-                           href="/admin/user?pageNum=${dataPage.pageNum - 1}">${dataPage.pageNum - 1}</a>
+                           href="/admin/user?pageNum=${dataPage.pageNum - 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum - 1}</a>
                     </#if>
                     <span class="item header">${dataPage.pageNum}</span>
-                    <#if dataPage.pageNum lt dataPage.pages - 1 >
+                    <#if dataPage.pageNum lt dataPage.pages >
                         <a class="item"
-                           href="/admin/user?pageNum=${dataPage.pageNum + 1}">${dataPage.pageNum + 1}</a>
-                    </#if>
-                    <#if dataPage.pageNum lt dataPage.pages - 3>
-                        <span class="item">...</span>
+                           href="/admin/user?pageNum=${dataPage.pageNum + 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum + 1}</a>
                     </#if>
                     <#if dataPage.pageNum lt dataPage.pages - 2>
+                        <span class="item">...</span>
+                    </#if>
+                    <#if dataPage.pageNum lt dataPage.pages - 1>
                         <a class="item"
-                           href="/admin/user?pageNum=${dataPage.pages}">${dataPage.pages}</a>
+                           href="/admin/user?pageNum=${dataPage.pages}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pages}</a>
                     </#if>
 
                     <a class="icon item">
@@ -83,6 +91,8 @@
 
                     <form class="form admin-data-jump-form" action="/admin/user" method="get">
                         <div class="ui action input mini">
+                            <input type="text" name="searchValue" value="${searchValue!}" hidden>
+                            <input type="text" name="searchKey" value="${searchKey!}" hidden>
                             <input type="text" name="pageNum" placeholder="页码...">
                             <button class="ui tiny button" type="submit">跳转</button>
                         </div>
@@ -94,6 +104,6 @@
         </tfoot>
     </table>
 
-    <script src="/js/admin-data.js"></script>
+    <script src="/js/admin-user.js"></script>
 
 </@adminLayout>
