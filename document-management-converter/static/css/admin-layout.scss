@@ -1,6 +1,10 @@
-#admin-sidebar {
-  top: 55px;
+#admin-layout-sidebar {
   width: 221px;
   border-right: 1px solid rgba(34, 36, 38, 0.15);
   z-index: 80;
+}
+
+#admin-layout-content {
+  padding: 10px;
+  padding-left: 231px;
 }

@@ -3,13 +3,13 @@
 <#macro adminLayout currentPage css=[] title="">
     <@baseLayout title=title css=["/css/admin-layout.css"]+css>
 
-        <div id="admin-sidebar" class="ui left fixed vertical menu">
+        <div id="admin-layout-sidebar" class="ui left fixed vertical menu">
             <#list currentUser.roles as role>
                 <#if role.name == "ROLE_USER_ADMIN">
                     <div class="item">
                         <div class="header">用户</div>
                         <div class="menu">
-                                <a class="${(currentPage == "user")?then('item active', 'item')}"> 用户列表 </a>
+                                <a class="${(currentPage == "user")?then('item active', 'item')}"> 用户管理 </a>
                         </div>
                     </div>
                 <#elseif role.name == "ROLE_DOCUMENT_ADMIN">
@@ -33,4 +33,8 @@
         </div>
 
     </@baseLayout>
+
+    <div id="admin-layout-content">
+        <#nested>
+    </div>
 </#macro>

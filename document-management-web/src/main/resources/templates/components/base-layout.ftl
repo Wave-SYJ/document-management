@@ -2,12 +2,10 @@
     <!DOCTYPE html>
     <html lang="zh">
     <head>
-        <!-- Standard Meta -->
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-        <!-- Site Properties -->
         <title>${title}</title>
 
         <link rel="icon" type="image/png" href="/images/favicon.png"/>
@@ -41,14 +39,9 @@
         </div>
     </div>
 
-    <#nested>
-
-    <#--    <div id="layout-footer">-->
-    <#--        <div class="ui center aligned container">-->
-    <#--            Copyright © 2021 All Rights Reserved-->
-    <#--        </div>-->
-    <#--    </div>-->
-
+    <div style="padding-top: 55px">
+        <#nested>
+    </div>
 
     <script src="/js/jquery-3.1.1.min.js"></script>
     <script src="/js/semantic.js"></script>
