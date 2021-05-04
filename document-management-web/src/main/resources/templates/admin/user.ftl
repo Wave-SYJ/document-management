@@ -1,6 +1,6 @@
 <#include "/components/admin-layout.ftl"/>
 
-<@adminLayout currentPage="user" title="用户管理 - 文献搜索和管理系统">
+<@adminLayout currentPage="user" title="用户管理 - 文献搜索和管理系统" css=['/css/admin-data.css']>
 
     <div class="admin-data-header">
         <button class="green ui button"><i class="add icon"></i>增添</button>
@@ -25,8 +25,8 @@
         <#list dataPage.list as dataItem>
             <tr>
                 <td>
-                    <div class="ui checkbox data-item-checkbox-item" data-index="${dataItem_index}" data-id="${dataItem.id}">
-                        <input type="checkbox" class="hidden">
+                    <div class="ui checkbox data-item-checkbox-item">
+                        <input type="checkbox" class="hidden" data-index="${dataItem_index}" data-id="${dataItem.id}">
                         <label>${dataItem_index + 1}</label>
                     </div>
                 </td>
@@ -51,20 +51,43 @@
                     <span class="item header">总记录数：${dataPage.total}</span>
 
                     <a class="icon item">
-                        <i class="left chevron icon"></i>
+                        <i class="left chevron icon ${(dataPage.pageNum gt 1)?then("", "disabled")}"></i>
                     </a>
 
-                    <#if dataPage.pageNum gt 2><a class="item">1</a></#if>
-                    <#if dataPage.pageNum gt 3><a class="item">...</a></#if>
-                    <#if dataPage.pageNum gt 1><a class="item">${dataPage.pageNum - 1}</a></#if>
-                    <a class="item">${dataPage.pageNum}</a>
-                    <#if dataPage.pageNum lt dataPage.pages - 1><a class="item">${dataPage.pageNum + 1}</a></#if>
-                    <#if dataPage.pageNum lt dataPage.pages - 3><a class="item">...</a></#if>
-                    <#if dataPage.pageNum lt dataPage.pages - 2><a class="item">${dataPage.pages}</a></#if>
+                    <#if dataPage.pageNum gt 2>
+                        <a class="item" href="/admin/user?pageNum=1">1</a>
+                    </#if>
+                    <#if dataPage.pageNum gt 3>
+                        <span class="item">...</span>
+                    </#if>
+                    <#if dataPage.pageNum gt 1>
+                        <a class="item"
+                           href="/admin/user?pageNum=${dataPage.pageNum - 1}">${dataPage.pageNum - 1}</a>
+                    </#if>
+                    <span class="item header">${dataPage.pageNum}</span>
+                    <#if dataPage.pageNum lt dataPage.pages - 1 >
+                        <a class="item"
+                           href="/admin/user?pageNum=${dataPage.pageNum + 1}">${dataPage.pageNum + 1}</a>
+                    </#if>
+                    <#if dataPage.pageNum lt dataPage.pages - 3>
+                        <span class="item">...</span>
+                    </#if>
+                    <#if dataPage.pageNum lt dataPage.pages - 2>
+                        <a class="item"
+                           href="/admin/user?pageNum=${dataPage.pages}">${dataPage.pages}</a>
+                    </#if>
 
                     <a class="icon item">
-                        <i class="right chevron icon"></i>
+                        <i class="right chevron icon ${(dataPage.pageNum lt dataPage.pages)?then("", "disabled")}"></i>
                     </a>
+
+                    <form class="form admin-data-jump-form" action="/admin/user" method="get">
+                        <div class="ui action input mini">
+                            <input type="text" name="pageNum" placeholder="页码...">
+                            <button class="ui tiny button" type="submit">跳转</button>
+                        </div>
+                    </form>
+
                 </div>
             </th>
         </tr>

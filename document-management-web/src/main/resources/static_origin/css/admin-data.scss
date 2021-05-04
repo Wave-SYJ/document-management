@@ -2,10 +2,15 @@
   display: flex;
 
   & > * {
-    margin-right: 1em;
+    margin-right: 10px !important;
   }
 
   & > *:last-child {
     margin-right: 0;
   }
+}
+
+.admin-data-jump-form {
+  padding: 0 10px;
+  line-height: 40px;
 }

@@ -2,10 +2,13 @@
   display: flex;
 }
 .admin-data-header > * {
-  margin-right: 1em;
+  margin-right: 10px !important;
 }
 .admin-data-header > *:last-child {
   margin-right: 0;
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../static_origin/css/admin-data.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACE;;AAEA;EACE;;AAGF;EACE%22,%22file%22:%22admin-data.css%22%7D */
+.admin-data-jump-form {
+  padding: 0 10px;
+  line-height: 40px;
+}
