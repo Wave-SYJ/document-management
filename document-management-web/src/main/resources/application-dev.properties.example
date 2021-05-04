@@ -5,4 +5,4 @@ spring.datasource.password=
 
 logging.level.root=INFO
 logging.level.cn.edu.seu.cose.docmanage.mapper=DEBUG
-logging.file.name=document-management.log
+logging.file.path=.log/document-management.log
