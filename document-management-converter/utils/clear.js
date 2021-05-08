@@ -20,4 +20,5 @@ const rmdir = function (dir) {
   fs.rmdirSync(dir);
 };
 
+rmdir("../document-management-web/src/main/resources/static");
 rmdir("../document-management-web/src/main/resources/static_origin");

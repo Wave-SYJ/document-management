@@ -9,10 +9,11 @@
 
     <link rel="icon" type="image/png" href="/images/favicon.png"/>
     <link rel="stylesheet" type="text/css" href="/css/semantic.css">
-    <link rel='stylesheet' type="text/css" href='/css/nprogress.css'/>
-    <script src="/js/jquery-3.1.1.min.js"></script>
-    <script src="/js/semantic.js"></script>
-    <script type="text/javascript" src='/js/nprogress.js'></script>
+
+    <link rel='stylesheet' type="text/css" href='https://unpkg.com/nprogress@0.2.0/nprogress.css'/>
+    <script type="text/javascript"  src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.slim.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script type="text/javascript" src='https://unpkg.com/nprogress@0.2.0/nprogress.js'></script>
 
     <style type="text/css">
         body {
@@ -44,7 +45,7 @@
 
 <div class="ui middle aligned center aligned grid">
     <div class="column">
-        <h2 class="ui teal image header">
+        <h2 class="ui primary header">
             <div class="content">
                 登录
             </div>
@@ -69,7 +70,7 @@
                         <label for="remember-me-checkbox" style="cursor: pointer">记住我</label>
                     </div>
                 </div>
-                <button class="ui fluid large teal submit button">登录</button>
+                <button class="ui fluid large primary submit button">登录</button>
             </div>
 
             <div class="ui error message"></div>

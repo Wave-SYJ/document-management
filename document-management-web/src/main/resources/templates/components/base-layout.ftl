@@ -11,14 +11,14 @@
         <link rel="icon" type="image/png" href="/images/favicon.png"/>
         <link rel="stylesheet" type="text/css" href="/css/semantic.css">
         <link rel="stylesheet" type="text/css" href="/css/base-layout.css">
-        <link rel='stylesheet' type="text/css" href='/css/nprogress.css'/>
+        <link rel='stylesheet' type="text/css" href='https://unpkg.com/nprogress@0.2.0/nprogress.css'/>
 
         <#list css as c>
             <link rel="stylesheet" type="text/css" href="${c}">
         </#list>
 
-        <script type="text/javascript" src='/js/nprogress.js'></script>
-        <script type="text/javascript" src='/js/axios.min.js'></script>
+        <script type="text/javascript" src='https://unpkg.com/nprogress@0.2.0/nprogress.js'></script>
+        <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
     </head>
     <body>
 
@@ -49,8 +49,8 @@
         <#nested>
     </div>
 
-    <script src="/js/jquery-3.1.1.min.js"></script>
-    <script src="/js/semantic.js"></script>
+    <script type="text/javascript"  src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.slim.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 
     <script>
         $('.ui.dropdown')
