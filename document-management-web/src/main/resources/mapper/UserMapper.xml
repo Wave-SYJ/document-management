@@ -24,9 +24,9 @@
     </select>
 
     <select id="findUserPage" resultMap="userResultMap">
-        select du.id       as 'user_id',
-               du.username as 'user_name',
-               du.password as 'user_password'
+        select du.id as 'user_id',
+        du.username as 'user_name',
+        du.password as 'user_password'
         from dm_user du
         <if test="searchKey == 'username' and searchValue != null">
             where du.username like CONCAT('%', #{searchValue}, '%')
@@ -54,6 +54,12 @@
         </foreach>
         )
     </insert>
+
+    <update id="updatePasswordByUserId">
+        update dm_user
+        set password = #{encodedPassword}
+        where id = #{userId}
+    </update>
 
     <delete id="deleteUsers">
         delete from dm_user where id in

@@ -1,13 +1,12 @@
 package cn.edu.seu.cose.docmanage.controller;
 
+import cn.edu.seu.cose.docmanage.config.CurrentUser;
+import cn.edu.seu.cose.docmanage.entity.User;
 import cn.edu.seu.cose.docmanage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -18,10 +17,20 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/user")
-    @PreAuthorize("hasAnyAuthority(@Roles.ROLE_USER_ADMIN)")
-    public String toUserIndex() {
-        return "/user/index";
+    @RequestMapping({"/user", "/user/basic"})
+    public String toUserBasic() {
+        return "/user/basic";
+    }
+
+    @RequestMapping("/user/password")
+    public String toUserPassword() {
+        return "/user/password";
+    }
+
+    @PostMapping("/user/password")
+    public String changePassword(@CurrentUser User user, String oldPassword, String newPassword, String repeatPassword) {
+        userService.changePassword(user, oldPassword, newPassword, repeatPassword);
+        return "/user/password";
     }
 
     @DeleteMapping("/user")

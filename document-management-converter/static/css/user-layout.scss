@@ -1,11 +1,14 @@
-#admin-layout-sidebar {
+#user-layout-sidebar {
   top: 55px;
   width: 221px;
   border-right: 1px solid rgba(34, 36, 38, 0.15);
   z-index: 80;
+  bottom: 0;
+  position: fixed;
+  box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
 }
 
-#admin-layout-content {
+#user-layout-content {
   padding: 10px;
   padding-left: 231px;
 }

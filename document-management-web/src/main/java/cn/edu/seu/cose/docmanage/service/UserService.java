@@ -56,4 +56,14 @@ public class UserService implements UserDetailsService {
         userMapper.deleteUsers(ids);
     }
 
+    public void changePassword(User user, String oldPassword, String newPassword, String repeatPassword) {
+        if (user == null || oldPassword == null || newPassword == null || repeatPassword == null)
+            return;
+        if (!newPassword.equals(repeatPassword))
+            return;
+        if (!passwordEncoder.matches(oldPassword, user.getPassword()))
+            return;
+        userMapper.updatePasswordByUserId(user.getId(), passwordEncoder.encode(newPassword));
+    }
+
 }

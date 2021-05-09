@@ -20,7 +20,7 @@
                 <option value="keyword" ${(searchKey! == 'keyword')?then("selected", "")}>关键词</option>
                 <option value="abstract" ${(searchKey! == 'abstract')?then("selected", "")}>摘要</option>
             </select>
-            <button class="ui button" type="submit">搜索</button>
+            <button class="ui button primary" type="submit">搜索</button>
         </form>
 
     </div>
