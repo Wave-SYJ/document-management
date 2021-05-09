@@ -10,10 +10,10 @@
     <link rel="icon" type="image/png" href="/images/favicon.png"/>
     <link rel="stylesheet" type="text/css" href="/css/semantic.css">
 
-    <link rel='stylesheet' type="text/css" href='https://unpkg.com/nprogress@0.2.0/nprogress.css'/>
+    <link rel='stylesheet' type="text/css" href='https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css'/>
     <script type="text/javascript"  src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.slim.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
-    <script type="text/javascript" src='https://unpkg.com/nprogress@0.2.0/nprogress.js'></script>
+    <script type="text/javascript" src='https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js'></script>
 
     <style type="text/css">
         body {

@@ -10,9 +10,4 @@ public class SystemController {
     public String toLogin() {
         return "login";
     }
-
-    @RequestMapping({"/", "/index"})
-    public String toIndex() {
-        return "index";
-    }
 }
