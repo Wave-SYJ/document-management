@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "convert": "node ./utils/clear.js && node ./utils/copy_full.js && sass ./static:../document-management-web/src/main/resources/static --no-source-map",
-    "build": "node ./utils/clear.js && node ./utils/copy.js && webpack --mode production --no-devtool && sass ../document-management-web/src/main/resources/static_origin:../document-management-web/src/main/resources/static --no-source-map && node ./utils/clear.js",
+    "build": "node ./utils/clear.js && webpack --mode production --no-devtool && sass ./static:../document-management-web/src/main/resources/static --no-source-map",
     "serve": "nodemon -e * ./utils/server.js"
   },
   "author": "",

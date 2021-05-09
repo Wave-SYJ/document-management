@@ -7,10 +7,7 @@ const TerserWebpackPlugin = require("terser-webpack-plugin");
 
 const entry = {}
 const outputRoot = path.resolve(__dirname, '../document-management-web/src/main/resources/');
-glob.sync(path.resolve(outputRoot, "static_origin/js/**.js")).forEach(file => {
-  const path = "static" + file.substr(outputRoot.length + "static_origin/".length);
-  entry[path] = file;
-});
+glob.sync("./static/js/**.js").forEach(file => entry[file] = file);
 
 module.exports = {
   entry: entry,

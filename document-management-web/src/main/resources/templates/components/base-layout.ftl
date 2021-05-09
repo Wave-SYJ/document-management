@@ -12,6 +12,7 @@
         <link rel="stylesheet" type="text/css" href="/css/semantic.css">
         <link rel="stylesheet" type="text/css" href="/css/base-layout.css">
         <link rel='stylesheet' type="text/css" href='https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css'/>
+        <link href="https://cdn.bootcdn.net/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 
         <#list css as c>
             <link rel="stylesheet" type="text/css" href="${c}">
@@ -21,6 +22,7 @@
         <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
         <script type="text/javascript"  src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.slim.min.js"></script>
         <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+        <script src="https://cdn.bootcdn.net/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     </head>
     <body>
 

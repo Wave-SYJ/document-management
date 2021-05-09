@@ -10,7 +10,7 @@
             <a class="item ${(searchType! == "entry")?then('active', '')}" data-type="entry"> 词条 </a>
         </div>
 
-        <form id="search-input" class="ui action input" action="/index" method="get">
+        <form id="search-input" class="ui action input" action="/detail" method="get">
             <input type="text" name="searchType" style="display: none" value="${searchType!}">
             <input type="text" placeholder="搜索..." name="searchValue" value="${searchValue!}">
             <select class="ui selection dropdown" name="searchKey">

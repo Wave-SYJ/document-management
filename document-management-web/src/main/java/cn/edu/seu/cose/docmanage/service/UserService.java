@@ -2,6 +2,7 @@ package cn.edu.seu.cose.docmanage.service;
 
 import cn.edu.seu.cose.docmanage.entity.Role;
 import cn.edu.seu.cose.docmanage.entity.User;
+import cn.edu.seu.cose.docmanage.exception.SimpleException;
 import cn.edu.seu.cose.docmanage.mapper.UserMapper;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -62,7 +63,7 @@ public class UserService implements UserDetailsService {
         if (!newPassword.equals(repeatPassword))
             return;
         if (!passwordEncoder.matches(oldPassword, user.getPassword()))
-            return;
+            throw new SimpleException("旧密码错误");
         userMapper.updatePasswordByUserId(user.getId(), passwordEncoder.encode(newPassword));
     }
 

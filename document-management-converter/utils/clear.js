@@ -21,4 +21,3 @@ const rmdir = function (dir) {
 };
 
 rmdir("../document-management-web/src/main/resources/static");
-rmdir("../document-management-web/src/main/resources/static_origin");
