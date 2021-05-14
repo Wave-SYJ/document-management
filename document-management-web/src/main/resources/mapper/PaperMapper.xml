@@ -2,5 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.edu.seu.cose.docmanage.mapper.PaperMapper">
 
+    <select id="findPaperPage" resultType="Paper">
+        select *
+        from dm_paper
+        <where>
+            <choose>
+                <when test="searchKey == 'title' and searchValue != null">
+                    and dm_paper.title like CONCAT('%', #{searchValue}, '%')
+                </when>
+                <when test="searchKey == 'author' and searchValue != null">
+                    and dm_paper.author like CONCAT('%', #{searchValue}, '%')
+                </when>
+                <when test="searchKey == 'author-office' and searchValue != null">
+                    and dm_paper.author_office like CONCAT('%', #{searchValue}, '%')
+                </when>
+                <when test="keyword == 'keyword' and searchValue != null">
+                    and dm_paper.keyword like CONCAT('%', #{searchValue}, '%')
+                </when>
+                <when test="keyword == 'abstract' and searchValue != null">
+                    and dm_paper.abstract like CONCAT('%', #{searchValue}, '%')
+                </when>
+            </choose>
+        </where>
+    </select>
 
 </mapper>
