@@ -6,6 +6,7 @@ import cn.edu.seu.cose.docmanage.entity.Role;
 import cn.edu.seu.cose.docmanage.entity.User;
 import cn.edu.seu.cose.docmanage.mapper.PaperMapper;
 import cn.edu.seu.cose.docmanage.service.PaperService;
+import com.github.pagehelper.Page;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -44,12 +45,7 @@ public class PaperTester {
 
     @Test
     void test2() {
-
-
-
-       // paperService.updatePaper(paper);
-
-
+        Page<Paper> paperPage = paperService.findPaperPage(2, 10, "title", "e");
     }
 
 }
