@@ -18,5 +18,7 @@ public interface UserMapper {
     void findRolesByUser(UUID userId);
     void deleteUsers(List<UUID> userIds);
     void updatePasswordByUserId(UUID userId, String encodedPassword);
+    void deleteAllRoles(UUID userId);
+    void updateUser(User user);
 
 }

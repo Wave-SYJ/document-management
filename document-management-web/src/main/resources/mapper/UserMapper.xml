@@ -67,4 +67,19 @@
             #{item}
         </foreach>
     </delete>
+
+    <delete id="deleteAllRoles">
+        delete
+        from dm_user_role
+        where user_id = #{userId}
+    </delete>
+
+    <update id="updateUser" parameterType="User">
+        update dm_user
+        set username = #{username},
+            password = #{password}
+        where id = #{id}
+    </update>
+
+
 </mapper>
