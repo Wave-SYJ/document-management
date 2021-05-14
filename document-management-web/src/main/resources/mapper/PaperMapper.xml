@@ -21,6 +21,11 @@
         where id = #{id}
     </update>
 
+    <delete id="deleteSpecifiedPaper">
+        delete from dm_paper
+        where id = #{id}
+    </delete>
+
     <delete id="deleteAllPapers">
         delete from dm_paper where id in
         <foreach collection="ids" open="(" close=")" separator="," item="item">
