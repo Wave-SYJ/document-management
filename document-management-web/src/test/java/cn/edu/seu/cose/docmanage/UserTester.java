@@ -22,8 +22,8 @@ public class UserTester {
     @Autowired
     private UserService userService;
 
-    private final Random random = new Random()
-;
+    private final Random random = new Random();
+
     public String getRandomString(int length) {
         String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         StringBuilder sb = new StringBuilder();
