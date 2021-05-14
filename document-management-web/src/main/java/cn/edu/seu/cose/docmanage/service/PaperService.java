@@ -36,6 +36,11 @@ public class PaperService {
     public void deleteAllPapers(List<UUID> paperIds){
         paperMapper.deletePapers(paperIds);
     }
+    public void deleteSpecifiedPaper(UUID id){
+        if(id==null)
+            return;
+        paperMapper.deleteSpecifiedPaper(id);
+    }
 
     public void updatePaper(Paper paper){
         if(paper==null)

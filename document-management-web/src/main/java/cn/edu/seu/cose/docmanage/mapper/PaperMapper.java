@@ -14,6 +14,7 @@ public interface PaperMapper {
     List<Paper> findAllPapers();
     void insertPaper(Paper paper);
     void deletePapers(List<UUID> paperId);
+    void deleteSpecifiedPaper(UUID id);
     void updatePaper(Paper paper);
 }
 
