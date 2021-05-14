@@ -2,28 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.edu.seu.cose.docmanage.mapper.PaperMapper">
 
-    <select id="findPaperPage" resultType="Paper">
-        select *
-        from dm_paper
-        <where>
-            <choose>
-                <when test="searchKey == 'title' and searchValue != null">
-                    and dm_paper.title like CONCAT('%', #{searchValue}, '%')
-                </when>
-                <when test="searchKey == 'author' and searchValue != null">
-                    and dm_paper.author like CONCAT('%', #{searchValue}, '%')
-                </when>
-                <when test="searchKey == 'author-office' and searchValue != null">
-                    and dm_paper.author_office like CONCAT('%', #{searchValue}, '%')
-                </when>
-                <when test="keyword == 'keyword' and searchValue != null">
-                    and dm_paper.keyword like CONCAT('%', #{searchValue}, '%')
-                </when>
-                <when test="keyword == 'abstract' and searchValue != null">
-                    and dm_paper.abstract like CONCAT('%', #{searchValue}, '%')
-                </when>
-            </choose>
-        </where>
-    </select>
 
+    <resultMap id="userResultMap" type="User">
+        <id property="id" column="user_id"/>
+        <result property="username" column="user_name"/>
+        <result property="password" column="user_password"/>
+        <collection property="roles" column="user_id" ofType="Role" select="findRolesByUser"/>
+    </resultMap>
+
+
+
+    <insert id="insertPaper">
+        insert dm_paper(id, abstract, title, keyword, author, author_office, journal_id, publish_time)
+        VALUE (#{id}, #{abstract}, #{title}, #{keyword}, #{author}, #{author_office}, #{journal_id}, #{publish_time});
+    </insert>
+
+    <insert id="bindRoles">
+        insert dm_user_role(id, user_id, role_id) (
+        select REPLACE(UUID(), '-', ''), #{userId}, id
+        from dm_role where dm_role.name in
+        <foreach collection="roleNames" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+        )
+    </insert>
+
+    <update id="updatePasswordByUserId">
+        update dm_user
+        set password = #{encodedPassword}
+        where id = #{userId}
+    </update>
+
+    <delete id="deleteUsers">
+        delete from dm_user where id in
+        <foreach collection="userIds" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+    </delete>
 </mapper>
