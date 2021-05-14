@@ -2,23 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.edu.seu.cose.docmanage.mapper.PaperMapper">
 
-    <select id="findJournalPage" resultType="Journal">
-        select *
-        from dm_journal
-        <where>
-            <choose>
-                <when test="searchKey == 'title' and searchValue != null">
-                    and dm_paper.title like CONCAT('%', #{searchValue}, '%')
-                </when>
-                <when test="searchKey == 'organizer-office' and searchValue != null">
-                    and dm_paper.organizer_office like CONCAT('%', #{searchValue}, '%')
-                </when>
-                <when test="searchKey == 'issn' and searchValue != null">
-                    and dm_paper.issn like CONCAT('%', #{searchValue}, '%')
-                </when>
-            </choose>
-        </where>
-    </select>
+<!--    <select id="findJournalPage" resultType="Journal">-->
+<!--        select *-->
+<!--        from dm_journal-->
+<!--        <where>-->
+<!--            <choose>-->
+<!--                <when test="searchKey == 'title' and searchValue != null">-->
+<!--                    and dm_paper.title like CONCAT('%', #{searchValue}, '%')-->
+<!--                </when>-->
+<!--                <when test="searchKey == 'organizer-office' and searchValue != null">-->
+<!--                    and dm_paper.organizer_office like CONCAT('%', #{searchValue}, '%')-->
+<!--                </when>-->
+<!--                <when test="searchKey == 'issn' and searchValue != null">-->
+<!--                    and dm_paper.issn like CONCAT('%', #{searchValue}, '%')-->
+<!--                </when>-->
+<!--            </choose>-->
+<!--        </where>-->
+<!--    </select>-->
 
 
 
