@@ -3,39 +3,27 @@
 <mapper namespace="cn.edu.seu.cose.docmanage.mapper.PaperMapper">
 
 
-    <resultMap id="userResultMap" type="User">
-        <id property="id" column="user_id"/>
-        <result property="username" column="user_name"/>
-        <result property="password" column="user_password"/>
-        <collection property="roles" column="user_id" ofType="Role" select="findRolesByUser"/>
-    </resultMap>
-
-
-
     <insert id="insertPaper">
         insert dm_paper(id, abstract, title, keyword, author, author_office, journal_id, publish_time)
-        VALUE (#{id}, #{abstract}, #{title}, #{keyword}, #{author}, #{author_office}, #{journal_id}, #{publish_time});
+        VALUE (#{id}, #{paperAbstract}, #{title}, #{keyword}, #{author}, #{authorOffice}, #{journalId}, #{publishTime});
     </insert>
 
-    <insert id="bindRoles">
-        insert dm_user_role(id, user_id, role_id) (
-        select REPLACE(UUID(), '-', ''), #{userId}, id
-        from dm_role where dm_role.name in
-        <foreach collection="roleNames" open="(" close=")" separator="," item="item">
-            #{item}
-        </foreach>
-        )
-    </insert>
 
-    <update id="updatePasswordByUserId">
-        update dm_user
-        set password = #{encodedPassword}
-        where id = #{userId}
+    <update id="updatePaper">
+        update dm_paper
+        set abstract = #{paperAbstract},
+            title = #{title},
+            keyword = #{keyword},
+            author = #{author},
+            author_office = #{authorOffice},
+            journal_id = #{journalId},
+            publish_time = #{publishTime}
+        where id = #{id}
     </update>
 
-    <delete id="deleteUsers">
-        delete from dm_user where id in
-        <foreach collection="userIds" open="(" close=")" separator="," item="item">
+    <delete id="deleteAllPapers">
+        delete from dm_paper where id in
+        <foreach collection="ids" open="(" close=")" separator="," item="item">
             #{item}
         </foreach>
     </delete>
