@@ -39,6 +39,12 @@ public class EntryService {
 
     public void updateEntry(Entry entry){
         if(entry==null)throw new SimpleException("词条内容为空");
+        if(!StringUtils.hasText(entry.getName())){
+            throw new SimpleException("词条名称不能为空");
+        }
+        if(!StringUtils.hasText(entry.getDescription())){
+            throw new SimpleException("词条描述不能为空");
+        }
         entryMapper.updateEntry(entry);
     }
 
