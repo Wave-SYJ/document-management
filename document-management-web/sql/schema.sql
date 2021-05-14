@@ -271,6 +271,32 @@ INSERT INTO `dm_role` VALUES ('063b904c9f3211ebae1700155db07c91','ROLE_SYSTEM_AD
 UNLOCK TABLES;
 
 --
+-- Table structure for table `dm_subscription`
+--
+
+DROP TABLE IF EXISTS `dm_subscription`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `dm_subscription` (
+  `id` char(32) NOT NULL,
+  `user_id` char(32) NOT NULL,
+  `resource_id` char(32) NOT NULL,
+  `resource_type` tinyint NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `dm_subscription_id_uindex` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dm_subscription`
+--
+
+LOCK TABLES `dm_subscription` WRITE;
+/*!40000 ALTER TABLE `dm_subscription` DISABLE KEYS */;
+/*!40000 ALTER TABLE `dm_subscription` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `dm_user`
 --
 
@@ -360,4 +386,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-14 23:05:47
+-- Dump completed on 2021-05-14 23:15:50
