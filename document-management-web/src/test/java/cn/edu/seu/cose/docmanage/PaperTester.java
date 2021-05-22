@@ -43,9 +43,4 @@ public class PaperTester {
         }
     }
 
-    @Test
-    void test2() {
-        Page<Paper> paperPage = paperService.findPaperPage(2, 10, "title", "e");
-    }
-
 }

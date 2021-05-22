@@ -21,10 +21,39 @@
         where id = #{id}
     </update>
 
+    <delete id="deleteSpecifiedPaper">
+        delete from dm_paper
+        where id = #{id}
+    </delete>
+
     <delete id="deleteAllPapers">
         delete from dm_paper where id in
         <foreach collection="ids" open="(" close=")" separator="," item="item">
             #{item}
         </foreach>
     </delete>
+
+    <select id="findPaperPage" resultType="Paper">
+        select *
+        from dm_paper
+        <where>
+            <choose>
+                <when test="searchKey == 'title' and searchValue != null">
+                    and dm_paper.title like CONCAT('%', #{searchValue}, '%')
+                </when>
+                <when test="searchKey == 'author' and searchValue != null">
+                    and dm_paper.author like CONCAT('%', #{searchValue}, '%')
+                </when>
+                <when test="searchKey == 'author-office' and searchValue != null">
+                    and dm_paper.author_office like CONCAT('%', #{searchValue}, '%')
+                </when>
+                <when test="keyword == 'keyword' and searchValue != null">
+                    and dm_paper.keyword like CONCAT('%', #{searchValue}, '%')
+                </when>
+                <when test="keyword == 'abstract' and searchValue != null">
+                    and dm_paper.abstract like CONCAT('%', #{searchValue}, '%')
+                </when>
+            </choose>
+        </where>
+    </select>
 </mapper>
