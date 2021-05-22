@@ -24,7 +24,7 @@ public class SystemService {
     @Autowired
     private SystemMapper systemMapper;
 
-    public void insertAnnouncement (Announcement announcement){
+    public void publishAnnouncement (Announcement announcement){
         if (announcement.getId()==null){
             announcement.setId(UUID.randomUUID());
         }
@@ -47,4 +47,7 @@ public class SystemService {
     public SystemHardwareInfo querySystemStatus() throws Exception {
         return new SystemHardwareInfo();
     }
+
+    public void openService() {}
+    public void closeService() {}
 }
