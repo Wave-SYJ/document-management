@@ -2,6 +2,7 @@ package cn.edu.seu.cose.docmanage.service;
 
 import cn.edu.seu.cose.docmanage.entity.Announcement;
 import cn.edu.seu.cose.docmanage.entity.Entry;
+import cn.edu.seu.cose.docmanage.entity.SystemHardwareInfo;
 import cn.edu.seu.cose.docmanage.exception.SimpleException;
 import cn.edu.seu.cose.docmanage.mapper.SystemMapper;
 import cn.edu.seu.cose.docmanage.mapper.UserMapper;
@@ -10,6 +11,8 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import oshi.SystemInfo;
+import oshi.hardware.HardwareAbstractionLayer;
 
 import java.util.Date;
 import java.util.List;
@@ -39,5 +42,9 @@ public class SystemService {
     public Page<Announcement> findAnnouncement(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         return systemMapper.findAnnouncement();
+    }
+
+    public SystemHardwareInfo querySystemStatus() throws Exception {
+        return new SystemHardwareInfo();
     }
 }
