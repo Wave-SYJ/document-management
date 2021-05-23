@@ -5,10 +5,7 @@ import cn.edu.seu.cose.docmanage.constants.RoleConstants;
 import cn.edu.seu.cose.docmanage.entity.Entry;
 import cn.edu.seu.cose.docmanage.entity.Journal;
 import cn.edu.seu.cose.docmanage.entity.User;
-import cn.edu.seu.cose.docmanage.service.EntryService;
-import cn.edu.seu.cose.docmanage.service.SystemService;
-import cn.edu.seu.cose.docmanage.service.UserService;
-import cn.edu.seu.cose.docmanage.service.JournalService;
+import cn.edu.seu.cose.docmanage.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -16,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,6 +23,9 @@ public class AdminController {
 
     @Autowired
     private EntryService entryService;
+
+    @Autowired
+    private PaperService paperService;
 
     @Autowired
     private UserService userService;
@@ -133,6 +135,13 @@ public class AdminController {
     @PreAuthorize("hasAnyAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
     public String insertJournal(Journal journal) {
         journalService.insertJournal(journal);
+        return "redirect:/admin/journal";
+    }
+
+    @PostMapping("/admin/journal/entry")
+    @PreAuthorize("hasAnyAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
+    public String bindEntry(String id, String entries) {
+        journalService.bindEntries(UUID.fromString(id), Arrays.asList(entries.split("\r\n")));
         return "redirect:/admin/journal";
     }
 }

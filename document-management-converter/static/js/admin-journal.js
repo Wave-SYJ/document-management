@@ -52,8 +52,8 @@ $('#admin-data-delete-selected')
     });
     location.reload();
   })
-  
-  $('#admin-data-insert')
+
+$('#admin-data-insert')
   .click(function () {
     $('#add-journal-modal').modal('show')
   });
@@ -63,9 +63,20 @@ $('#add-journal-form')
     fields: {
       title: 'empty',
       organizerOffice: 'empty',
-      image:'empty',
-      language:'empty',
-      issn:'empty',
+      image: 'empty',
+      language: 'empty',
+      issn: 'empty',
     }
   })
   ;
+
+$('.admin-data-bind')
+  .click(async function () {
+    const paperId = $(this).data("id");
+    $('#bind-entry-modal').find(`*[name='id']`).val(paperId);
+    const {data} = await axios({
+      url: '/journal/entry?id=' + paperId
+    });
+    $('#bind-entry-modal').find(`*[name='entries']`).val(data.join("\n"));
+    $('#bind-entry-modal').modal('show')
+  });

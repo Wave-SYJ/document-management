@@ -1,5 +1,6 @@
 package cn.edu.seu.cose.docmanage.mapper;
 
+import cn.edu.seu.cose.docmanage.entity.Entry;
 import cn.edu.seu.cose.docmanage.entity.Paper;
 import com.github.pagehelper.Page;
 import org.springframework.stereotype.Repository;
@@ -16,4 +17,8 @@ public interface PaperMapper {
     void deleteSpecifiedPaper(UUID id);
     void updatePaper(Paper paper);
     Paper findPaperById(UUID paperId);
+
+    void bindEntry(UUID id, UUID paperId, UUID entryId);
+    void removeAllEntries(UUID paperId);
+    List<Entry> findEntries(UUID paperId);
 }

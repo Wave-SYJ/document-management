@@ -1,13 +1,16 @@
 package cn.edu.seu.cose.docmanage.service;
+import cn.edu.seu.cose.docmanage.entity.Entry;
 import cn.edu.seu.cose.docmanage.entity.Journal;
 import cn.edu.seu.cose.docmanage.entity.Paper;
 import cn.edu.seu.cose.docmanage.entity.User;
 import cn.edu.seu.cose.docmanage.exception.SimpleException;
+import cn.edu.seu.cose.docmanage.mapper.EntryMapper;
 import cn.edu.seu.cose.docmanage.mapper.JournalMapper;
 import cn.edu.seu.cose.docmanage.mapper.UserMapper;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.github.pagehelper.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,6 +18,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.UUID;
@@ -25,6 +29,9 @@ public class JournalService {
 
     @Autowired
     private JournalMapper journalMapper;
+
+    @Autowired
+    private EntryService entryService;
 
     public Page<Journal> findJournalMapper(int pageNum, int pageSize, String searchKey, String searchValue) {
         PageHelper.startPage(pageNum, pageSize);
@@ -48,6 +55,21 @@ public class JournalService {
     public Page<Journal> findJournalPage(int pageNum, int pageSize, String searchKey, String searchValue) {
         PageHelper.startPage(pageNum, pageSize);
         return journalMapper.findJournalPage(searchKey, searchValue);
+    }
+
+    @Transactional
+    public void bindEntries(UUID journalId, List<String> entryNames) {
+        journalMapper.removeAllEntries(journalId);
+        entryNames = entryNames.stream().filter(StringUtils::hasText).collect(Collectors.toList());
+        if (entryNames.isEmpty())
+            return;
+        entryService.findEntryByNames(entryNames).forEach(entry -> {
+            journalMapper.bindEntry(UUID.randomUUID(), journalId, entry.getId());
+        });
+    }
+
+    public List<Entry> findEntries(UUID journalId) {
+        return journalMapper.findEntries(journalId);
     }
 
 }
