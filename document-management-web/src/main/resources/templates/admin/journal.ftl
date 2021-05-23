@@ -12,19 +12,19 @@
                 </div>
                 <div class="required field">
                     <label>所属机构</label>
-                    <input name="organizerOffice"></input>
+                    <input name="organizerOffice"/>
                 </div>
                 <div class="required field">
                     <label>期刊图片</label>
-                    <input name="image"></input>
+                    <input name="image"/>
                 </div>
                 <div class="required field">
                     <label>期刊语言</label>
-                    <input name="language"></input>
+                    <input name="language"/>
                 </div>
                 <div class="required field">
                     <label>issn</label>
-                    <input name="issn"></input>
+                    <input name="issn"/>
                 </div>
                 <button class="ui primary button" type="submit">确定</button>
             </form>
@@ -49,7 +49,7 @@
         </form>
     </div>
 
-    <table class="ui celled table">
+    <table class="ui celled fixed single line table">
         <thead>
         <tr>
             <th style="width: 80px">

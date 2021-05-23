@@ -138,7 +138,10 @@ public class AdminController {
     @PostMapping("/admin/entry")
     @PreAuthorize("hasAnyAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
     public String insertEntry(Entry entry) {
-        entryService.insertEntry(entry);
+        if (entry.getId() == null)
+            entryService.insertEntry(entry);
+        else
+            entryService.updateEntry(entry);
         return "redirect:/admin/entry";
     }
 
