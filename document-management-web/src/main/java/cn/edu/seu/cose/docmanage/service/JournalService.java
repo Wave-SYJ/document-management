@@ -72,4 +72,8 @@ public class JournalService {
         return journalMapper.findEntries(journalId);
     }
 
+    public UUID findJournalIdByTitle(String title) {
+        return journalMapper.findJournalIdByTitle(title);
+    }
+
 }

@@ -15,27 +15,28 @@
                     <label>作者</label>
                     <input type="text" name="author">
                 </div>
-                <div class="required field">
+                <div class="field">
                     <label>作者单位</label>
                     <input type="text" name="authorOffice">
                 </div>
-                <div class="required field">
+                <div class="field">
                     <label>论文摘要</label>
                     <textarea name="paperAbstract"></textarea>
                 </div>
                 <div class="required field">
                     <label>论文关键字</label>
-                    <textarea name="keyword"></textarea>
+                    <input type="text" name="keyword">
                 </div>
-                <div class="required field">
+                <div class="field">
                     <label>所属期刊</label>
-                    <input type="text" name="journalId">
+                    <input type="text" name="journalTitle">
                 </div>
-                <div class="required field">
+                <input type="text" name="journalId" hidden>
+                <div class="field">
                     <label>发表时间</label>
-                    <input type="text" name="publishTime">
+                    <input type="date" name="publishTime">
                 </div>
-                <button class="ui primary button" type="submit">确定</button>
+                <button id="submit-insert" class="ui primary button" type="submit">确定</button>
             </form>
         </div>
     </div>

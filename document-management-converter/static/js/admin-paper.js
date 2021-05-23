@@ -53,7 +53,7 @@ $('#admin-data-delete-selected')
     location.reload();
   })
 
-  $('#admin-data-insert')
+$('#admin-data-insert')
   .click(function () {
     $('#add-paper-modal').modal('show')
   });
@@ -71,3 +71,9 @@ $('#add-paper-form')
     }
   })
   ;
+
+$("#add-paper-form input[name='journalTitle']").keyup(async function () {
+  const title = $(this).val();
+  const id = (await axios.get("/journal/id?title=" + title)).data;
+  $("#add-paper-form input[name='journalId']").val(id)
+});
