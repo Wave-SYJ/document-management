@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.UUID;
@@ -59,12 +60,35 @@ public class UserService implements UserDetailsService {
 
     public void changePassword(User user, String oldPassword, String newPassword, String repeatPassword) {
         if (user == null || oldPassword == null || newPassword == null || repeatPassword == null)
-            return;
+            throw new SimpleException("旧密码/新密码/重复密码不能为空");
         if (!newPassword.equals(repeatPassword))
-            return;
+            throw new SimpleException("旧密码需要和新密码相同");
         if (!passwordEncoder.matches(oldPassword, user.getPassword()))
             throw new SimpleException("旧密码错误");
         userMapper.updatePasswordByUserId(user.getId(), passwordEncoder.encode(newPassword));
+    }
+
+    public void register(User user) {
+        if (!StringUtils.hasText(user.getUsername()))
+            throw new SimpleException("用户名不能为空");
+        if (!StringUtils.hasText(user.getPassword()))
+            throw new SimpleException("密码不能为空");
+        insertUser(user);
+    }
+
+    @Transactional
+    public void updateUser(User user) {
+        if (user.getId() == null)
+            throw new SimpleException("请指定用户");
+        if (user.getUsername() == null)
+            throw new SimpleException("用户名不能为空");
+        if (user.getPassword() == null)
+            throw new SimpleException("密码不能为空");
+        userMapper.deleteAllRoles(user.getId());
+        userMapper.updateUser(user);
+        if (user.getRoles() == null || user.getRoles().size() == 0)
+            return;
+        userMapper.bindRoles(user.getId(), user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
     }
 
 }

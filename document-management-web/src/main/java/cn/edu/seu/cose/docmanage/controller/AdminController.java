@@ -3,6 +3,7 @@ package cn.edu.seu.cose.docmanage.controller;
 import cn.edu.seu.cose.docmanage.config.CurrentUser;
 import cn.edu.seu.cose.docmanage.constants.RoleConstants;
 import cn.edu.seu.cose.docmanage.entity.User;
+import cn.edu.seu.cose.docmanage.service.SystemService;
 import cn.edu.seu.cose.docmanage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,6 +18,9 @@ public class AdminController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private SystemService systemService;
 
     @RequestMapping("/admin")
     @PreAuthorize("hasAnyAuthority(@Roles.ROLE_USER_ADMIN, @Roles.ROLE_DOCUMENT_ADMIN, @Roles.ROLE_SYSTEM_ADMIN)")
@@ -60,7 +64,8 @@ public class AdminController {
 
     @RequestMapping("/admin/system")
     @PreAuthorize("hasAuthority(@Roles.ROLE_SYSTEM_ADMIN)")
-    public String toAdminSystem() {
+    public String toAdminSystem(Model model) throws Exception {
+        model.addAttribute("info", systemService.querySystemStatus());
         return "admin/system";
     }
 
