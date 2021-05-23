@@ -43,6 +43,12 @@
         </foreach>
     </delete>
 
+    <select id="findNewPapers" resultType="Paper">
+        select dp.title as 'title',
+               dp.abstract as 'paperAbstract'
+        from dm_paper dp
+    </select>
+
     <select id="findPaperPage" resultType="Paper">
         select *, abstract as 'paperAbstract'
         from dm_paper

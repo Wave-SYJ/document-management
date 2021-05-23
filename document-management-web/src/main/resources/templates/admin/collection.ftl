@@ -47,7 +47,7 @@
                 </td>
                 <td>${dataItem.title!}</td>
                 <td>${dataItem.author!}</td>
-                <td>${dataItem.getPaperAbstract()!}</td>
+                <td>${dataItem.paperAbstract}</td>
 
             </tr>
         </#list>

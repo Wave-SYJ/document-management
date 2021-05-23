@@ -160,4 +160,5 @@ public class AdminController {
         journalService.insertJournal(journal);
         return "redirect:/admin/journal";
     }
+
 }

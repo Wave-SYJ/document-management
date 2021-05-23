@@ -54,5 +54,11 @@ public class PaperService {
         paperMapper.updatePaper(paper);
     }
 
+
+    @Transactional
+    public List<Paper> findNewPapers(){
+        return paperMapper.findNewPapers();
+    }
+
 }
 
