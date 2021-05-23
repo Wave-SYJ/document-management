@@ -91,4 +91,9 @@ public class UserService implements UserDetailsService {
         userMapper.bindRoles(user.getId(), user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
     }
 
+    public void findUserCollection(UUID userId){
+        userMapper.findUserCollection(userId);
+
+    }
+
 }

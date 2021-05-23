@@ -80,6 +80,12 @@
             password = #{password}
         where id = #{id}
     </update>
+    
+    <select id="findUserCollection" resultType="UserCollectionMap">
+        select dc.*
+        from dm_collection dc
+        where user_id = #{userId}
+    </select>
 
 
 </mapper>

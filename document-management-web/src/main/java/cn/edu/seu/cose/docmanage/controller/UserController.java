@@ -33,6 +33,12 @@ public class UserController {
         return "/user/password";
     }
 
+    @RequestMapping("/admin/collection")
+    public void findUserCollection(UUID userId) {
+        userService.findUserCollection(userId);
+    }
+
+
     @DeleteMapping("/user")
     @PreAuthorize("hasAnyAuthority(@Roles.ROLE_USER_ADMIN)")
     @ResponseBody

@@ -20,5 +20,6 @@ public interface UserMapper {
     void updatePasswordByUserId(UUID userId, String encodedPassword);
     void deleteAllRoles(UUID userId);
     void updateUser(User user);
+    void findUserCollection(UUID userId);
 
 }
