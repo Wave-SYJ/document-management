@@ -58,3 +58,18 @@
     }
   }
 }
+
+#page-menu-wrapper {
+  width: 60%;
+  margin: 10px auto;
+
+  display: flex;
+  #page-menu {
+    margin-left: auto;
+    .admin-data-jump-form {
+      padding: 0 10px;
+      line-height: 40px;
+    }
+  }
+}
+
