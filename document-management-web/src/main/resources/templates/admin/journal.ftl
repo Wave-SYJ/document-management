@@ -126,6 +126,7 @@
                 <td data-name="title">${dataItem.title}</td>
                 <td data-name="organizerOffice">${dataItem.organizerOffice}</td>
                 <td data-name="image">${dataItem.image!}</td>
+                <td data-name="language" hidden>${dataItem.language}</td>
                 <td data-name="issn">${dataItem.issn}</td>
                 <td>
                     <button class="ui button admin-data-bind" data-id="${dataItem.id}">绑定词条</button>
