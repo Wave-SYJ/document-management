@@ -29,9 +29,11 @@
     </update>
 
     <delete id="deleteSpecifiedPaper">
-        delete
-        from dm_paper
-        where id = #{id}
+        delete from dm_paper where id in
+        <foreach collection="id" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+
     </delete>
 
     <delete id="deleteAllPapers">
@@ -40,6 +42,12 @@
             #{item}
         </foreach>
     </delete>
+
+    <select id="findNewPapers" resultType="Paper">
+        select dp.title as 'title',
+               dp.abstract as 'paperAbstract'
+        from dm_paper dp
+    </select>
 
     <select id="findPaperPage" resultType="Paper">
         select *, abstract as 'paperAbstract'
