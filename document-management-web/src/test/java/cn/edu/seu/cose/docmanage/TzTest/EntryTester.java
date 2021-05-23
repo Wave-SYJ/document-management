@@ -32,7 +32,7 @@ public class EntryTester {
     @Test
     public List<Entry> findEntryTest(){
 
-        return entryService.findEntry(1, 10, "已经修改的");
+        return entryService.findEntryPage(1, 10, "已经修改的","name");
     }
 
     @Test

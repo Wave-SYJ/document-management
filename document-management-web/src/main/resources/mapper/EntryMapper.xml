@@ -26,8 +26,8 @@
         <if test="searchKey != null">
             <where>
                 <choose>
-                    <when test="searchKey == 'title' and searchValue != null">
-                        and dm_entry.title like CONCAT('%', #{searchValue}, '%')
+                    <when test="searchKey == 'name' and searchValue != null">
+                        and dm_entry.name like CONCAT('%', #{searchValue}, '%')
                     </when>
                     <when test="searchKey == 'description' and searchValue != null">
                         and dm_entry.description like CONCAT('%', #{searchValue}, '%')

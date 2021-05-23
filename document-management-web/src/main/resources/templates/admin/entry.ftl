@@ -10,6 +10,7 @@
             <input type="text" name="searchValue" placeholder="搜索..." value="${searchValue!}">
             <select class="ui compact selection dropdown" name="searchKey">
                 <option value="name" ${(searchKey! == 'name')?then("selected", "")}>词条名称</option>
+                <option value="name" ${(searchKey! == 'description')?then("selected", "")}>词条名称</option>
             </select>
             <button class="ui basic button icon" type="submit"><i class="search icon"></i></button>
         </form>
