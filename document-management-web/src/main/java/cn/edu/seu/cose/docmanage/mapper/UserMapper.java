@@ -1,5 +1,7 @@
 package cn.edu.seu.cose.docmanage.mapper;
 
+import cn.edu.seu.cose.docmanage.entity.Journal;
+import cn.edu.seu.cose.docmanage.entity.Paper;
 import cn.edu.seu.cose.docmanage.entity.Role;
 import cn.edu.seu.cose.docmanage.entity.User;
 import com.github.pagehelper.Page;
@@ -20,5 +22,7 @@ public interface UserMapper {
     void updatePasswordByUserId(UUID userId, String encodedPassword);
     void deleteAllRoles(UUID userId);
     void updateUser(User user);
+    Page<Paper> findUserCollectionPage(UUID userId);
+    Page<Journal> findUserSubscriptionPage(UUID userId);
 
 }

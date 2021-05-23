@@ -1,5 +1,7 @@
 package cn.edu.seu.cose.docmanage.service;
 
+import cn.edu.seu.cose.docmanage.entity.Journal;
+import cn.edu.seu.cose.docmanage.entity.Paper;
 import cn.edu.seu.cose.docmanage.entity.Role;
 import cn.edu.seu.cose.docmanage.entity.User;
 import cn.edu.seu.cose.docmanage.exception.SimpleException;
@@ -89,6 +91,16 @@ public class UserService implements UserDetailsService {
         if (user.getRoles() == null || user.getRoles().size() == 0)
             return;
         userMapper.bindRoles(user.getId(), user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
+    }
+
+    public Page<Paper> findUserCollectionPage(UUID userId, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        return userMapper.findUserCollectionPage(userId);
+    }
+
+    public Page<Journal> findUserSubscriptionPage(UUID userId, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        return userMapper.findUserSubscriptionPage(userId);
     }
 
 }
