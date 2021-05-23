@@ -52,3 +52,7 @@ $('#admin-data-delete-selected')
     });
     location.reload();
   })
+
+$('#admin-data-add-modal')
+  .modal('attach events', '#admin-data-add-button', 'show')
+;

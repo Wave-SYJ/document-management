@@ -2,8 +2,18 @@
 
 <@adminLayout currentPage="entry" title="词条列表 - 文献搜索和管理系统" css=['/css/admin-user.css']>
 
+    <div class="ui small basic modal">
+        <div class="header title">确定删除吗？</div>
+        <div class="content">
+            删除类型的同时会删除相关的所有文章，确定删除码？
+        </div>
+        <div class="actions">
+            <button class="ui negative button">否</button>
+            <button class="ui positive button">是</button>
+        </div>
+    </div>
 
-    <div class="ui modal addEntry">
+    <div class="ui modal" id="admin-data-add-modal">
         <i class="close icon"></i>
         <div class="header">
             Profile Picture
@@ -31,6 +41,7 @@
 
     <div class="admin-data-header">
         <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 删除选中</button>
+        <button class="ui blue button" id="admin-data-add-button">add</button>
 
         <form class="ui action input" action="/admin/entry" method="get">
             <input type="text" name="pageNum" value="${dataPage.pageNum}" hidden>
@@ -126,7 +137,10 @@
     </table>
 
 
-
-    <script src="/js/admin-user.js"></script>
+    <script>
+        $(".ui.basic.modal").modal("show");
+        // $("#admin-data-add-modal").modal("show");
+    </script>
+    <script src="/js/admin-entry.js"></script>
 
 </@adminLayout>
