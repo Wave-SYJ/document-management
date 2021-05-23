@@ -3,11 +3,11 @@ package cn.edu.seu.cose.docmanage.controller;
 import cn.edu.seu.cose.docmanage.config.CurrentUser;
 import cn.edu.seu.cose.docmanage.constants.RoleConstants;
 import cn.edu.seu.cose.docmanage.entity.Entry;
-<<<<<<< HEAD
+
 import cn.edu.seu.cose.docmanage.entity.Paper;
-=======
+
 import cn.edu.seu.cose.docmanage.entity.Journal;
->>>>>>> master
+
 import cn.edu.seu.cose.docmanage.entity.User;
 import cn.edu.seu.cose.docmanage.service.PaperService;
 import cn.edu.seu.cose.docmanage.service.EntryService;
@@ -34,11 +34,11 @@ public class AdminController {
     private UserService userService;
 
     @Autowired
-<<<<<<< HEAD
     private PaperService paperService;
-=======
+
+    @Autowired
     private JournalService journalService;
->>>>>>> master
+
 
     @Autowired
     private SystemService systemService;

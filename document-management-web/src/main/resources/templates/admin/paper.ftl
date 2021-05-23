@@ -24,6 +24,10 @@
                     <textarea name="paperAbstract"></textarea>
                 </div>
                 <div class="required field">
+                    <label>论文关键字</label>
+                    <textarea name="keyword"></textarea>
+                </div>
+                <div class="required field">
                     <label>所属期刊</label>
                     <input type="text" name="journalId">
                 </div>

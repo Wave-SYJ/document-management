@@ -65,6 +65,7 @@ $('#add-paper-form')
       author: 'empty',
       author_office: 'empty',
       abstract: 'empty',
+      keyword: 'empty'
       //journal: 'empty',
       //publishtime: 'empty',
     }
