@@ -3,7 +3,11 @@ package cn.edu.seu.cose.docmanage.controller;
 import cn.edu.seu.cose.docmanage.config.CurrentUser;
 import cn.edu.seu.cose.docmanage.constants.RoleConstants;
 import cn.edu.seu.cose.docmanage.entity.Entry;
+
+import cn.edu.seu.cose.docmanage.entity.Paper;
+
 import cn.edu.seu.cose.docmanage.entity.Journal;
+
 import cn.edu.seu.cose.docmanage.entity.User;
 import cn.edu.seu.cose.docmanage.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +35,11 @@ public class AdminController {
     private UserService userService;
 
     @Autowired
+    private PaperService paperService;
+
+    @Autowired
     private JournalService journalService;
+
 
     @Autowired
     private SystemService systemService;
@@ -60,7 +68,11 @@ public class AdminController {
 
     @RequestMapping("/admin/paper")
     @PreAuthorize("hasAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
-    public String toAdminPaper() {
+    public String toAdminPaper(Model model, Integer pageNum, String searchKey, String searchValue) {
+        pageNum = pageNum != null ? pageNum : 1;
+        model.addAttribute("dataPage", paperService.findPaperPage(pageNum, 10, searchKey, searchValue).toPageInfo());
+        model.addAttribute("searchKey", searchKey);
+        model.addAttribute("searchValue", searchValue);
         return "admin/paper";
     }
 
@@ -112,6 +124,21 @@ public class AdminController {
     public String toAdminSystem(Model model) throws Exception {
         model.addAttribute("info", systemService.querySystemStatus());
         return "admin/system";
+    }
+
+
+    @DeleteMapping("/paper")
+    @PreAuthorize("hasAnyAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
+    @ResponseBody
+    public void deletePaper(@RequestBody List<UUID> ids) {
+        paperService.deleteSpecifiedPaper(ids);
+    }
+
+    @PostMapping("/admin/paper")
+    @PreAuthorize("hasAnyAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
+    public String insertPaper(Paper paper) {
+        paperService.insetPaper(paper);
+        return "redirect:/admin/paper";
     }
 
     @DeleteMapping("/admin/entry")

@@ -7,50 +7,25 @@
 
     <main class="segment-wrapper">
         <div class="ui segment" style="margin-right: 20px;">
+
             <div class="ui header">最新论文</div>
 
             <div class="ui list">
-                <div class="item">
-                    <i class="map marker icon"></i>
-                    <div class="content">
-                        <a class="header">Krolewskie Jadlo</a>
-                        <div class="description">An excellent polish restaurant, quick delivery and hearty, filling
-                            meals.
+                <#list dataPage as dataItem>
+
+                    <div class="item">
+                        <i class="map marker icon"></i>
+                        <div class="content">
+                            <a href=" " class="header"> ${dataItem.title} </a>
+                            <div class="description">
+                                ${dataItem.paperAbstract!}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <i class="map marker icon"></i>
-                    <div class="content">
-                        <a class="header">Xian Famous Foods</a>
-                        <div class="description">A taste of Shaanxi's delicious culinary traditions, with delights
-                            like
-                            spicy cold noodles and lamb burgers.
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <i class="map marker icon"></i>
-                    <div class="content">
-                        <a class="header">Sapporo Haru</a>
-                        <div class="description">Greenpoint's best choice for quick and delicious sushi.</div>
-                    </div>
-                </div>
-                <div class="item">
-                    <i class="map marker icon"></i>
-                    <div class="content">
-                        <a class="header">Enid's</a>
-                        <div class="description">At night a bar, during the day a delicious brunch spot.</div>
-                    </div>
-                </div>
-                <div class="item">
-                    <i class="map marker icon"></i>
-                    <div class="content">
-                        <a class="header">Enid's</a>
-                        <div class="description">At night a bar, during the day a delicious brunch spot.</div>
-                    </div>
-                </div>
+                </#list>
             </div>
+
+
         </div>
 
         <div class="ui segment">
