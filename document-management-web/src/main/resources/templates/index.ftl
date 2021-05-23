@@ -1,4 +1,5 @@
 <#include "/components/base-layout.ftl"/>
+<#include "/components/search-pane.ftl"/>
 
 <@baseLayout title="主页 - 文献搜索和管理系统" css=["/css/search-pane.css", "/css/index.css"]>
 
