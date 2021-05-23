@@ -26,6 +26,7 @@
                         <div class="header"> 系统</div>
                         <div class="menu">
                             <a class="${(currentPage == "system")?then('item active', 'item')}" href="/admin/system"> 系统管理 </a>
+                            <a class="${(currentPage == "system")?then('item active', 'item')}" href="/admin/announcement"> 发送通知 </a>
                         </div>
                     </div>
                 </#if>

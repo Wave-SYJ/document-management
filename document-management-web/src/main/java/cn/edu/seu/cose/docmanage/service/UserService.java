@@ -111,4 +111,7 @@ public class UserService implements UserDetailsService {
 
     }
 
+    public void deleteSubscriptions(List<UUID> ids,UUID userId) {
+        userMapper.deleteSubscriptions(ids,userId);
+    }
 }

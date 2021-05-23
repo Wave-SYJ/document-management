@@ -26,8 +26,12 @@ public interface UserMapper {
 
     Page<Paper> findUserCollectionPage(UUID userId);
     Page<Journal> findUserSubscriptionPage(UUID userId);
+<<<<<<< HEAD
 
     void cancelCollection(UUID userId, List<UUID> paperIds);
 
 
+=======
+    void deleteSubscriptions(List<UUID> journalIds,UUID userId);
+>>>>>>> master
 }

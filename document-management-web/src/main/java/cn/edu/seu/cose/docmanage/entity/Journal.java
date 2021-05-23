@@ -14,7 +14,7 @@ public class Journal {
     private UUID id;
     private String title;
     private String organizerOffice;
-    private byte[] image;
+    private String image;
     private String language;
     private String issn;
 }

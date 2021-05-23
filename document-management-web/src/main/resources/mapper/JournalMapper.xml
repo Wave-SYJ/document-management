@@ -13,13 +13,6 @@
             )
     </insert>
 
-    <delete id="deleteJournals">
-        delete from dm_journal where id in
-        <foreach collection="journalIds" open="(" close=")" separator="," item="item">
-            #{item}
-        </foreach>
-    </delete>
-
     <update id="updateJournal">
         update dm_journal
         set title            = #{title},
@@ -50,4 +43,11 @@
             </where>
         </if>
     </select>
+
+    <delete id="deleteJournals">
+        delete from dm_journal where id in
+        <foreach collection="journalIds" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+    </delete>
 </mapper>

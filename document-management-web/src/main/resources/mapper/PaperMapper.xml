@@ -5,19 +5,26 @@
 
     <insert id="insertPaper">
         insert dm_paper(id, abstract, title, keyword, author, author_office, journal_id, publish_time)
-        VALUE (#{id}, #{paperAbstract}, #{title}, #{keyword}, #{author}, #{authorOffice}, #{journalId}, #{publishTime});
+            VALUE (#{id}, #{paperAbstract}, #{title}, #{keyword}, #{author}, #{authorOffice}, #{journalId},
+                   #{publishTime});
     </insert>
+
+    <select id="findPaperById" resultType="Paper">
+        select *
+        from dm_paper
+        where id = #{id}
+    </select>
 
 
     <update id="updatePaper">
         update dm_paper
-        set abstract = #{paperAbstract},
-            title = #{title},
-            keyword = #{keyword},
-            author = #{author},
+        set abstract      = #{paperAbstract},
+            title         = #{title},
+            keyword       = #{keyword},
+            author        = #{author},
             author_office = #{authorOffice},
-            journal_id = #{journalId},
-            publish_time = #{publishTime}
+            journal_id    = #{journalId},
+            publish_time  = #{publishTime}
         where id = #{id}
     </update>
 
@@ -26,6 +33,7 @@
         <foreach collection="id" open="(" close=")" separator="," item="item">
             #{item}
         </foreach>
+
     </delete>
 
     <delete id="deleteAllPapers">

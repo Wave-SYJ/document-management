@@ -10,7 +10,8 @@
             <div class="item result-item">
                 <#if searchType='paper'>
                     <div class="content">
-                        <span class="index">${dataItem_index + 1}.</span> <a class="header">${dataItem.title}</a>
+                        <span class="index">${dataItem_index + 1}.</span>
+                        <a class="header" href="/detail/paper?id=${dataItem.id}">${dataItem.title}</a>
                         <div class="description">
                             <div>
                                 <span class="type">[论文]</span>
@@ -31,7 +32,7 @@
                 </#if>
                 <#if searchType='journal'>
                     <div class="content">
-                        <span class="index">${dataItem_index + 1}.</span> <a class="header">${dataItem.title}</a>
+                        <span class="index">${dataItem_index + 1}.</span> <a class="header" href="/detail/journal?id=${dataItem.id}">${dataItem.title}</a>
                         <div class="description">
                             <div>
                                 <span class="type">[期刊]</span>
@@ -49,7 +50,7 @@
                 </#if>
                 <#if searchType='entry'>
                     <div class="content">
-                        <span class="index">${dataItem_index + 1}.</span> <a class="header">${dataItem.name}</a>
+                        <span class="index">${dataItem_index + 1}.</span> <a class="header" href="/detail/entry?id=${dataItem.id}">${dataItem.name}</a>
                         <div class="description">
                             <div>
                                 <span class="type">[词条]</span>
