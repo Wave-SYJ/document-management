@@ -29,26 +29,26 @@ public class EntryTester {
         }
     }
 
-//    @Test
-//    public List<Entry> findEntryTest(){
-//
-//        return entryService.findEntry(1, 10, "已经修改的");
-//    }
+    @Test
+    public List<Entry> findEntryTest(){
 
-//    @Test
-//    public void deleteEntryTest(){
-//        List<Entry> entryList = findEntryTest();
-//        List<UUID> collect = entryList.stream().map(Entry::getId).collect(Collectors.toList());
-//        System.out.println(collect);
-//        entryService.deleteEntry(collect);
-//    }
-//
-//    @Test
-//    public void updateEntryTest(){
-//        List<Entry> entryList = findEntryTest();
-//        List<Entry> collect = entryList.stream().peek(entry -> entry.setName("已经修改的"+entry.getName())).collect(Collectors.toList());
-//        for (Entry e:collect) {
-//            entryService.updateEntry(e);
-//        }
-//    }
+        return entryService.findEntryPage(1, 10, "已经修改的","name");
+    }
+
+    @Test
+    public void deleteEntryTest(){
+        List<Entry> entryList = findEntryTest();
+        List<UUID> collect = entryList.stream().map(Entry::getId).collect(Collectors.toList());
+        System.out.println(collect);
+        entryService.deleteEntry(collect);
+    }
+
+    @Test
+    public void updateEntryTest(){
+        List<Entry> entryList = findEntryTest();
+        List<Entry> collect = entryList.stream().peek(entry -> entry.setName("已经修改的"+entry.getName())).collect(Collectors.toList());
+        for (Entry e:collect) {
+            entryService.updateEntry(e);
+        }
+    }
 }

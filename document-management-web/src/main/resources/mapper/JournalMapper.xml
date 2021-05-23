@@ -27,7 +27,7 @@
     <select id="findJournalPage" resultType="Journal">
         select *
         from dm_journal
-        <if test="searchKey != null">
+        <if test="searchKey != null and searchKey != ''">
             <where>
                 <choose>
                     <when test="searchKey == 'title' and searchValue != null">
