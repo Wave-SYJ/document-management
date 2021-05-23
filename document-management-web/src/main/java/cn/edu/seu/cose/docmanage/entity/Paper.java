@@ -20,6 +20,7 @@ public class Paper {
     private String authorOffice;
     private String keyword;
     private UUID journalId;
+    private String url;
 
 
 }

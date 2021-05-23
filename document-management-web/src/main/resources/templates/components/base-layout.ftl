@@ -20,7 +20,7 @@
 
         <script type="text/javascript" src='https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js'></script>
         <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
-        <script type="text/javascript"  src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.slim.min.js"></script>
+        <script type="text/javascript"  src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
         <script src="https://cdn.bootcdn.net/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     </head>
@@ -41,7 +41,9 @@
                 <i class="dropdown icon"></i>
                 <div class="menu">
                     <a class="item" href="/user">个人主页</a>
-                    <a class="item" href="/admin">数据管理</a>
+                    <#if isAdmin>
+                        <a class="item" href="/admin">数据管理</a>
+                    </#if>
                     <div class="ui divider"></div>
                     <a class="item" href="/logout">退出</a>
                 </div>

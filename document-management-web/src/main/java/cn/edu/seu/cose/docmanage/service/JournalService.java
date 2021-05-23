@@ -44,4 +44,10 @@ public class JournalService {
     public void updateJournal(Journal newJournal){
         journalMapper.updateJournal(newJournal);
     }
+
+    public Page<Journal> findJournalPage(int pageNum, int pageSize, String searchKey, String searchValue) {
+        PageHelper.startPage(pageNum, pageSize);
+        return journalMapper.findJournalPage(searchKey, searchValue);
+    }
+
 }

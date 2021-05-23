@@ -1,4 +1,3 @@
-
 package cn.edu.seu.cose.docmanage.mapper;
 
 import cn.edu.seu.cose.docmanage.entity.Paper;
@@ -17,4 +16,3 @@ public interface PaperMapper {
     void deleteSpecifiedPaper(UUID id);
     void updatePaper(Paper paper);
 }
-
