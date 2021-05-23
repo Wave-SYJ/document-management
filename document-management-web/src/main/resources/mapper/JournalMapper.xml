@@ -78,10 +78,4 @@
         from dm_journal
         where title = #{title}
     </select>
-
-    <select id="findJournalById" resultType="Journal">
-        select *
-        from dm_journal
-        where id = #{id}
-    </select>
 </mapper>
