@@ -34,13 +34,13 @@ public class PaperTester {
 
 
 
-    @Test
-    void test1() {
-        for (int i = 0; i < 100; i++) {
-            String name = getRandomString(5);
-            Paper paper = new Paper(UUID.randomUUID(),name,name,name,new Date(),name,name,null);
-            paperService.insetPaper(paper);
-        }
-    }
+//    @Test
+//    void test1() {
+//        for (int i = 0; i < 100; i++) {
+//            String name = getRandomString(5);
+//            Paper paper = new Paper(UUID.randomUUID(),name,name,name,new Date(),name,name,null);
+//            paperService.insetPaper(paper);
+//        }
+//    }
 
 }

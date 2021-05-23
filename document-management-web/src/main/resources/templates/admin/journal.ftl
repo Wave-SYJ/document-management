@@ -32,8 +32,10 @@
     </div>
 
     <div class="admin-data-header">
-        <button class="green ui button" id="admin-data-insert"><i class="plus icon"></i> 添加</button>
-        <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 删除选中</button>
+        <div>
+            <button class="green ui button" id="admin-data-insert"><i class="plus icon"></i> 添加</button>
+            <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 删除选中</button>
+        </div>
 
         <form class="ui action input" action="/admin/journal" method="get">
             <input type="text" name="pageNum" value="${dataPage.pageNum}" hidden>
