@@ -37,7 +37,7 @@ public class SystemController {
         model.addAttribute("searchType", searchType != null ? searchType : "paper");
         model.addAttribute("searchKey", searchKey);
         model.addAttribute("searchValue", searchValue);
-
+        model.addAttribute("dataPage", paperService.findNewPapers());
         return "index";
     }
 
