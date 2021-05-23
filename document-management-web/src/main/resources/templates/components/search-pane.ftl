@@ -1,4 +1,4 @@
-<#macro searchPane searchType searchKey searchValue>
+<#macro searchPane searchType="paper" searchKey="" searchValue="">
     <div id="search-pane">
         <div id="search-pane-type-menu" class="ui secondary menu">
             <a class="item ${(searchType! == "paper")?then('active', '')}" data-type="paper" href="/index?searchType=paper"> 论文 </a>
