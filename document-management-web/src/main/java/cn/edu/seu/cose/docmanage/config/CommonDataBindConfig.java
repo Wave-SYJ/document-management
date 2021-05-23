@@ -18,4 +18,12 @@ public class CommonDataBindConfig {
         return (User) authentication.getPrincipal();
     }
 
+    @ModelAttribute("isAdmin")
+    public boolean bindIsAdmin() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication instanceof AnonymousAuthenticationToken)
+            return false;
+        return !((User) authentication.getPrincipal()).getRoles().isEmpty();
+    }
+
 }

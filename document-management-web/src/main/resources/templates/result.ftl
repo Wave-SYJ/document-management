@@ -34,18 +34,28 @@
                         <span class="index">${dataItem_index + 1}.</span> <a class="header">${dataItem.title}</a>
                         <div class="description">
                             <div>
-                                <span class="type">[论文]</span>
+                                <span class="type">[期刊]</span>
                                 <a class="author"
-                                   href="/result?searchType=paper&searchKey=author&searchValue=${dataItem.author}">${dataItem.author}</a>
-                                -
-                                <a class="author"
-                                   href="/result?searchType=paper&searchKey=author_office&searchValue=${dataItem.authorOffice}">${dataItem.authorOffice}</a>
+                                   href="/result?searchType=paper&searchKey=author_office&searchValue=${dataItem.organizerOffice}">${dataItem.organizerOffice}</a>
+                            </div>
+                            <div class="language">
+                                语言：${dataItem.language!"无"}
+                            </div>
+                            <div class="issn">
+                                ISSN：${dataItem.issn!"无"}
+                            </div>
+                        </div>
+                    </div>
+                </#if>
+                <#if searchType='entry'>
+                    <div class="content">
+                        <span class="index">${dataItem_index + 1}.</span> <a class="header">${dataItem.name}</a>
+                        <div class="description">
+                            <div>
+                                <span class="type">[词条]</span>
                             </div>
                             <div class="abstract">
-                                摘要：${dataItem.paperAbstract!"无"}
-                            </div>
-                            <div class="keyword">
-                                关键字：${dataItem.keyword}
+                                ${dataItem.description!"无"}
                             </div>
                         </div>
                     </div>
