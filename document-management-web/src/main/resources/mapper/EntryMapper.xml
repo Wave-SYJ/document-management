@@ -23,7 +23,7 @@
     <select id="findEntryPage" resultType="Entry">
         select *
         from dm_entry
-        <if test="searchKey != null">
+        <if test="searchKey != null and searchKey != ''">
             <where>
                 <choose>
                     <when test="searchKey == 'name' and searchValue != null">
