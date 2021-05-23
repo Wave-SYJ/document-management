@@ -1,43 +1,37 @@
 <#include "/components/admin-layout.ftl"/>
 
-<@adminLayout currentPage="entry" title="词条列表 - 文献搜索和管理系统" css=['/css/admin-user.css']>
+<@adminLayout currentPage="entry" title="词条列表 - 文献搜索和管理系统" css=['/css/admin-entry.css']>
 
 
-    <div class="ui modal addEntry">
-        <i class="close icon"></i>
-        <div class="header">
-            Profile Picture
-        </div>
-        <div class="image content">
-            <div class="ui medium image">
-                <img src="/images/avatar/large/chris.jpg">
-            </div>
-            <div class="description">
-                <div class="ui header">We've auto-chosen a profile image for you.</div>
-                <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
-                <p>Is it okay to use this photo?</p>
-            </div>
-        </div>
-        <div class="actions">
-            <div class="ui black deny button">
-                Nope
-            </div>
-            <div class="ui positive right labeled icon button">
-                Yep, that's me
-                <i class="checkmark icon"></i>
-            </div>
+    <div id="add-entry-modal" class="ui modal">
+        <div class="header">添加词条</div>
+        <div class="content">
+            <form id="add-entry-form" class="ui form" method="post">
+                <div class="required field">
+                    <label>词条名称</label>
+                    <input type="text" name="name">
+                </div>
+                <div class="required field">
+                    <label>词条描述</label>
+                    <textarea name="description"></textarea>
+                </div>
+                <button class="ui primary button" type="submit">确定</button>
+            </form>
         </div>
     </div>
 
     <div class="admin-data-header">
-        <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 删除选中</button>
+        <div>
+            <button class="green ui button" id="admin-data-insert"><i class="plus icon"></i> 添加</button>
+            <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 删除选中</button>
+        </div>
 
         <form class="ui action input" action="/admin/entry" method="get">
             <input type="text" name="pageNum" value="${dataPage.pageNum}" hidden>
             <input type="text" name="searchValue" placeholder="搜索..." value="${searchValue!}">
             <select class="ui compact selection dropdown" name="searchKey">
                 <option value="name" ${(searchKey! == 'name')?then("selected", "")}>词条名称</option>
-                <option value="name" ${(searchKey! == 'description')?then("selected", "")}>词条名称</option>
+                <option value="name" ${(searchKey! == 'description')?then("selected", "")}>词条描述</option>
             </select>
             <button class="ui basic button icon" type="submit"><i class="search icon"></i></button>
         </form>
@@ -127,6 +121,6 @@
 
 
 
-    <script src="/js/admin-user.js"></script>
+    <script src="/js/admin-entry.js"></script>
 
 </@adminLayout>

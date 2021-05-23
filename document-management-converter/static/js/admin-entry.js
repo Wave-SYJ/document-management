@@ -41,7 +41,7 @@ $('.data-item-checkbox-all')
     onUnchecked() {
       $('.data-item-checkbox-item').checkbox('uncheck')
     }
-  })
+  });
 
 $('#admin-data-delete-selected')
   .click(async function () {
@@ -51,4 +51,18 @@ $('#admin-data-delete-selected')
       data: Array.from(selectedSet)
     });
     location.reload();
+  });
+
+$('#admin-data-insert')
+  .click(function () {
+    $('#add-entry-modal').modal('show')
+  });
+
+$('#add-entry-form')
+  .form({
+    fields: {
+      name: 'empty',
+      description: 'empty',
+    }
   })
+  ;
