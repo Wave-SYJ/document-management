@@ -2,6 +2,7 @@ package cn.edu.seu.cose.docmanage.controller;
 
 import cn.edu.seu.cose.docmanage.config.CurrentUser;
 import cn.edu.seu.cose.docmanage.constants.RoleConstants;
+import cn.edu.seu.cose.docmanage.entity.Announcement;
 import cn.edu.seu.cose.docmanage.entity.Entry;
 import cn.edu.seu.cose.docmanage.entity.Journal;
 import cn.edu.seu.cose.docmanage.entity.User;
@@ -112,6 +113,15 @@ public class AdminController {
         return "admin/system";
     }
 
+    @RequestMapping("/admin/announcement")
+    public String toAdminAnnouncement(Model model, Integer pageNum,String searchKey, String searchValue,@CurrentUser User user){
+        pageNum = pageNum != null ? pageNum : 1;
+        model.addAttribute("dataPage", systemService.findAnnouncement(pageNum,10).toPageInfo());
+        model.addAttribute("searchKey", searchKey);
+        model.addAttribute("searchValue", searchValue);
+        return "admin/announcement";
+    }
+
     @DeleteMapping("/admin/entry")
     @PreAuthorize("hasAnyAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
     @ResponseBody
@@ -131,5 +141,13 @@ public class AdminController {
     public String insertJournal(Journal journal) {
         journalService.insertJournal(journal);
         return "redirect:/admin/journal";
+    }
+
+    @PostMapping("/admin/announcement")
+    @PreAuthorize("hasAnyAuthority(@Roles.ROLE_SYSTEM_ADMIN)")
+    public String insertAnnouncement(@CurrentUser User user, Announcement announcement) {
+        announcement.setPublisherId(user.getId());
+       systemService.publishAnnouncement(announcement);
+        return "redirect:/admin/announcement";
     }
 }
