@@ -172,7 +172,10 @@ public class AdminController {
     @PostMapping("/admin/journal")
     @PreAuthorize("hasAnyAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
     public String insertJournal(Journal journal) {
-        journalService.insertJournal(journal);
+        if (journal.getId() == null)
+            journalService.insertJournal(journal);
+        else
+            journalService.updateJournal(journal);
         return "redirect:/admin/journal";
     }
 

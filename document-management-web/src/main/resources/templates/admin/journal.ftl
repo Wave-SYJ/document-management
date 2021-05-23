@@ -79,7 +79,9 @@
     <div class="admin-data-header">
         <div>
             <button class="green ui button" id="admin-data-insert"><i class="plus icon"></i> 添加</button>
-            <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 删除选中</button>
+            <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i>
+                删除选中
+            </button>
         </div>
 
         <form class="ui action input" action="/admin/journal" method="get">
@@ -87,7 +89,8 @@
             <input type="text" name="searchValue" placeholder="搜索..." value="${searchValue!}">
             <select class="ui compact selection dropdown" name="searchKey">
                 <option value="title" ${(searchKey! == 'title')?then("selected", "")}>期刊名</option>
-                <option value="organizer_office" ${(searchKey! == 'organizer_office')?then("selected", "")}>所属机构</option>
+                <option value="organizer_office" ${(searchKey! == 'organizer_office')?then("selected", "")}>所属机构
+                </option>
                 <option value="issn" ${(searchKey! == 'issn')?then("selected", "")}>issn</option>
             </select>
             <button class="ui basic button icon" type="submit"><i class="search icon"></i></button>
@@ -124,8 +127,8 @@
                 <td data-name="organizerOffice">${dataItem.organizerOffice}</td>
                 <td data-name="image">${dataItem.image!}</td>
                 <td data-name="issn">${dataItem.issn}</td>
-                <td><button class="ui button admin-data-bind" data-id="${dataItem.id}">绑定词条</button></td>
                 <td>
+                    <button class="ui button admin-data-bind" data-id="${dataItem.id}">绑定词条</button>
                     <button class="ui button admin-data-update" data-id="${dataItem.id}">修改</button>
                 </td>
             </tr>
@@ -145,7 +148,8 @@
                     </a>
 
                     <#if dataPage.pageNum gt 2>
-                        <a class="item" href="/admin/journal?pageNum=1&searchValue=${searchValue!}&searchKey=${searchKey!}">1</a>
+                        <a class="item"
+                           href="/admin/journal?pageNum=1&searchValue=${searchValue!}&searchKey=${searchKey!}">1</a>
                     </#if>
                     <#if dataPage.pageNum gt 3>
                         <span class="item">...</span>
