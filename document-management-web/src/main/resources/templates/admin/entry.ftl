@@ -5,11 +5,11 @@
     <div class="admin-data-header">
         <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 删除选中</button>
 
-        <form class="ui action input" action="/admin/user" method="get">
+        <form class="ui action input" action="/admin/entry" method="get">
             <input type="text" name="pageNum" value="${dataPage.pageNum}" hidden>
             <input type="text" name="searchValue" placeholder="搜索..." value="${searchValue!}">
             <select class="ui compact selection dropdown" name="searchKey">
-                <option value="username" ${(searchKey! == 'username')?then("selected", "")}>用户名</option>
+                <option value="name" ${(searchKey! == 'name')?then("selected", "")}>词条名称</option>
             </select>
             <button class="ui basic button icon" type="submit"><i class="search icon"></i></button>
         </form>
@@ -24,8 +24,8 @@
                     <label>#</label>
                 </div>
             </th>
-            <th>用户名</th>
-            <th>权限</th>
+            <th>词条名称</th>
+            <th>词条描述</th>
         </tr>
         </thead>
 
@@ -38,14 +38,8 @@
                         <label>${dataItem_index + 1}</label>
                     </div>
                 </td>
-                <td>${dataItem.username}</td>
-                <td>
-                    <div class="ui blue labels">
-                        <#list dataItem.roles as role>
-                            <a class="ui label">${role.description}</a>
-                        </#list>
-                    </div>
-                </td>
+                <td>${dataItem.name}</td>
+                <td>${dataItem.description}</td>
             </tr>
         </#list>
         </tbody>
@@ -63,33 +57,33 @@
                     </a>
 
                     <#if dataPage.pageNum gt 2>
-                        <a class="item" href="/admin/user?pageNum=1&searchValue=${searchValue!}&searchKey=${searchKey!}">1</a>
+                        <a class="item" href="/admin/entry?pageNum=1&searchValue=${searchValue!}&searchKey=${searchKey!}">1</a>
                     </#if>
                     <#if dataPage.pageNum gt 3>
                         <span class="item">...</span>
                     </#if>
                     <#if dataPage.pageNum gt 1>
                         <a class="item"
-                           href="/admin/user?pageNum=${dataPage.pageNum - 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum - 1}</a>
+                           href="/admin/entry?pageNum=${dataPage.pageNum - 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum - 1}</a>
                     </#if>
                     <span class="item header">${dataPage.pageNum}</span>
                     <#if dataPage.pageNum lt dataPage.pages >
                         <a class="item"
-                           href="/admin/user?pageNum=${dataPage.pageNum + 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum + 1}</a>
+                           href="/admin/entry?pageNum=${dataPage.pageNum + 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum + 1}</a>
                     </#if>
                     <#if dataPage.pageNum lt dataPage.pages - 2>
                         <span class="item">...</span>
                     </#if>
                     <#if dataPage.pageNum lt dataPage.pages - 1>
                         <a class="item"
-                           href="/admin/user?pageNum=${dataPage.pages}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pages}</a>
+                           href="/admin/entry?pageNum=${dataPage.pages}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pages}</a>
                     </#if>
 
                     <a class="icon item">
                         <i class="right chevron icon ${(dataPage.pageNum lt dataPage.pages)?then("", "disabled")}"></i>
                     </a>
 
-                    <form class="form admin-data-jump-form" action="/admin/user" method="get">
+                    <form class="form admin-data-jump-form" action="/admin/entry" method="get">
                         <div class="ui action input mini">
                             <input type="text" name="searchValue" value="${searchValue!}" hidden>
                             <input type="text" name="searchKey" value="${searchKey!}" hidden>

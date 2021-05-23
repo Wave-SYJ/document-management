@@ -3,6 +3,7 @@ package cn.edu.seu.cose.docmanage.controller;
 import cn.edu.seu.cose.docmanage.config.CurrentUser;
 import cn.edu.seu.cose.docmanage.constants.RoleConstants;
 import cn.edu.seu.cose.docmanage.entity.User;
+import cn.edu.seu.cose.docmanage.service.EntryService;
 import cn.edu.seu.cose.docmanage.service.SystemService;
 import cn.edu.seu.cose.docmanage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class AdminController {
+
+    @Autowired
+    private EntryService entryService;
 
     @Autowired
     private UserService userService;
@@ -60,7 +64,7 @@ public class AdminController {
     @PreAuthorize("hasAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
     public String toAdminEntry(Model model, Integer pageNum, String searchKey, String searchValue) {
         pageNum = pageNum != null ? pageNum : 1;
-        model.addAttribute("dataPage", userService.findUserPage(pageNum, 10, searchKey, searchValue).toPageInfo());
+        model.addAttribute("dataPage", entryService.findEntryPage(10,pageNum,searchKey).toPageInfo());
         model.addAttribute("searchKey", searchKey);
         model.addAttribute("searchValue", searchValue);
         return "admin/entry";
