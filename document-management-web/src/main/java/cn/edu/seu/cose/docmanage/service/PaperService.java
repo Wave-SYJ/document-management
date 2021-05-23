@@ -23,6 +23,12 @@ public class PaperService {
         return paperMapper.findPaperPage(searchKey, searchValue);
     }
 
+    public Paper findPaperById(UUID paperId) {
+        if (paperId == null)
+            return null;
+        return paperMapper.findPaperById(paperId);
+    }
+
     @Transactional
     public void insetPaper(Paper paper){
         if(paper.getId()==null)

@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.UUID;
+
 @Controller
 public class SystemController {
 
@@ -50,5 +52,11 @@ public class SystemController {
         if ("entry".equals(searchType))
             model.addAttribute("dataPage", entryService.findEntryPage(pageNum, 10, searchKey, searchValue).toPageInfo());
         return "result";
+    }
+
+    @RequestMapping("detail/paper")
+    public String toResult(String id, Model model) {
+        model.addAttribute("item", paperService.findPaperById(UUID.fromString(id)));
+        return "/detail/paper";
     }
 }
