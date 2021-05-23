@@ -49,4 +49,5 @@ public class JournalService {
         PageHelper.startPage(pageNum, pageSize);
         return journalMapper.findJournalPage(searchKey, searchValue);
     }
+
 }

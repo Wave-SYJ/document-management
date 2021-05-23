@@ -1,6 +1,6 @@
 <#include "/components/admin-layout.ftl"/>
 
-<@adminLayout currentPage="journal" title="期刊列表 - 文献搜索和管理系统">
+<@adminLayout currentPage="journal" title="期刊列表 - 文献搜索和管理系统" css=['/css/admin-journal.css']>
     <div class="admin-data-header">
         <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 删除选中</button>
 
@@ -19,14 +19,16 @@
     <table class="ui celled table">
         <thead>
         <tr>
-            <th style="width: 60px">
+            <th style="width: 80px">
                 <div class="ui checkbox data-item-checkbox-all">
                     <input type="checkbox" class="hidden">
                     <label>#</label>
                 </div>
             </th>
-            <th>用户名</th>
-            <th>权限</th>
+            <th>期刊名</th>
+            <th>所属机构</th>
+            <th>期刊图片</th>
+            <th>issn</th>
         </tr>
         </thead>
 
@@ -39,21 +41,17 @@
                         <label>${dataItem_index + 1}</label>
                     </div>
                 </td>
-                <td>${dataItem.username}</td>
-                <td>
-                    <div class="ui blue labels">
-                        <#list dataItem.roles as role>
-                            <a class="ui label">${role.description}</a>
-                        </#list>
-                    </div>
-                </td>
+                <td>${dataItem.title}</td>
+                <td>${dataItem.organizerOffice}</td>
+                <td>${dataItem.image!}</td>
+                <td>${dataItem.issn}</td>
             </tr>
         </#list>
         </tbody>
 
         <tfoot>
         <tr>
-            <th colspan="3">
+            <th colspan="5">
 
                 <div class="ui pagination right floated menu">
 
@@ -90,7 +88,7 @@
                         <i class="right chevron icon ${(dataPage.pageNum lt dataPage.pages)?then("", "disabled")}"></i>
                     </a>
 
-                    <form class="form admin-data-jump-form" action="/admin/user" method="get">
+                    <form class="form admin-data-jump-form" action="/admin/journal" method="get">
                         <div class="ui action input mini">
                             <input type="text" name="searchValue" value="${searchValue!}" hidden>
                             <input type="text" name="searchKey" value="${searchKey!}" hidden>
@@ -105,5 +103,5 @@
         </tfoot>
     </table>
 
-    <script src="/js/admin-user.js"></script>
+    <script src="/js/admin-journal.js"></script>
 </@adminLayout>
