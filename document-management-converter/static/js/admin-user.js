@@ -46,7 +46,7 @@ $('.data-item-checkbox-all')
 $('#admin-data-delete-selected')
   .click(async function () {
     await axios({
-      url: '/user',
+      url: '/admin/entry',
       method: 'delete',
       data: Array.from(selectedSet)
     });
