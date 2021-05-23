@@ -1,6 +1,7 @@
 package cn.edu.seu.cose.docmanage.mapper;
 
 import cn.edu.seu.cose.docmanage.entity.Journal;
+import cn.edu.seu.cose.docmanage.entity.Paper;
 import com.github.pagehelper.Page;
 import org.springframework.stereotype.Repository;
 
@@ -13,4 +14,5 @@ public interface JournalMapper {
     void deleteJournals(List<UUID> journalIds);
     void updateJournal(Journal newJournal);
 
+    Page<Journal> findJournalPage(String searchKey, String searchValue);
 }
