@@ -18,5 +18,10 @@
         </foreach>
     </select>
 
+    <select id="findNewAnnouncement" resultType="Announcement">
+        select da.content as 'content'
+        from dm_announcement da order by da.publish_time desc
+    </select>
+
 
 </mapper>

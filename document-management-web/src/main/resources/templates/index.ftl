@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <#if dataItem_index==4>
+                <#if announcementItem_index==4>
                     <#break>
                 </#if>
             </#list>
