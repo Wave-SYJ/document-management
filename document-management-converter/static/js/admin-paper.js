@@ -77,3 +77,15 @@ $("#add-paper-form input[name='journalTitle']").keyup(async function () {
   const id = (await axios.get("/journal/id?title=" + title)).data;
   $("#add-paper-form input[name='journalId']").val(id)
 });
+
+  $('.admin-data-update')
+  .click(function () {
+    const parent = $(this).parent().parent();
+    const data = ["paperAbstract", "title", "keyword", "author", "authorOffice","publishTime"]
+    data.forEach(item => $('#update-paper-modal').find(`*[name='${item}']`).val(parent.find(`td[data-name='${item}']`).text())
+    )
+
+    $('#update-paper-modal').find(`*[name='id']`).val($(this).data("id"));
+
+    $('#update-paper-modal').modal('show')
+  });

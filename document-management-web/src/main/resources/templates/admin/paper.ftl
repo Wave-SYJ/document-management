@@ -41,6 +41,40 @@
         </div>
     </div>
 
+    <div id="update-paper-modal" class="ui modal">
+        <div class="header">修改论文</div>
+        <div class="content">
+            <form id="add-paper-form" class="ui form" method="post">
+                <input type="text" name="id" hidden>
+                <div class="required field">
+                    <label>论文摘要</label>
+                    <textarea type="text" name="paperAbstract"></textarea>
+                </div>
+                <div class="required field">
+                    <label>论文标题</label>
+                    <input name="title"/>
+                </div>
+                <div class="required field">
+                    <label>关键词</label>
+                    <input name="keyword"/>
+                </div>
+                <div class="required field">
+                    <label>作者</label>
+                    <input name="author"/>
+                </div>
+                <div class="required field">
+                    <label>作者所属单位</label>
+                    <input name="authorOffice"/>
+                </div>
+                <div class="required field">
+                    <label>修改时间</label>
+                    <input name="publishTime"/>
+                </div>
+                <button class="ui primary button" type="submit">确定</button>
+            </form>
+        </div>
+    </div>
+
     <div class="admin-data-header">
         <div>
             <button class="green ui button" id="admin-data-insert"><i class="plus icon"></i> 添加</button>
@@ -75,6 +109,7 @@
             <th>题名</th>
             <th>作者</th>
             <th>摘要</th>
+            <th>操作</th>
         </tr>
         </thead>
 
@@ -87,17 +122,23 @@
                         <label>${dataItem_index + 1}</label>
                     </div>
                 </td>
-                <td>${dataItem.title!}</td>
-                <td>${dataItem.author!}</td>
-                <td>${dataItem.paperAbstract!}</td>
-
+                <td data-name="title">${dataItem.title!}</td>
+                <td data-name="author">${dataItem.author!}</td>
+                <td data-name="paperAbstract">${dataItem.paperAbstract!}</td>
+                <td data-name="keyword" hidden>${dataItem.keyword!}</td>
+                <td data-name="authorOffice" hidden>${dataItem.authorOffice!}</td>
+                <td data-name="publishTime" hidden>${dataItem.publishTime?string('yyyy-MM-dd')}</td>
+                <td>
+                    <button class="ui button admin-data-bind" data-id="${dataItem.id}">绑定词条</button>
+                    <button class="ui button admin-data-update" data-id="${dataItem.id}">修改</button>
+                </td>
             </tr>
         </#list>
         </tbody>
 
         <tfoot>
         <tr>
-            <th colspan="4">
+            <th colspan="5">
 
                 <div class="ui pagination right floated menu">
 

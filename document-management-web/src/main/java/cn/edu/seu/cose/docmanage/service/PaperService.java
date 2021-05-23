@@ -33,7 +33,7 @@ public class PaperService {
     }
 
     @Transactional
-    public void insetPaper(Paper paper){
+    public void insertPaper(Paper paper){
         if(paper.getId()==null)
             paper.setId(UUID.randomUUID());
 
@@ -73,6 +73,5 @@ public class PaperService {
     public List<Paper> findNewPapers(){
         return paperMapper.findNewPapers();
     }
-
 }
 
