@@ -2,8 +2,46 @@
 
 <@adminLayout currentPage="paper" title="论文列表 - 文献搜索和管理系统" css=['/css/admin-paper.css']>
 
+
+    <div id="add-paper-modal" class="ui modal">
+        <div class="header">添加论文</div>
+        <div class="content">
+            <form id="add-paper-form" class="ui form" method="post">
+                <div class="required field">
+                    <label>论文题目</label>
+                    <input type="text" name="title">
+                </div>
+                <div class="required field">
+                    <label>作者</label>
+                    <input type="text" name="author">
+                </div>
+                <div class="required field">
+                    <label>作者单位</label>
+                    <input type="text" name="authorOffice">
+                </div>
+                <div class="required field">
+                    <label>论文摘要</label>
+                    <textarea name="paperAbstract"></textarea>
+                </div>
+                <div class="required field">
+                    <label>所属期刊</label>
+                    <input type="text" name="journalId">
+                </div>
+                <div class="required field">
+                    <label>发表时间</label>
+                    <input type="text" name="publishTime">
+                </div>
+                <button class="ui primary button" type="submit">确定</button>
+            </form>
+        </div>
+    </div>
+
     <div class="admin-data-header">
-        <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 删除选中</button>
+        <div>
+            <button class="green ui button" id="admin-data-insert"><i class="plus icon"></i> 添加</button>
+            <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 删除选中</button>
+        </div>
+
 
         <form class="ui action input" action="/admin/paper" method="get">
             <input type="text" name="pageNum" value="${dataPage.pageNum}" hidden>

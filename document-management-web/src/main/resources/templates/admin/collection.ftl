@@ -2,6 +2,7 @@
 
 <@userLayout currentPage="collection" title="我的收藏 - 文献搜索和管理系统" css=['/css/admin-collecton.css']>
 
+
     <div class="admin-data-header">
         <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 取消收藏</button>
 

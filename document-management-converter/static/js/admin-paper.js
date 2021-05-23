@@ -52,3 +52,21 @@ $('#admin-data-delete-selected')
     });
     location.reload();
   })
+
+  $('#admin-data-insert')
+  .click(function () {
+    $('#add-paper-modal').modal('show')
+  });
+
+$('#add-paper-form')
+  .form({
+    fields: {
+      title: 'empty',
+      author: 'empty',
+      author_office: 'empty',
+      abstract: 'empty',
+      //journal: 'empty',
+      //publishtime: 'empty',
+    }
+  })
+  ;

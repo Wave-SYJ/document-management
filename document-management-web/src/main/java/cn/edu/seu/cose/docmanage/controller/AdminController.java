@@ -3,6 +3,7 @@ package cn.edu.seu.cose.docmanage.controller;
 import cn.edu.seu.cose.docmanage.config.CurrentUser;
 import cn.edu.seu.cose.docmanage.constants.RoleConstants;
 import cn.edu.seu.cose.docmanage.entity.Entry;
+import cn.edu.seu.cose.docmanage.entity.Paper;
 import cn.edu.seu.cose.docmanage.entity.User;
 import cn.edu.seu.cose.docmanage.service.PaperService;
 import cn.edu.seu.cose.docmanage.service.EntryService;
@@ -94,6 +95,13 @@ public class AdminController {
     @ResponseBody
     public void deletePaper(@RequestBody List<UUID> ids) {
         paperService.deleteSpecifiedPaper(ids);
+    }
+
+    @PostMapping("/admin/paper")
+    @PreAuthorize("hasAnyAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
+    public String insertPaper(Paper paper) {
+        paperService.insetPaper(paper);
+        return "redirect:/admin/paper";
     }
 
     @DeleteMapping("/admin/entry")
