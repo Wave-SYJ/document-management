@@ -1,6 +1,7 @@
 package cn.edu.seu.cose.docmanage.controller;
 
 import cn.edu.seu.cose.docmanage.entity.Entry;
+import cn.edu.seu.cose.docmanage.entity.Journal;
 import cn.edu.seu.cose.docmanage.service.EntryService;
 import cn.edu.seu.cose.docmanage.service.JournalService;
 import cn.edu.seu.cose.docmanage.service.PaperService;
@@ -58,12 +59,6 @@ public class SystemController {
         return "result";
     }
 
-    @RequestMapping("detail/paper")
-    public String toResult(String id, Model model) {
-        model.addAttribute("item", paperService.findPaperById(UUID.fromString(id)));
-        return "/detail/paper";
-    }
-
     @RequestMapping("journal/entry")
     @ResponseBody
     public List<String> findJournalEntries(String id) {
@@ -83,6 +78,9 @@ public class SystemController {
     @RequestMapping("journal/tile")
     @ResponseBody
     public String findJournalTitle(String id) {
-        return "";
+        Journal journal = journalService.findJournalById(UUID.fromString(id));
+        if (journal == null)
+            return "";
+        return journal.getTitle();
     }
 }

@@ -77,7 +77,7 @@ public class JournalService {
         return journalMapper.findJournalIdByTitle(title);
     }
 
-    public Journal findJournalId(UUID id) {
+    public Journal findJournalById(UUID id) {
         if (id == null) return null;
         return journalMapper.findJournalById(id);
     }

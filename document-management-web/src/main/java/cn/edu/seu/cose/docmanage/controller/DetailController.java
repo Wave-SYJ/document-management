@@ -45,7 +45,7 @@ public class DetailController {
 
     @RequestMapping("detail/journal")
     public String toJournal(String id, Model model) {
-        Journal journal = journalService.findJournalId(UUID.fromString(id));
+        Journal journal = journalService.findJournalById(UUID.fromString(id));
         model.addAttribute("item", journal);
         model.addAttribute("searchType", "journal");
         model.addAttribute("searchKey", null);
