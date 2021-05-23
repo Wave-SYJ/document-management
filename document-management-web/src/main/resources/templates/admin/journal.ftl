@@ -1,7 +1,38 @@
 <#include "/components/admin-layout.ftl"/>
 
 <@adminLayout currentPage="journal" title="期刊列表 - 文献搜索和管理系统" css=['/css/admin-journal.css']>
+
+    <div id="add-journal-modal" class="ui modal">
+        <div class="header">添加期刊</div>
+        <div class="content">
+            <form id="add-journal-form" class="ui form" method="post">
+                <div class="required field">
+                    <label>期刊名称</label>
+                    <input type="text" name="title">
+                </div>
+                <div class="required field">
+                    <label>所属机构</label>
+                    <input name="organizerOffice"></input>
+                </div>
+                <div class="required field">
+                    <label>期刊图片</label>
+                    <input name="image"></input>
+                </div>
+                <div class="required field">
+                    <label>期刊语言</label>
+                    <input name="language"></input>
+                </div>
+                <div class="required field">
+                    <label>issn</label>
+                    <input name="issn"></input>
+                </div>
+                <button class="ui primary button" type="submit">确定</button>
+            </form>
+        </div>
+    </div>
+
     <div class="admin-data-header">
+        <button class="green ui button" id="admin-data-insert"><i class="plus icon"></i> 添加</button>
         <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 删除选中</button>
 
         <form class="ui action input" action="/admin/journal" method="get">

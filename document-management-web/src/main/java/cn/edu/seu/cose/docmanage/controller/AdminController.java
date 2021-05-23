@@ -3,6 +3,7 @@ package cn.edu.seu.cose.docmanage.controller;
 import cn.edu.seu.cose.docmanage.config.CurrentUser;
 import cn.edu.seu.cose.docmanage.constants.RoleConstants;
 import cn.edu.seu.cose.docmanage.entity.Entry;
+import cn.edu.seu.cose.docmanage.entity.Journal;
 import cn.edu.seu.cose.docmanage.entity.User;
 import cn.edu.seu.cose.docmanage.service.EntryService;
 import cn.edu.seu.cose.docmanage.service.SystemService;
@@ -123,5 +124,12 @@ public class AdminController {
     public String insertEntry(Entry entry) {
         entryService.insertEntry(entry);
         return "redirect:/admin/entry";
+    }
+
+    @PostMapping("/admin/journal")
+    @PreAuthorize("hasAnyAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
+    public String insertJournal(Journal journal) {
+        journalService.insertJournal(journal);
+        return "redirect:/admin/journal";
     }
 }

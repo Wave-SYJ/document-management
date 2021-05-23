@@ -46,26 +46,9 @@ $('.data-item-checkbox-all')
 $('#admin-data-delete-selected')
   .click(async function () {
     await axios({
-      url: '/journal',
+      url: '/subscription',
       method: 'delete',
       data: Array.from(selectedSet)
     });
     location.reload();
   })
-  
-  $('#admin-data-insert')
-  .click(function () {
-    $('#add-journal-modal').modal('show')
-  });
-
-$('#add-journal-form')
-  .form({
-    fields: {
-      title: 'empty',
-      organizerOffice: 'empty',
-      image:'empty',
-      language:'empty',
-      issn:'empty',
-    }
-  })
-  ;
