@@ -10,6 +10,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import oshi.SystemInfo;
 import oshi.hardware.HardwareAbstractionLayer;
@@ -46,6 +47,11 @@ public class SystemService {
 
     public SystemHardwareInfo querySystemStatus() throws Exception {
         return new SystemHardwareInfo();
+    }
+
+    @Transactional
+    public List<Announcement> findNewAnnouncement(){
+        return systemMapper.findNewAnnouncement();
     }
 
     public void openService() {}
