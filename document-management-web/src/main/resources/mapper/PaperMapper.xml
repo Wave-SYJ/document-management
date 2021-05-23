@@ -10,7 +10,7 @@
     </insert>
 
     <select id="findPaperById" resultType="Paper">
-        select *
+        select *, abstract as 'paperAbstract'
         from dm_paper
         where id = #{id}
     </select>
@@ -65,5 +65,11 @@
                 </choose>
             </where>
         </if>
+    </select>
+
+    <select id="findPaperPageByJournalId" resultType="Paper">
+        select *, abstract as 'paperAbstract'
+        from dm_paper
+        where journal_id=#{id}
     </select>
 </mapper>

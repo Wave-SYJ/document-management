@@ -10,6 +10,7 @@ import java.util.UUID;
 @Repository
 public interface PaperMapper {
     Page<Paper> findPaperPage(String searchKey, String searchValue);
+    Page<Paper> findPaperPageByJournalId(UUID id);
     List<Paper> findAllPapers();
     void insertPaper(Paper paper);
     void deletePapers(List<UUID> paperId);

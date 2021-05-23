@@ -54,9 +54,5 @@ public class SystemController {
         return "result";
     }
 
-    @RequestMapping("detail/paper")
-    public String toResult(String id, Model model) {
-        model.addAttribute("item", paperService.findPaperById(UUID.fromString(id)));
-        return "/detail/paper";
-    }
+
 }

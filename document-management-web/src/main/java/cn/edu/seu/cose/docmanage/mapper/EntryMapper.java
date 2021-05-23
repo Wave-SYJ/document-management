@@ -12,5 +12,6 @@ public interface EntryMapper {
     void insertEntry(Entry entry);
     void deleteEntry(List<UUID> entryIdList);
     void updateEntry(Entry entry);
+    Entry findEntryById(UUID id);
     Page<Entry> findEntryPage(String searchKey, String searchValue);
 }

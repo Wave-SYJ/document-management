@@ -36,5 +36,11 @@
             </where>
         </if>
     </select>
+    
+    <select id="findEntryById" resultType="Entry">
+        select *
+        from dm_entry
+        where id = #{id}
+    </select>
 
 </mapper>

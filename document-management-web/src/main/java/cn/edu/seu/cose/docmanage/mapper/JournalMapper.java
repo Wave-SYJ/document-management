@@ -13,4 +13,5 @@ public interface JournalMapper {
     void deleteJournals(List<UUID> journalIds);
     void updateJournal(Journal newJournal);
     Page<Journal> findJournalPage(String searchKey, String searchValue);
+    Journal findJournalById(UUID id);
 }

@@ -43,4 +43,13 @@ public class PaperTester {
 //        }
 //    }
 
+    @Test
+    void printPaper(){
+        paperMapper.findPaperPage("","").forEach((item)->{
+//            System.out.println(item);
+        });
+        paperService.findPaperPage(1,100,"","").forEach((item)->{
+            System.out.println(item);
+        });
+    }
 }
