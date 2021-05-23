@@ -84,13 +84,13 @@
     <select id="findUserCollectionPage" resultType="Paper">
         select *, abstract as 'paperAbstract'
         from dm_paper
-                 right join dm_collection dc on dm_paper.id = dc.paper_id and dc.user_id = #{userId}
+                 inner join dm_collection dc on dm_paper.id = dc.paper_id and dc.user_id = #{userId}
     </select>
 
     <select id="findUserSubscriptionPage" resultType="Journal">
         select *
         from dm_journal
-                 right join dm_subscription ds on dm_journal.id = ds.journal_id and ds.user_id = #{userId}
+                 inner join dm_subscription ds on dm_journal.id = ds.journal_id and ds.user_id = #{userId}
     </select>
 
 
@@ -109,5 +109,12 @@
         </foreach>
     </delete>
 
-
+    <select id="findUsernameByIds" resultType="String">
+        select username
+        from dm_user
+        where id in
+        <foreach collection="userIds" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+    </select>
 </mapper>

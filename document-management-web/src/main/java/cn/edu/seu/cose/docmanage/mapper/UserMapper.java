@@ -2,7 +2,6 @@ package cn.edu.seu.cose.docmanage.mapper;
 
 import cn.edu.seu.cose.docmanage.entity.Journal;
 import cn.edu.seu.cose.docmanage.entity.Paper;
-import cn.edu.seu.cose.docmanage.entity.Role;
 import cn.edu.seu.cose.docmanage.entity.User;
 import com.github.pagehelper.Page;
 import org.springframework.stereotype.Repository;
@@ -32,5 +31,5 @@ public interface UserMapper {
 
 
     void deleteSubscriptions(List<UUID> journalIds,UUID userId);
-
+    List<String> findUsernameByIds(List<UUID> userIds);
 }

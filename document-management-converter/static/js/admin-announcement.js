@@ -41,55 +41,27 @@ $('.data-item-checkbox-all')
     onUnchecked() {
       $('.data-item-checkbox-item').checkbox('uncheck')
     }
-  })
+  });
 
 $('#admin-data-delete-selected')
   .click(async function () {
     await axios({
-      url: '/journal',
+      url: '/admin/announcement',
       method: 'delete',
       data: Array.from(selectedSet)
     });
     location.reload();
-  })
+  });
 
 $('#admin-data-insert')
   .click(function () {
-    $('#add-journal-modal').modal('show')
+    $('#add-announcement-modal').modal('show')
   });
 
-$('#add-journal-form')
+$('#add-announcement-form')
   .form({
     fields: {
-      title: 'empty',
-      organizerOffice: 'empty',
-      image: 'empty',
-      language: 'empty',
-      issn: 'empty',
+      content: 'empty',
     }
   })
   ;
-
-
-$('.admin-data-bind')
-  .click(async function () {
-    const paperId = $(this).data("id");
-    $('#bind-entry-modal').find(`*[name='id']`).val(paperId);
-    const { data } = await axios({
-      url: '/journal/entry?id=' + paperId
-    });
-    $('#bind-entry-modal').find(`*[name='entries']`).val(data.join("\n"));
-    $('#bind-entry-modal').modal('show')
-  });
-
-$('.admin-data-update')
-  .click(function () {
-    const parent = $(this).parent().parent();
-    const data = ["title", "organizerOffice", "image", "language", "issn"]
-    data.forEach(item => $('#update-journal-modal').find(`*[name='${item}']`).val(parent.find(`td[data-name='${item}']`).text())
-    )
-
-    $('#update-journal-modal').find(`*[name='id']`).val($(this).data("id"));
-
-    $('#update-journal-modal').modal('show')
-  });
