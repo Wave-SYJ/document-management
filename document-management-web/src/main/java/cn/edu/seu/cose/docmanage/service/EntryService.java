@@ -47,8 +47,8 @@ public class EntryService {
         entryMapper.updateEntry(entry);
     }
 
-    public Page<Entry> findEntryPage(int pageNum, int pageSize, String entryName) {
+    public Page<Entry> findEntryPage(int pageNum, int pageSize, String searchKey, String searchValue) {
         PageHelper.startPage(pageNum, pageSize);
-        return entryMapper.findEntryPage(entryName);
+        return entryMapper.findEntryPage(searchKey, searchValue);
     }
 }

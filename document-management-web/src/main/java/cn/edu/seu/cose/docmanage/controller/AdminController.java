@@ -4,6 +4,7 @@ import cn.edu.seu.cose.docmanage.config.CurrentUser;
 import cn.edu.seu.cose.docmanage.constants.RoleConstants;
 import cn.edu.seu.cose.docmanage.entity.User;
 import cn.edu.seu.cose.docmanage.service.PaperService;
+import cn.edu.seu.cose.docmanage.service.EntryService;
 import cn.edu.seu.cose.docmanage.service.SystemService;
 import cn.edu.seu.cose.docmanage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ import java.util.UUID;
 
 @Controller
 public class AdminController {
+
+    @Autowired
+    private EntryService entryService;
 
     @Autowired
     private UserService userService;
@@ -71,7 +75,11 @@ public class AdminController {
 
     @RequestMapping("/admin/entry")
     @PreAuthorize("hasAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
-    public String toAdminEntry() {
+    public String toAdminEntry(Model model, Integer pageNum, String searchKey, String searchValue) {
+        pageNum = pageNum != null ? pageNum : 1;
+        model.addAttribute("dataPage", entryService.findEntryPage(pageNum,10,searchValue,searchKey).toPageInfo());
+        model.addAttribute("searchKey", searchKey);
+        model.addAttribute("searchValue", searchValue);
         return "admin/entry";
     }
 
@@ -82,6 +90,7 @@ public class AdminController {
         return "admin/system";
     }
 
+
     @DeleteMapping("/paper")
     @PreAuthorize("hasAnyAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
     @ResponseBody
@@ -89,6 +98,10 @@ public class AdminController {
         paperService.deleteSpecifiedPaper(ids);
     }
 
-
-
+    @DeleteMapping("/admin/entry")
+    @PreAuthorize("hasAnyAuthority(@Roles.ROLE_USER_ADMIN)")
+    @ResponseBody
+    public void deleteEntry(@RequestBody List<UUID> ids) {
+        entryService.deleteEntry(ids);
+    }
 }
