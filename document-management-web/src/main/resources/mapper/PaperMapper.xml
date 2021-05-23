@@ -36,24 +36,26 @@
     <select id="findPaperPage" resultType="Paper">
         select *
         from dm_paper
-        <where>
-            <choose>
-                <when test="searchKey == 'title' and searchValue != null">
-                    and dm_paper.title like CONCAT('%', #{searchValue}, '%')
-                </when>
-                <when test="searchKey == 'author' and searchValue != null">
-                    and dm_paper.author like CONCAT('%', #{searchValue}, '%')
-                </when>
-                <when test="searchKey == 'author-office' and searchValue != null">
-                    and dm_paper.author_office like CONCAT('%', #{searchValue}, '%')
-                </when>
-                <when test="keyword == 'keyword' and searchValue != null">
-                    and dm_paper.keyword like CONCAT('%', #{searchValue}, '%')
-                </when>
-                <when test="keyword == 'abstract' and searchValue != null">
-                    and dm_paper.abstract like CONCAT('%', #{searchValue}, '%')
-                </when>
-            </choose>
-        </where>
+        <if test="searchKey != null">
+            <where>
+                <choose>
+                    <when test="searchKey == 'title' and searchValue != null">
+                        and dm_paper.title like CONCAT('%', #{searchValue}, '%')
+                    </when>
+                    <when test="searchKey == 'author' and searchValue != null">
+                        and dm_paper.author like CONCAT('%', #{searchValue}, '%')
+                    </when>
+                    <when test="searchKey == 'author_office' and searchValue != null">
+                        and dm_paper.author_office like CONCAT('%', #{searchValue}, '%')
+                    </when>
+                    <when test="keyword == 'keyword' and searchValue != null">
+                        and dm_paper.keyword like CONCAT('%', #{searchValue}, '%')
+                    </when>
+                    <when test="keyword == 'abstract' and searchValue != null">
+                        and dm_paper.abstract like CONCAT('%', #{searchValue}, '%')
+                    </when>
+                </choose>
+            </where>
+        </if>
     </select>
 </mapper>

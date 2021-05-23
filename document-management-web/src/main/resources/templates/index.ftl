@@ -1,33 +1,13 @@
 <#include "/components/base-layout.ftl"/>
+<#include "/components/search-pane.ftl"/>
 
-<@baseLayout title="主页 - 文献搜索和管理系统" css=["/css/index.css"]>
+<@baseLayout title="主页 - 文献搜索和管理系统" css=["/css/search-pane.css", "/css/index.css"]>
 
-    <div id="search-pane">
-
-        <div id="search-pane-type-menu" class="ui secondary menu">
-            <a class="item ${(searchType! == "paper")?then('active', '')}" data-type="paper"> 论文 </a>
-            <a class="item ${(searchType! == "journal")?then('active', '')}" data-type="journal"> 期刊 </a>
-            <a class="item ${(searchType! == "entry")?then('active', '')}" data-type="entry"> 词条 </a>
-        </div>
-
-        <form id="search-input" class="ui action input" action="/detail" method="get">
-            <input type="text" name="searchType" style="display: none" value="${searchType!}">
-            <input type="text" placeholder="搜索..." name="searchValue" value="${searchValue!}">
-            <select class="ui selection dropdown" name="searchKey">
-                <option value="title" ${(searchKey! == 'title')?then("selected", "")}>题名</option>
-                <option value="author" ${(searchKey! == 'author')?then("selected", "")}>作者</option>
-                <option value="author-office" ${(searchKey! == 'author-office')?then("selected", "")}>作者单位</option>
-                <option value="keyword" ${(searchKey! == 'keyword')?then("selected", "")}>关键词</option>
-                <option value="abstract" ${(searchKey! == 'abstract')?then("selected", "")}>摘要</option>
-            </select>
-            <button class="ui button primary" type="submit">搜索</button>
-        </form>
-
-    </div>
+    <@searchPane searchType=searchType searchKey=searchKey searchValue=searchValue />
 
     <main class="segment-wrapper">
         <div class="ui segment" style="margin-right: 20px;">
-            <div class="ui header">最新文献</div>
+            <div class="ui header">最新论文</div>
 
             <div class="ui list">
                 <div class="item">
@@ -74,7 +54,7 @@
         </div>
 
         <div class="ui segment">
-            <div class="ui header">最新咨询</div>
+            <div class="ui header">最新通知</div>
         </div>
 
     </main>

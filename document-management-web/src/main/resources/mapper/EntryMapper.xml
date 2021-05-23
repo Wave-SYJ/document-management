@@ -2,18 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.edu.seu.cose.docmanage.mapper.EntryMapper">
 
-    <select id="findEntry" resultType="Entry">
-        select *
-        from dm_entry
-        where name like CONCAT('%',#{entryName},'%')
-    </select>
-
     <select id="insertEntry">
-        insert dm_entry(id,name,description) VALUE (#{id},#{name},#{description})
+        insert dm_entry(id, name, description) VALUE (#{id}, #{name}, #{description})
     </select>
 
     <select id="deleteEntry">
-        delete from dm_entry  where id in
+        delete from dm_entry where id in
         <foreach collection="entryIdList" open="(" close=")" separator="," item="item">
             #{item}
         </foreach>
@@ -21,8 +15,26 @@
 
     <select id="updateEntry">
         update dm_entry
-        set name = #{name},description=#{description}
+        set name       = #{name},
+            description=#{description}
         where id = #{id}
+    </select>
+
+    <select id="findEntryPage" resultType="Entry">
+        select *
+        from dm_entry
+        <if test="searchKey != null">
+            <where>
+                <choose>
+                    <when test="searchKey == 'title' and searchValue != null">
+                        and dm_entry.title like CONCAT('%', #{searchValue}, '%')
+                    </when>
+                    <when test="searchKey == 'description' and searchValue != null">
+                        and dm_entry.description like CONCAT('%', #{searchValue}, '%')
+                    </when>
+                </choose>
+            </where>
+        </if>
     </select>
 
 </mapper>

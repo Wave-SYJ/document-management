@@ -1,7 +1,6 @@
 package cn.edu.seu.cose.docmanage.mapper;
 
 import cn.edu.seu.cose.docmanage.entity.Journal;
-import cn.edu.seu.cose.docmanage.entity.User;
 import com.github.pagehelper.Page;
 import org.springframework.stereotype.Repository;
 

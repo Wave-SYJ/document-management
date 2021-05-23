@@ -3,25 +3,44 @@
 <mapper namespace="cn.edu.seu.cose.docmanage.mapper.PaperMapper">
 
     <insert id="insertJournal">
-        insert
-        dm_journal(id,title,organizer_office,image,language,issn) value (
-        #{id},
-        #{title},
-        #{organizerOffice},
-        #{image},
-        #{language},
-        #{issn}
-        )
+        insert dm_journal(id, title, organizer_office, image, language, issn) value (
+                                                                                     #{id},
+                                                                                     #{title},
+                                                                                     #{organizerOffice},
+                                                                                     #{image},
+                                                                                     #{language},
+                                                                                     #{issn}
+            )
     </insert>
 
     <update id="updateJournal">
         update dm_journal
-        set title = #{title},
+        set title            = #{title},
             organizer_office = #{organizerOffice},
             image= #{image},
-            language = #{language},
-            issn = #{issn}
+            language         = #{language},
+            issn             = #{issn}
 
         where id = #{id}
     </update>
+
+    <select id="findJournalPage" resultType="Journal">
+        select *
+        from dm_journal
+        <if test="searchKey != null">
+            <where>
+                <choose>
+                    <when test="searchKey == 'title' and searchValue != null">
+                        and dm_journal.title like CONCAT('%', #{searchValue}, '%')
+                    </when>
+                    <when test="searchKey == 'organizer_office' and searchValue != null">
+                        and dm_journal.organizer_office like CONCAT('%', #{searchValue}, '%')
+                    </when>
+                    <when test="searchKey == 'issn' and searchValue != null">
+                        and dm_journal.issn like CONCAT('%', #{searchValue}, '%')
+                    </when>
+                </choose>
+            </where>
+        </if>
+    </select>
 </mapper>

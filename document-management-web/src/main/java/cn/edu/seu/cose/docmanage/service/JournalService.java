@@ -1,5 +1,6 @@
 package cn.edu.seu.cose.docmanage.service;
 import cn.edu.seu.cose.docmanage.entity.Journal;
+import cn.edu.seu.cose.docmanage.entity.Paper;
 import cn.edu.seu.cose.docmanage.entity.User;
 import cn.edu.seu.cose.docmanage.exception.SimpleException;
 import cn.edu.seu.cose.docmanage.mapper.JournalMapper;
@@ -24,6 +25,11 @@ public class JournalService {
 
     @Autowired
     private JournalMapper journalMapper;
+
+    public Page<Journal> findJournalMapper(int pageNum, int pageSize, String searchKey, String searchValue) {
+        PageHelper.startPage(pageNum, pageSize);
+        return journalMapper.findJournalPage(searchKey, searchValue);
+    }
 
     public void insertJournal(Journal journal) {
         if (journal.getId() == null)
