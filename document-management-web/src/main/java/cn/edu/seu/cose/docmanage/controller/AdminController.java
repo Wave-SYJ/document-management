@@ -5,6 +5,7 @@ import cn.edu.seu.cose.docmanage.constants.RoleConstants;
 import cn.edu.seu.cose.docmanage.entity.User;
 import cn.edu.seu.cose.docmanage.service.SystemService;
 import cn.edu.seu.cose.docmanage.service.UserService;
+import cn.edu.seu.cose.docmanage.service.JournalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ public class AdminController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private JournalService journalService;
 
     @Autowired
     private SystemService systemService;
@@ -52,7 +56,11 @@ public class AdminController {
 
     @RequestMapping("/admin/journal")
     @PreAuthorize("hasAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
-    public String toAdminJournal() {
+    public String toAdminJournal(Model model, Integer pageNum,String searchKey, String searchValue) {
+        pageNum = pageNum != null ? pageNum : 1;
+        model.addAttribute("dataPage", journalService.findJournalPage(pageNum, 10, searchKey, searchValue).toPageInfo());
+        model.addAttribute("searchKey", searchKey);
+        model.addAttribute("searchValue", searchValue);
         return "admin/journal";
     }
 
