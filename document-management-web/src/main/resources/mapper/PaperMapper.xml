@@ -34,7 +34,7 @@
     </delete>
 
     <select id="findPaperPage" resultType="Paper">
-        select *
+        select *, abstract as 'paperAbstract'
         from dm_paper
         <if test="searchKey != null and searchKey != ''">
             <where>
