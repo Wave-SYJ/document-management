@@ -103,4 +103,7 @@ public class UserService implements UserDetailsService {
         return userMapper.findUserSubscriptionPage(userId);
     }
 
+    public void deleteSubscriptions(List<UUID> ids,UUID userId) {
+        userMapper.deleteSubscriptions(ids,userId);
+    }
 }

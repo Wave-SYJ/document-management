@@ -24,5 +24,5 @@ public interface UserMapper {
     void updateUser(User user);
     Page<Paper> findUserCollectionPage(UUID userId);
     Page<Journal> findUserSubscriptionPage(UUID userId);
-
+    void deleteSubscriptions(List<UUID> journalIds,UUID userId);
 }

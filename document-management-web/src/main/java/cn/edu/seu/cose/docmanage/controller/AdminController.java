@@ -70,6 +70,12 @@ public class AdminController {
         journalService.deleteJournals(ids);
     }
 
+    @DeleteMapping("/subscription")
+    @ResponseBody
+    public void deleteSubscription(@RequestBody List<UUID> ids,@CurrentUser User user) {
+        userService.deleteSubscriptions(ids,user.getId());
+    }
+
     @RequestMapping("/admin/journal")
     @PreAuthorize("hasAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
     public String toAdminJournal(Model model, Integer pageNum,String searchKey, String searchValue) {
@@ -79,6 +85,16 @@ public class AdminController {
         model.addAttribute("searchValue", searchValue);
         return "admin/journal";
     }
+
+    @RequestMapping("/admin/subscription")
+    public String toAdminSubscription(Model model, Integer pageNum,String searchKey, String searchValue,@CurrentUser User user){
+        pageNum = pageNum != null ? pageNum : 1;
+        model.addAttribute("dataPage", userService.findUserSubscriptionPage(user.getId(),pageNum,10).toPageInfo());
+        model.addAttribute("searchKey", searchKey);
+        model.addAttribute("searchValue", searchValue);
+        return "admin/subscription";
+    }
+
 
     @RequestMapping("/admin/entry")
     @PreAuthorize("hasAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")

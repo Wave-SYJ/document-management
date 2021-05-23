@@ -1,6 +1,6 @@
-<#include "/components/admin-layout.ftl"/>
+<#include "/components/user-layout.ftl"/>
 
-<@adminLayout currentPage="subscription" title="期刊列表 - 文献搜索和管理系统" css=['/css/admin-subscription.css']>
+<@userLayout currentPage="subscription" title="期刊列表 - 文献搜索和管理系统" css=['/css/admin-subscription.css']>
     <div class="admin-data-header">
         <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 取消订阅</button>
 
@@ -62,33 +62,33 @@
                     </a>
 
                     <#if dataPage.pageNum gt 2>
-                        <a class="item" href="/admin/user?pageNum=1&searchValue=${searchValue!}&searchKey=${searchKey!}">1</a>
+                        <a class="item" href="/admin/subscription?pageNum=1&searchValue=${searchValue!}&searchKey=${searchKey!}">1</a>
                     </#if>
                     <#if dataPage.pageNum gt 3>
                         <span class="item">...</span>
                     </#if>
                     <#if dataPage.pageNum gt 1>
                         <a class="item"
-                           href="/admin/user?pageNum=${dataPage.pageNum - 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum - 1}</a>
+                           href="/admin/subscription?pageNum=${dataPage.pageNum - 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum - 1}</a>
                     </#if>
                     <span class="item header">${dataPage.pageNum}</span>
                     <#if dataPage.pageNum lt dataPage.pages >
                         <a class="item"
-                           href="/admin/user?pageNum=${dataPage.pageNum + 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum + 1}</a>
+                           href="/admin/subscription?pageNum=${dataPage.pageNum + 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum + 1}</a>
                     </#if>
                     <#if dataPage.pageNum lt dataPage.pages - 2>
                         <span class="item">...</span>
                     </#if>
                     <#if dataPage.pageNum lt dataPage.pages - 1>
                         <a class="item"
-                           href="/admin/user?pageNum=${dataPage.pages}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pages}</a>
+                           href="/admin/subscription?pageNum=${dataPage.pages}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pages}</a>
                     </#if>
 
                     <a class="icon item">
                         <i class="right chevron icon ${(dataPage.pageNum lt dataPage.pages)?then("", "disabled")}"></i>
                     </a>
 
-                    <form class="form admin-data-jump-form" action="/admin/journal" method="get">
+                    <form class="form admin-data-jump-form" action="/admin/subscription" method="get">
                         <div class="ui action input mini">
                             <input type="text" name="searchValue" value="${searchValue!}" hidden>
                             <input type="text" name="searchKey" value="${searchKey!}" hidden>
@@ -103,5 +103,5 @@
         </tfoot>
     </table>
 
-    <script src="/js/admin-journal.js"></script>
-</@adminLayout>
+    <script src="/js/admin-subscription.js"></script>
+</@userLayout>

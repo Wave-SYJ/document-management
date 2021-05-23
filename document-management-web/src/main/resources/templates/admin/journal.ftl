@@ -62,26 +62,26 @@
                     </a>
 
                     <#if dataPage.pageNum gt 2>
-                        <a class="item" href="/admin/user?pageNum=1&searchValue=${searchValue!}&searchKey=${searchKey!}">1</a>
+                        <a class="item" href="/admin/journal?pageNum=1&searchValue=${searchValue!}&searchKey=${searchKey!}">1</a>
                     </#if>
                     <#if dataPage.pageNum gt 3>
                         <span class="item">...</span>
                     </#if>
                     <#if dataPage.pageNum gt 1>
                         <a class="item"
-                           href="/admin/user?pageNum=${dataPage.pageNum - 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum - 1}</a>
+                           href="/admin/journal?pageNum=${dataPage.pageNum - 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum - 1}</a>
                     </#if>
                     <span class="item header">${dataPage.pageNum}</span>
                     <#if dataPage.pageNum lt dataPage.pages >
                         <a class="item"
-                           href="/admin/user?pageNum=${dataPage.pageNum + 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum + 1}</a>
+                           href="/admin/journal?pageNum=${dataPage.pageNum + 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum + 1}</a>
                     </#if>
                     <#if dataPage.pageNum lt dataPage.pages - 2>
                         <span class="item">...</span>
                     </#if>
                     <#if dataPage.pageNum lt dataPage.pages - 1>
                         <a class="item"
-                           href="/admin/user?pageNum=${dataPage.pages}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pages}</a>
+                           href="/admin/journal?pageNum=${dataPage.pages}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pages}</a>
                     </#if>
 
                     <a class="icon item">
