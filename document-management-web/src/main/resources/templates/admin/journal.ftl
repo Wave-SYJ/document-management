@@ -31,6 +31,36 @@
         </div>
     </div>
 
+    <div id="update-journal-modal" class="ui modal">
+        <div class="header">修改期刊</div>
+        <div class="content">
+            <form id="add-journal-form" class="ui form" method="post">
+                <input type="text" name="id" hidden>
+                <div class="required field">
+                    <label>期刊名称</label>
+                    <input type="text" name="title">
+                </div>
+                <div class="required field">
+                    <label>所属机构</label>
+                    <input name="organizerOffice"/>
+                </div>
+                <div class="required field">
+                    <label>期刊图片</label>
+                    <input name="image"/>
+                </div>
+                <div class="required field">
+                    <label>期刊语言</label>
+                    <input name="language"/>
+                </div>
+                <div class="required field">
+                    <label>issn</label>
+                    <input name="issn"/>
+                </div>
+                <button class="ui primary button" type="submit">确定</button>
+            </form>
+        </div>
+    </div>
+
     <div class="admin-data-header">
         <div>
             <button class="green ui button" id="admin-data-insert"><i class="plus icon"></i> 添加</button>
@@ -62,6 +92,7 @@
             <th>所属机构</th>
             <th>期刊图片</th>
             <th>issn</th>
+            <th style="width: 100px">操作</th>
         </tr>
         </thead>
 
@@ -74,17 +105,20 @@
                         <label>${dataItem_index + 1}</label>
                     </div>
                 </td>
-                <td>${dataItem.title}</td>
-                <td>${dataItem.organizerOffice}</td>
-                <td>${dataItem.image!}</td>
-                <td>${dataItem.issn}</td>
+                <td data-name="title">${dataItem.title}</td>
+                <td data-name="organizerOffice">${dataItem.organizerOffice}</td>
+                <td data-name="image">${dataItem.image!}</td>
+                <td data-name="issn">${dataItem.issn}</td>
+                <td>
+                    <button class="ui button admin-data-update" data-id="${dataItem.id}">修改</button>
+                </td>
             </tr>
         </#list>
         </tbody>
 
         <tfoot>
         <tr>
-            <th colspan="5">
+            <th colspan="6">
 
                 <div class="ui pagination right floated menu">
 

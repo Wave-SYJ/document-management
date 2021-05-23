@@ -69,3 +69,15 @@ $('#add-journal-form')
     }
   })
   ;
+
+  $('.admin-data-update')
+  .click(function () {
+    const parent = $(this).parent().parent();
+    const data = ["title", "organizerOffice","image","language","issn"]
+    data.forEach(item => $('#update-journal-modal').find(`*[name='${item}']`).val(parent.find(`td[data-name='${item}']`).text())
+    )
+
+    $('#update-journal-modal').find(`*[name='id']`).val($(this).data("id"));
+
+    $('#update-journal-modal').modal('show')
+  });
