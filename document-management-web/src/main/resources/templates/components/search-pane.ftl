@@ -20,7 +20,7 @@
                 <#if searchType='journal'>
                     <option value="title" ${(searchKey! == 'title')?then("selected", "")}>题名</option>
                     <option value="organizer_office" ${(searchKey! == 'organizer_office')?then("selected", "")}>所属机构</option>
-                    <option value="author-issn" ${(searchKey! == 'issn')?then("selected", "")}>ISSN</option>
+                    <option value="issn" ${(searchKey! == 'issn')?then("selected", "")}>ISSN</option>
                 </#if>
                 <#if searchType='entry'>
                     <option value="name" ${(searchKey! == 'name')?then("selected", "")}>标题</option>

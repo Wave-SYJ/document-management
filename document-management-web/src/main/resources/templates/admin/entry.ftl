@@ -20,6 +20,24 @@
         </div>
     </div>
 
+    <div id="update-entry-modal" class="ui modal">
+        <div class="header">修改词条</div>
+        <div class="content">
+            <form id="add-entry-form" class="ui form" method="post">
+                <input type="text" name="id" hidden>
+                <div class="required field">
+                    <label>词条名称</label>
+                    <input type="text" name="name">
+                </div>
+                <div class="required field">
+                    <label>词条描述</label>
+                    <textarea name="description"></textarea>
+                </div>
+                <button class="ui primary button" type="submit">确定</button>
+            </form>
+        </div>
+    </div>
+
     <div class="admin-data-header">
         <div>
             <button class="green ui button" id="admin-data-insert"><i class="plus icon"></i> 添加</button>
@@ -48,6 +66,7 @@
             </th>
             <th>词条名称</th>
             <th>词条描述</th>
+            <th style="width: 100px">操作</th>
         </tr>
         </thead>
 
@@ -60,8 +79,11 @@
                         <label>${dataItem_index + 1}</label>
                     </div>
                 </td>
-                <td>${dataItem.name}</td>
-                <td>${dataItem.description}</td>
+                <td data-name="name">${dataItem.name}</td>
+                <td data-name="description">${dataItem.description}</td>
+                <td>
+                    <button class="ui button admin-data-update" data-id="${dataItem.id}">修改</button>
+                </td>
             </tr>
         </#list>
         </tbody>

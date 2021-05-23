@@ -2,7 +2,6 @@ package cn.edu.seu.cose.docmanage.mapper;
 
 import cn.edu.seu.cose.docmanage.entity.Journal;
 import cn.edu.seu.cose.docmanage.entity.Paper;
-import cn.edu.seu.cose.docmanage.entity.Role;
 import cn.edu.seu.cose.docmanage.entity.User;
 import com.github.pagehelper.Page;
 import org.springframework.stereotype.Repository;
@@ -22,7 +21,15 @@ public interface UserMapper {
     void updatePasswordByUserId(UUID userId, String encodedPassword);
     void deleteAllRoles(UUID userId);
     void updateUser(User user);
+
+
     Page<Paper> findUserCollectionPage(UUID userId);
     Page<Journal> findUserSubscriptionPage(UUID userId);
+
+    void cancelCollection(UUID userId, List<UUID> paperIds);
+
+
+
     void deleteSubscriptions(List<UUID> journalIds,UUID userId);
+    List<String> findUsernameByIds(List<UUID> userIds);
 }

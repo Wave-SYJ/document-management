@@ -60,6 +60,12 @@ public class UserService implements UserDetailsService {
         userMapper.deleteUsers(ids);
     }
 
+    public List<String> findUsernameByIds(List<UUID> ids) {
+        if (ids == null || ids.isEmpty())
+            return null;
+        return userMapper.findUsernameByIds(ids);
+    }
+
     public void changePassword(User user, String oldPassword, String newPassword, String repeatPassword) {
         if (user == null || oldPassword == null || newPassword == null || repeatPassword == null)
             throw new SimpleException("旧密码/新密码/重复密码不能为空");
@@ -93,14 +99,22 @@ public class UserService implements UserDetailsService {
         userMapper.bindRoles(user.getId(), user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
     }
 
+
     public Page<Paper> findUserCollectionPage(UUID userId, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         return userMapper.findUserCollectionPage(userId);
     }
 
+    public void cancelCollection(UUID userId, List<UUID> paperIds){
+        if(paperIds==null || userId == null)
+            return;
+        userMapper.cancelCollection(userId, paperIds);
+    }
+
     public Page<Journal> findUserSubscriptionPage(UUID userId, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         return userMapper.findUserSubscriptionPage(userId);
+
     }
 
     public void deleteSubscriptions(List<UUID> ids,UUID userId) {

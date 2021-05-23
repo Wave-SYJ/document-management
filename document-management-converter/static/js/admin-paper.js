@@ -46,44 +46,40 @@ $('.data-item-checkbox-all')
 $('#admin-data-delete-selected')
   .click(async function () {
     await axios({
-      url: '/admin/entry',
+      url: '/paper',
       method: 'delete',
       data: Array.from(selectedSet)
     });
     location.reload();
-  });
+  })
 
-$('#admin-data-insert')
+  $('#admin-data-insert')
   .click(function () {
-    $('#add-entry-modal').modal('show')
+    $('#add-paper-modal').modal('show')
   });
 
-$('#add-entry-form')
+$('#add-paper-form')
   .form({
     fields: {
-      name: 'empty',
-      description: 'empty',
+      title: 'empty',
+      author: 'empty',
+      author_office: 'empty',
+      abstract: 'empty',
+      keyword: 'empty'
+      //journal: 'empty',
+      //publishtime: 'empty',
     }
   })
   ;
 
-$('#update-entry-modal')
-  .form({
-    fields: {
-      name: 'empty',
-      description: 'empty',
-    }
-  })
-  ;
-
-$('.admin-data-update')
+  $('.admin-data-update')
   .click(function () {
     const parent = $(this).parent().parent();
-    const data = ["name", "description"]
-    data.forEach(item => $('#update-entry-modal').find(`*[name='${item}']`).val(parent.find(`td[data-name='${item}']`).text())
+    const data = ["paperAbstract", "title", "keyword", "author", "authorOffice","publishTime"]
+    data.forEach(item => $('#update-paper-modal').find(`*[name='${item}']`).val(parent.find(`td[data-name='${item}']`).text())
     )
 
-    $('#update-entry-modal').find(`*[name='id']`).val($(this).data("id"));
+    $('#update-paper-modal').find(`*[name='id']`).val($(this).data("id"));
 
-    $('#update-entry-modal').modal('show')
+    $('#update-paper-modal').modal('show')
   });

@@ -46,44 +46,9 @@ $('.data-item-checkbox-all')
 $('#admin-data-delete-selected')
   .click(async function () {
     await axios({
-      url: '/admin/entry',
+      url: '/collection',
       method: 'delete',
       data: Array.from(selectedSet)
     });
     location.reload();
-  });
-
-$('#admin-data-insert')
-  .click(function () {
-    $('#add-entry-modal').modal('show')
-  });
-
-$('#add-entry-form')
-  .form({
-    fields: {
-      name: 'empty',
-      description: 'empty',
-    }
   })
-  ;
-
-$('#update-entry-modal')
-  .form({
-    fields: {
-      name: 'empty',
-      description: 'empty',
-    }
-  })
-  ;
-
-$('.admin-data-update')
-  .click(function () {
-    const parent = $(this).parent().parent();
-    const data = ["name", "description"]
-    data.forEach(item => $('#update-entry-modal').find(`*[name='${item}']`).val(parent.find(`td[data-name='${item}']`).text())
-    )
-
-    $('#update-entry-modal').find(`*[name='id']`).val($(this).data("id"));
-
-    $('#update-entry-modal').modal('show')
-  });

@@ -14,4 +14,6 @@ public interface EntryMapper {
     void updateEntry(Entry entry);
     Entry findEntryById(UUID id);
     Page<Entry> findEntryPage(String searchKey, String searchValue);
+
+    List<Entry> findEntriesByNames(List<String> names);
 }

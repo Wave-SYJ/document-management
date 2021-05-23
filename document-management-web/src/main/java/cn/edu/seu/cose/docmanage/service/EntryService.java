@@ -55,5 +55,7 @@ public class EntryService {
     public Entry findEntryById(UUID id) {
         if (id == null) return null;
         return entryMapper.findEntryById(id);
+    public List<Entry> findEntryByNames(List<String> names) {
+        return entryMapper.findEntriesByNames(names);
     }
 }
