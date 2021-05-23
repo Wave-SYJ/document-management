@@ -65,7 +65,6 @@ public class SystemController {
         List<Entry> entries = journalService.findEntries(UUID.fromString(id));
         return entries.stream().map(Entry::getName).collect(Collectors.toList());
     }
-
     @RequestMapping("journal/id")
     @ResponseBody
     public String findJournalId(String title) {

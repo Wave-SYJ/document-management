@@ -58,6 +58,12 @@ public class JournalService {
         return journalMapper.findJournalPage(searchKey, searchValue);
     }
 
+
+    public Journal findJournalId(UUID id) {
+        if (id == null) return null;
+        return journalMapper.findJournalById(id);
+    }
+
     @Transactional
     public void bindEntries(UUID journalId, List<String> entryNames) {
         journalMapper.removeAllEntries(journalId);

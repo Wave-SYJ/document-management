@@ -50,6 +50,12 @@
             #{item}
         </foreach>
     </delete>
+    
+    <select id="findJournalById" resultType="Journal">
+        select *
+        from dm_journal
+        where id = #{id}
+    </select>
 
     <select id="findEntries" resultType="Entry">
         select *

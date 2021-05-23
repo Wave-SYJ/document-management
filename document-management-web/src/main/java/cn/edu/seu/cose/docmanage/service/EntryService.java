@@ -52,6 +52,7 @@ public class EntryService {
         return entryMapper.findEntryPage(searchKey, searchValue);
     }
 
+
     public List<Entry> findEntryByNames(List<String> names) {
         return entryMapper.findEntriesByNames(names);
     }

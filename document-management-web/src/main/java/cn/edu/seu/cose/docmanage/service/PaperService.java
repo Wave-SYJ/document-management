@@ -18,6 +18,7 @@ public class PaperService {
     @Autowired
     private PaperMapper paperMapper;
 
+
     @Autowired
     private EntryService entryService;
 
@@ -25,7 +26,6 @@ public class PaperService {
         PageHelper.startPage(pageNum, pageSize);
         return paperMapper.findPaperPageByJournalId(id);
     }
-
 
     public Page<Paper> findPaperPage(int pageNum, int pageSize, String searchKey, String searchValue) {
         PageHelper.startPage(pageNum, pageSize);
