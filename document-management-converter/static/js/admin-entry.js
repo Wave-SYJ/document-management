@@ -66,3 +66,24 @@ $('#add-entry-form')
     }
   })
   ;
+
+$('#update-entry-modal')
+  .form({
+    fields: {
+      name: 'empty',
+      description: 'empty',
+    }
+  })
+  ;
+
+$('.admin-data-update')
+  .click(function () {
+    const parent = $(this).parent().parent();
+    const data = ["name", "description"]
+    data.forEach(item => $('#update-entry-modal').find(`*[name='${item}']`).val(parent.find(`td[data-name='${item}']`).text())
+    )
+
+    $('#update-entry-modal').find(`*[name='id']`).val($(this).data("id"));
+
+    $('#update-entry-modal').modal('show')
+  });
