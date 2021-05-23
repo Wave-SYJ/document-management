@@ -18,7 +18,7 @@ public class SystemTester {
     @Test
     public void  insert(){
         for (int i = 0; i < 100; i++) {
-            systemService.insertAnnouncement(new Announcement(null,"内容"+i,null,null));
+            systemService.publishAnnouncement(new Announcement(null,"内容"+i,null,null));
         }
     }
 
