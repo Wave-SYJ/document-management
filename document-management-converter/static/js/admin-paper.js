@@ -73,9 +73,21 @@ $('#add-paper-form')
   ;
 
 $("#add-paper-form input[name='journalTitle']").keyup(async function () {
+  $("#submit-insert").attr('disabled',true);
   const title = $(this).val();
   const id = (await axios.get("/journal/id?title=" + title)).data;
   $("#add-paper-form input[name='journalId']").val(id)
+  if (id || title === "")
+    $("#submit-insert").attr('disabled',false);
+});
+
+$("#update-paper-form input[name='journalTitle']").keyup(async function () {
+  $("#submit-update").attr('disabled',true);
+  const title = $(this).val();
+  const id = (await axios.get("/journal/id?title=" + title)).data;
+  $("#update-paper-form input[name='journalId']").val(id)
+  if (id || title === "")
+    $("#submit-update").attr('disabled',false);
 });
 
   $('.admin-data-update')

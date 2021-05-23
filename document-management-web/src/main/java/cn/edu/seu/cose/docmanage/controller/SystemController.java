@@ -79,4 +79,10 @@ public class SystemController {
             return "";
         return id.toString();
     }
+
+    @RequestMapping("journal/tile")
+    @ResponseBody
+    public String findJournalTitle(String id) {
+        
+    }
 }

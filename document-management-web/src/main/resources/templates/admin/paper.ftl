@@ -44,33 +44,38 @@
     <div id="update-paper-modal" class="ui modal">
         <div class="header">修改论文</div>
         <div class="content">
-            <form id="add-paper-form" class="ui form" method="post">
+            <form id="update-paper-form" class="ui form" method="post">
                 <input type="text" name="id" hidden>
                 <div class="required field">
-                    <label>论文摘要</label>
-                    <textarea type="text" name="paperAbstract"></textarea>
-                </div>
-                <div class="required field">
-                    <label>论文标题</label>
+                    <label>论文题目</label>
                     <input name="title"/>
-                </div>
-                <div class="required field">
-                    <label>关键词</label>
-                    <input name="keyword"/>
                 </div>
                 <div class="required field">
                     <label>作者</label>
                     <input name="author"/>
                 </div>
                 <div class="required field">
-                    <label>作者所属单位</label>
+                    <label>作者单位</label>
                     <input name="authorOffice"/>
                 </div>
                 <div class="required field">
-                    <label>修改时间</label>
-                    <input name="publishTime"/>
+                    <label>论文摘要</label>
+                    <textarea type="text" name="paperAbstract"></textarea>
                 </div>
-                <button class="ui primary button" type="submit">确定</button>
+                <div class="required field">
+                    <label>论文关键词</label>
+                    <input name="keyword"/>
+                </div>
+                <div class="field">
+                    <label>所属期刊</label>
+                    <input type="text" name="journalTitle">
+                </div>
+                <input type="text" name="journalId" hidden>
+                <div class="required field">
+                    <label>发表时间</label>
+                    <input type="date" name="publishTime"/>
+                </div>
+                <button id="submit-update" class="ui primary button" type="submit">确定</button>
             </form>
         </div>
     </div>
@@ -109,7 +114,7 @@
             <th>题名</th>
             <th>作者</th>
             <th>摘要</th>
-            <th>操作</th>
+            <th style="width: 210px">操作</th>
         </tr>
         </thead>
 
