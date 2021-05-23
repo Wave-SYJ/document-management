@@ -31,7 +31,7 @@
             </th>
             <th>题名</th>
             <th>作者</th>
-            <th>作者单位</th>
+            <th>摘要</th>
         </tr>
         </thead>
 
@@ -44,21 +44,17 @@
                         <label>${dataItem_index + 1}</label>
                     </div>
                 </td>
-                <td>${dataItem.username}</td>
-                <td>
-                    <div class="ui blue labels">
-                        <#list dataItem.roles as role>
-                            <a class="ui label">${role.description}</a>
-                        </#list>
-                    </div>
-                </td>
+                <td>${dataItem.title!}</td>
+                <td>${dataItem.author!}</td>
+                <td>${dataItem.paperAbstract!}</td>
+
             </tr>
         </#list>
         </tbody>
 
         <tfoot>
         <tr>
-            <th colspan="3">
+            <th colspan="4">
 
                 <div class="ui pagination right floated menu">
 
@@ -69,33 +65,33 @@
                     </a>
 
                     <#if dataPage.pageNum gt 2>
-                        <a class="item" href="/admin/user?pageNum=1&searchValue=${searchValue!}&searchKey=${searchKey!}">1</a>
+                        <a class="item" href="/admin/paper?pageNum=1&searchValue=${searchValue!}&searchKey=${searchKey!}">1</a>
                     </#if>
                     <#if dataPage.pageNum gt 3>
                         <span class="item">...</span>
                     </#if>
                     <#if dataPage.pageNum gt 1>
                         <a class="item"
-                           href="/admin/user?pageNum=${dataPage.pageNum - 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum - 1}</a>
+                           href="/admin/paper?pageNum=${dataPage.pageNum - 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum - 1}</a>
                     </#if>
                     <span class="item header">${dataPage.pageNum}</span>
                     <#if dataPage.pageNum lt dataPage.pages >
                         <a class="item"
-                           href="/admin/user?pageNum=${dataPage.pageNum + 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum + 1}</a>
+                           href="/admin/paper?pageNum=${dataPage.pageNum + 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum + 1}</a>
                     </#if>
                     <#if dataPage.pageNum lt dataPage.pages - 2>
                         <span class="item">...</span>
                     </#if>
                     <#if dataPage.pageNum lt dataPage.pages - 1>
                         <a class="item"
-                           href="/admin/user?pageNum=${dataPage.pages}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pages}</a>
+                           href="/admin/paper?pageNum=${dataPage.pages}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pages}</a>
                     </#if>
 
                     <a class="icon item">
                         <i class="right chevron icon ${(dataPage.pageNum lt dataPage.pages)?then("", "disabled")}"></i>
                     </a>
 
-                    <form class="form admin-data-jump-form" action="/admin/user" method="get">
+                    <form class="form admin-data-jump-form" action="/admin/paper" method="get">
                         <div class="ui action input mini">
                             <input type="text" name="searchValue" value="${searchValue!}" hidden>
                             <input type="text" name="searchKey" value="${searchKey!}" hidden>
@@ -109,4 +105,7 @@
         </tr>
         </tfoot>
     </table>
+
+    <script src="/js/admin-paper.js"></script>
+
 </@adminLayout>

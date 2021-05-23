@@ -71,10 +71,5 @@ public class PaperTester {
         paperService.updatePaper(paper1);
     }
 
-    @Test
-    void test4(){
-        UUID uuid = uuid("08e5e2f35a7b4a72b8e71029bdd34405");
-        paperService.deleteSpecifiedPaper(uuid);
-    }
 
 }
