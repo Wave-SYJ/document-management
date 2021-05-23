@@ -17,7 +17,7 @@
                 <#if searchType='paper'>
                     <option value="title" ${(searchKey! == 'title')?then("selected", "")}>题名</option>
                     <option value="author" ${(searchKey! == 'author')?then("selected", "")}>作者</option>
-                    <option value="author-office" ${(searchKey! == 'author-office')?then("selected", "")}>作者单位</option>
+                    <option value="author_office" ${(searchKey! == 'author-office')?then("selected", "")}>作者单位</option>
                     <option value="keyword" ${(searchKey! == 'keyword')?then("selected", "")}>关键词</option>
                     <option value="abstract" ${(searchKey! == 'abstract')?then("selected", "")}>摘要</option>
                 </#if>

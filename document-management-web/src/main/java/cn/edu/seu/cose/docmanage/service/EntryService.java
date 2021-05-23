@@ -2,7 +2,6 @@ package cn.edu.seu.cose.docmanage.service;
 
 
 import cn.edu.seu.cose.docmanage.entity.Entry;
-import cn.edu.seu.cose.docmanage.entity.User;
 import cn.edu.seu.cose.docmanage.exception.SimpleException;
 import cn.edu.seu.cose.docmanage.mapper.EntryMapper;
 import com.github.pagehelper.Page;
@@ -48,8 +47,8 @@ public class EntryService {
         entryMapper.updateEntry(entry);
     }
 
-    public Page<Entry> findEntry(int pageNum, int pageSize, String entryName) {
+    public Page<Entry> findEntryPage(int pageNum, int pageSize, String entryName) {
         PageHelper.startPage(pageNum, pageSize);
-        return entryMapper.findEntry(entryName);
+        return entryMapper.findEntryPage(entryName);
     }
 }
