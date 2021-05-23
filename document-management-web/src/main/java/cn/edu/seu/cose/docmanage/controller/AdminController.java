@@ -3,6 +3,7 @@ package cn.edu.seu.cose.docmanage.controller;
 import cn.edu.seu.cose.docmanage.config.CurrentUser;
 import cn.edu.seu.cose.docmanage.constants.RoleConstants;
 import cn.edu.seu.cose.docmanage.entity.User;
+import cn.edu.seu.cose.docmanage.service.PaperService;
 import cn.edu.seu.cose.docmanage.service.SystemService;
 import cn.edu.seu.cose.docmanage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class AdminController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private PaperService paperService;
 
     @Autowired
     private SystemService systemService;
@@ -46,7 +50,11 @@ public class AdminController {
 
     @RequestMapping("/admin/paper")
     @PreAuthorize("hasAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
-    public String toAdminPaper() {
+    public String toAdminPaper(Model model, Integer pageNum, String searchKey, String searchValue) {
+        pageNum = pageNum != null ? pageNum : 1;
+        model.addAttribute("dataPage", paperService.findPaperPage(pageNum, 10, searchKey, searchValue).toPageInfo());
+        model.addAttribute("searchKey", searchKey);
+        model.addAttribute("searchValue", searchValue);
         return "admin/paper";
     }
 
