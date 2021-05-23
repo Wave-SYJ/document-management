@@ -16,7 +16,7 @@
 
     <div class="admin-data-header">
         <button class="green ui button" id="admin-data-insert"><i class="plus icon"></i> 发布通知</button>
-        <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 删除选中通知</button>
+        <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 删除选中</button>
     </div>
 
     <table class="ui celled table">

@@ -144,8 +144,8 @@ public class AdminController {
         pageNum = pageNum != null ? pageNum : 1;
         PageInfo<Announcement> pageInfo = systemService.findAnnouncement(pageNum, 10).toPageInfo();
         model.addAttribute("dataPage", pageInfo);
-        model.addAttribute("usernames", userService.findUsernameByIds(
-                pageInfo.getList().stream().map(Announcement::getPublisherId).collect(Collectors.toList()))
+        model.addAttribute("usernames",
+                pageInfo.getList().stream().map(item -> userService.findUsernameById(item.getPublisherId())).collect(Collectors.toList())
         );
         model.addAttribute("searchKey", searchKey);
         model.addAttribute("searchValue", searchValue);
