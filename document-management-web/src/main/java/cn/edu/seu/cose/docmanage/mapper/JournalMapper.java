@@ -17,6 +17,6 @@ public interface JournalMapper {
     void bindEntry(UUID id, UUID journalId, UUID entryId);
     void removeAllEntries(UUID journalId);
     List<Entry> findEntries(UUID journalId);
-
     UUID findJournalIdByTitle(String title);
+    Journal findJournalById(UUID id);
 }

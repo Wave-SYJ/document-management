@@ -1,4 +1,5 @@
 package cn.edu.seu.cose.docmanage.service;
+
 import cn.edu.seu.cose.docmanage.entity.Entry;
 import cn.edu.seu.cose.docmanage.entity.Journal;
 import cn.edu.seu.cose.docmanage.entity.Paper;
@@ -48,7 +49,7 @@ public class JournalService {
         journalMapper.deleteJournals(journalIds);
     }
 
-    public void updateJournal(Journal newJournal){
+    public void updateJournal(Journal newJournal) {
         journalMapper.updateJournal(newJournal);
     }
 
@@ -74,6 +75,11 @@ public class JournalService {
 
     public UUID findJournalIdByTitle(String title) {
         return journalMapper.findJournalIdByTitle(title);
+    }
+
+    public Journal findJournalId(UUID id) {
+        if (id == null) return null;
+        return journalMapper.findJournalById(id);
     }
 
 }

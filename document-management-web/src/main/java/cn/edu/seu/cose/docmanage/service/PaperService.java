@@ -21,6 +21,12 @@ public class PaperService {
     @Autowired
     private EntryService entryService;
 
+    public Page<Paper> findPaperPageByJournalId(int pageNum, int pageSize,UUID id){
+        PageHelper.startPage(pageNum, pageSize);
+        return paperMapper.findPaperPageByJournalId(id);
+    }
+
+
     public Page<Paper> findPaperPage(int pageNum, int pageSize, String searchKey, String searchValue) {
         PageHelper.startPage(pageNum, pageSize);
         return paperMapper.findPaperPage(searchKey, searchValue);
@@ -29,6 +35,10 @@ public class PaperService {
     public Paper findPaperById(UUID paperId) {
         if (paperId == null)
             return null;
+        else {
+            System.out.println("PaperService:findPaperById");
+            System.out.println(paperMapper.findPaperById(paperId));
+        }
         return paperMapper.findPaperById(paperId);
     }
 
