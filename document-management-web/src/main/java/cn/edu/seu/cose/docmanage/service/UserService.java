@@ -99,6 +99,12 @@ public class UserService implements UserDetailsService {
         return userMapper.findUserCollectionPage(userId);
     }
 
+    public void cancelCollection(UUID userId, List<UUID> paperIds){
+        if(paperIds==null || userId == null)
+            return;
+        userMapper.cancelCollection(userId, paperIds);
+    }
+
     public Page<Journal> findUserSubscriptionPage(UUID userId, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         return userMapper.findUserSubscriptionPage(userId);

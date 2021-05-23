@@ -1,9 +1,9 @@
-<#include "/components/admin-layout.ftl"/>
+<#include "/components/user-layout.ftl"/>
 
-<@adminLayout currentPage="collection" title="我的收藏 - 文献搜索和管理系统" css=['/css/admin-collecton.css']>
+<@userLayout currentPage="collection" title="我的收藏 - 文献搜索和管理系统" css=['/css/admin-collecton.css']>
 
     <div class="admin-data-header">
-        <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 取消订阅</button>
+        <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 取消收藏</button>
 
         <form class="ui action input" action="/admin/collection" method="get">
             <input type="text" name="pageNum" value="${dataPage.pageNum}" hidden>
@@ -46,7 +46,7 @@
                 </td>
                 <td>${dataItem.title!}</td>
                 <td>${dataItem.author!}</td>
-                <td>${dataItem.paperAbstract!}</td>
+                <td>${dataItem.getPaperAbstract()!}</td>
 
             </tr>
         </#list>
@@ -65,33 +65,33 @@
                     </a>
 
                     <#if dataPage.pageNum gt 2>
-                        <a class="item" href="/admin/paper?pageNum=1&searchValue=${searchValue!}&searchKey=${searchKey!}">1</a>
+                        <a class="item" href="/admin/collection?pageNum=1&searchValue=${searchValue!}&searchKey=${searchKey!}">1</a>
                     </#if>
                     <#if dataPage.pageNum gt 3>
                         <span class="item">...</span>
                     </#if>
                     <#if dataPage.pageNum gt 1>
                         <a class="item"
-                           href="/admin/paper?pageNum=${dataPage.pageNum - 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum - 1}</a>
+                           href="/admin/collection?pageNum=${dataPage.pageNum - 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum - 1}</a>
                     </#if>
                     <span class="item header">${dataPage.pageNum}</span>
                     <#if dataPage.pageNum lt dataPage.pages >
                         <a class="item"
-                           href="/admin/paper?pageNum=${dataPage.pageNum + 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum + 1}</a>
+                           href="/admin/collection?pageNum=${dataPage.pageNum + 1}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pageNum + 1}</a>
                     </#if>
                     <#if dataPage.pageNum lt dataPage.pages - 2>
                         <span class="item">...</span>
                     </#if>
                     <#if dataPage.pageNum lt dataPage.pages - 1>
                         <a class="item"
-                           href="/admin/paper?pageNum=${dataPage.pages}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pages}</a>
+                           href="/admin/collection?pageNum=${dataPage.pages}&searchValue=${searchValue!}&searchKey=${searchKey!}">${dataPage.pages}</a>
                     </#if>
 
                     <a class="icon item">
                         <i class="right chevron icon ${(dataPage.pageNum lt dataPage.pages)?then("", "disabled")}"></i>
                     </a>
 
-                    <form class="form admin-data-jump-form" action="/admin/paper" method="get">
+                    <form class="form admin-data-jump-form" action="/admin/collection" method="get">
                         <div class="ui action input mini">
                             <input type="text" name="searchValue" value="${searchValue!}" hidden>
                             <input type="text" name="searchKey" value="${searchKey!}" hidden>
@@ -106,6 +106,6 @@
         </tfoot>
     </table>
 
-    <script src="/js/admin-paper.js"></script>
+    <script src="/js/user-collection.js"></script>
 
-</@adminLayout>
+</@userLayout>
