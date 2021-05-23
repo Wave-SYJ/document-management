@@ -15,7 +15,7 @@
         </form>
     </div>
 
-    <table class="ui celled table">
+    <table class="ui celled fixed single line table">
         <thead>
         <tr>
             <th style="width: 60px">

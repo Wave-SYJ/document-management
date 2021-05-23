@@ -50,4 +50,20 @@
             #{item}
         </foreach>
     </delete>
+
+    <select id="findEntries" resultType="Entry">
+        select *
+        from dm_entry
+                 inner join dm_entry_journal dep on dm_entry.id = dep.entry_id and dep.journal_id = #{journalId}
+    </select>
+
+    <insert id="bindEntry">
+        insert into dm_entry_journal(id, entry_id, journal_id) VALUE (#{id}, #{entryId}, #{journalId})
+    </insert>
+
+    <delete id="removeAllEntries">
+        delete
+        from dm_entry_journal
+        where journal_id = #{journalId}
+    </delete>
 </mapper>

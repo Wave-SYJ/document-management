@@ -1,5 +1,6 @@
 package cn.edu.seu.cose.docmanage.controller;
 
+import cn.edu.seu.cose.docmanage.entity.Entry;
 import cn.edu.seu.cose.docmanage.service.EntryService;
 import cn.edu.seu.cose.docmanage.service.JournalService;
 import cn.edu.seu.cose.docmanage.service.PaperService;
@@ -9,8 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Controller
 public class SystemController {
@@ -65,5 +69,10 @@ public class SystemController {
         return "/detail/paper";
     }
 
-
+    @RequestMapping("journal/entry")
+    @ResponseBody
+    public List<String> findJournalEntries(String id) {
+        List<Entry> entries = journalService.findEntries(UUID.fromString(id));
+        return entries.stream().map(Entry::getName).collect(Collectors.toList());
+    }
 }

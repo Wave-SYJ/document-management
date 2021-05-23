@@ -36,6 +36,22 @@
 
     </delete>
 
+    <delete id="removeAllEntries">
+        delete
+        from dm_entry_paper
+        where paper_id = #{paperId}
+    </delete>
+
+    <select id="findEntries" resultType="Entry">
+        select *
+        from dm_entry
+                 inner join dm_entry_paper dep on dm_entry.id = dep.entry_id and dep.paper_id = #{paperId}
+    </select>
+
+    <insert id="bindEntry">
+        insert into dm_entry_paper(id, entry_id, paper_id) VALUE (#{id}, #{entryId}, #{paperId})
+    </insert>
+
     <delete id="deleteAllPapers">
         delete from dm_paper where id in
         <foreach collection="ids" open="(" close=")" separator="," item="item">

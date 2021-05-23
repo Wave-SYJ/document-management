@@ -51,4 +51,8 @@ public class EntryService {
         PageHelper.startPage(pageNum, pageSize);
         return entryMapper.findEntryPage(searchKey, searchValue);
     }
+
+    public List<Entry> findEntryByNames(List<String> names) {
+        return entryMapper.findEntriesByNames(names);
+    }
 }

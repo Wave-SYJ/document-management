@@ -37,4 +37,12 @@
         </if>
     </select>
 
+    <select id="findEntriesByNames" resultType="Entry">
+        select * from dm_entry
+        where name in
+        <foreach collection="names" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+    </select>
+
 </mapper>

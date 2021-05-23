@@ -13,4 +13,6 @@ public interface EntryMapper {
     void deleteEntry(List<UUID> entryIdList);
     void updateEntry(Entry entry);
     Page<Entry> findEntryPage(String searchKey, String searchValue);
+
+    List<Entry> findEntriesByNames(List<String> names);
 }

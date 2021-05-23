@@ -1,8 +1,8 @@
 package cn.edu.seu.cose.docmanage.service;
 
+import cn.edu.seu.cose.docmanage.entity.Entry;
 import cn.edu.seu.cose.docmanage.entity.Paper;
 import cn.edu.seu.cose.docmanage.mapper.PaperMapper;
-import cn.edu.seu.cose.docmanage.mapper.UserMapper;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +17,9 @@ public class PaperService {
 
     @Autowired
     private PaperMapper paperMapper;
+
+    @Autowired
+    private EntryService entryService;
 
     public Page<Paper> findPaperPage(int pageNum, int pageSize, String searchKey, String searchValue) {
         PageHelper.startPage(pageNum, pageSize);
@@ -54,11 +57,21 @@ public class PaperService {
         paperMapper.updatePaper(paper);
     }
 
+    @Transactional
+    public void bindEntries(UUID paperId, List<String> entryNames) {
+        paperMapper.removeAllEntries(paperId);
+        entryService.findEntryByNames(entryNames).forEach(entry -> {
+            paperMapper.bindEntry(UUID.randomUUID(), paperId, entry.getId());
+        });
+    }
+
+    public List<Entry> findEntries(UUID paperId) {
+        return paperMapper.findEntries(paperId);
+    }
 
     @Transactional
     public List<Paper> findNewPapers(){
         return paperMapper.findNewPapers();
     }
-
 }
 
