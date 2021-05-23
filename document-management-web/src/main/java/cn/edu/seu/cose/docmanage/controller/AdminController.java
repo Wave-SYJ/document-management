@@ -16,8 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -33,9 +31,6 @@ public class AdminController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private PaperService paperService;
 
     @Autowired
     private JournalService journalService;
