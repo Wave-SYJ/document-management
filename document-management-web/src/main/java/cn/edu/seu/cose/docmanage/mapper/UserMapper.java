@@ -25,4 +25,5 @@ public interface UserMapper {
     Page<Paper> findUserCollectionPage(UUID userId);
     Page<Journal> findUserSubscriptionPage(UUID userId);
     void deleteSubscriptions(List<UUID> journalIds,UUID userId);
+    List<String> findUsernameByIds(List<UUID> userIds);
 }

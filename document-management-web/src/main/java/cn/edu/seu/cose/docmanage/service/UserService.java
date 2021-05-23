@@ -60,6 +60,12 @@ public class UserService implements UserDetailsService {
         userMapper.deleteUsers(ids);
     }
 
+    public List<String> findUsernameByIds(List<UUID> ids) {
+        if (ids == null || ids.isEmpty())
+            return null;
+        return userMapper.findUsernameByIds(ids);
+    }
+
     public void changePassword(User user, String oldPassword, String newPassword, String repeatPassword) {
         if (user == null || oldPassword == null || newPassword == null || repeatPassword == null)
             throw new SimpleException("旧密码/新密码/重复密码不能为空");

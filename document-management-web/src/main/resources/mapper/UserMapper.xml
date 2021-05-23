@@ -100,4 +100,12 @@
         </foreach>
     </delete>
 
+    <select id="findUsernameByIds" resultType="String">
+        select username
+        from dm_user
+        where id in
+        <foreach collection="userIds" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+    </select>
 </mapper>

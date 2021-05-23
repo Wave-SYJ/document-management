@@ -44,8 +44,8 @@
                     </div>
                 </td>
                 <td>${dataItem.content}</td>
-                <td>${dataItem.publisherId}</td>
-                <td>${dataItem.publishTime}</td>
+                <td>${usernames[dataItem_index]}</td>
+                <td>${dataItem.publishTime?string('yyyy-MM-dd HH:mm:ss')}</td>
             </tr>
         </#list>
         </tbody>
@@ -89,7 +89,7 @@
                         <i class="right chevron icon ${(dataPage.pageNum lt dataPage.pages)?then("", "disabled")}"></i>
                     </a>
 
-                    <form class="form admin-data-jump-form" action="/admin/journal" method="get">
+                    <form class="form admin-data-jump-form" action="/admin/announcement" method="get">
                         <div class="ui action input mini">
                             <input type="text" name="searchValue" value="${searchValue!}" hidden>
                             <input type="text" name="searchKey" value="${searchKey!}" hidden>

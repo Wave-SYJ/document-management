@@ -10,6 +10,7 @@ import cn.edu.seu.cose.docmanage.service.EntryService;
 import cn.edu.seu.cose.docmanage.service.SystemService;
 import cn.edu.seu.cose.docmanage.service.UserService;
 import cn.edu.seu.cose.docmanage.service.JournalService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Controller
 public class AdminController {
@@ -116,7 +118,11 @@ public class AdminController {
     @RequestMapping("/admin/announcement")
     public String toAdminAnnouncement(Model model, Integer pageNum,String searchKey, String searchValue,@CurrentUser User user){
         pageNum = pageNum != null ? pageNum : 1;
-        model.addAttribute("dataPage", systemService.findAnnouncement(pageNum,10).toPageInfo());
+        PageInfo<Announcement> pageInfo = systemService.findAnnouncement(pageNum, 10).toPageInfo();
+        model.addAttribute("dataPage", pageInfo);
+        model.addAttribute("usernames", userService.findUsernameByIds(
+                pageInfo.getList().stream().map(Announcement::getPublisherId).collect(Collectors.toList()))
+        );
         model.addAttribute("searchKey", searchKey);
         model.addAttribute("searchValue", searchValue);
         return "admin/announcement";
@@ -149,5 +155,12 @@ public class AdminController {
         announcement.setPublisherId(user.getId());
        systemService.publishAnnouncement(announcement);
         return "redirect:/admin/announcement";
+    }
+
+    @DeleteMapping("/admin/announcement")
+    @PreAuthorize("hasAnyAuthority(@Roles.ROLE_SYSTEM_ADMIN)")
+    @ResponseBody
+    public void deleteAnnouncement(@RequestBody List<UUID> ids) {
+        systemService.deleteAnnouncement(ids);
     }
 }
