@@ -83,6 +83,6 @@ public class SystemController {
     @RequestMapping("journal/tile")
     @ResponseBody
     public String findJournalTitle(String id) {
-        
+        return "";
     }
 }
