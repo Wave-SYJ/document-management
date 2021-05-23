@@ -58,7 +58,11 @@ public class AdminController {
 
     @RequestMapping("/admin/entry")
     @PreAuthorize("hasAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
-    public String toAdminEntry() {
+    public String toAdminEntry(Model model, Integer pageNum, String searchKey, String searchValue) {
+        pageNum = pageNum != null ? pageNum : 1;
+        model.addAttribute("dataPage", userService.findUserPage(pageNum, 10, searchKey, searchValue).toPageInfo());
+        model.addAttribute("searchKey", searchKey);
+        model.addAttribute("searchValue", searchValue);
         return "admin/entry";
     }
 
