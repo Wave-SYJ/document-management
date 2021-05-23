@@ -55,7 +55,7 @@
         </form>
     </div>
 
-    <table class="ui celled table">
+    <table class="ui single line fixed celled table">
         <thead>
         <tr>
             <th style="width: 60px">
@@ -64,7 +64,7 @@
                     <label>#</label>
                 </div>
             </th>
-            <th>词条名称</th>
+            <th class="three wide">词条名称</th>
             <th>词条描述</th>
             <th style="width: 100px">操作</th>
         </tr>
