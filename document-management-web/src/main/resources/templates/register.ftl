@@ -52,7 +52,7 @@
                 注册
             </div>
         </h2>
-        <form id="register-form" class="ui large form ${(error! != '')?then('error', '')}" action="/register" method="post">
+        <form id="register-form" class="ui large form ${(error! != '')?then('error', '')}" action="/reg" method="post">
             <div class="ui error message">
                 <p>${error!}</p>
             </div>

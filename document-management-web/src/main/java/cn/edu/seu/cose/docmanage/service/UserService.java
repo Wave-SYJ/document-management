@@ -103,7 +103,7 @@ public class UserService implements UserDetailsService {
             throw new SimpleException("密码不能为空");
         if (!password.equals(repeatPassword))
             throw new SimpleException("密码和重复密码不一致");
-        if (loadUserByUsername(user.getUsername()) != null)
+        if (userMapper.findUserByUsername(user.getUsername()) != null)
             throw new SimpleException("用户名已存在");
         insertUser(user);
     }

@@ -34,7 +34,7 @@ public class SystemController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/reg", method = RequestMethod.POST)
     public String register(String username, String password, String repeatPassword) throws UnsupportedEncodingException {
         try {
             userService.register(username, password, repeatPassword);
