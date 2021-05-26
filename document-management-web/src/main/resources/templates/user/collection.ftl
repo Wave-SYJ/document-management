@@ -1,12 +1,12 @@
 <#include "/components/user-layout.ftl"/>
 
-<@userLayout currentPage="collection" title="我的收藏 - 文献搜索和管理系统" css=['/css/admin-collecton.css']>
+<@userLayout currentPage="collection" title="我的收藏 - 文献搜索和管理系统" css=['/css/user-collection.css']>
 
 
     <div class="admin-data-header">
         <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 取消收藏</button>
 
-        <form class="ui action input" action="/admin/collection" method="get">
+        <form class="ui action input" action="/user/collection" method="get">
             <input type="text" name="pageNum" value="${dataPage.pageNum}" hidden>
             <input type="text" name="searchValue" placeholder="搜索..." value="${searchValue!}">
             <select class="ui compact selection dropdown" name="searchKey">

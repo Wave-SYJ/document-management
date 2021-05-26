@@ -98,15 +98,6 @@ public class AdminController {
         return "admin/journal";
     }
 
-    @RequestMapping("/admin/subscription")
-    public String toAdminSubscription(Model model, Integer pageNum,String searchKey, String searchValue,@CurrentUser User user){
-        pageNum = pageNum != null ? pageNum : 1;
-        model.addAttribute("dataPage", userService.findUserSubscriptionPage(user.getId(),pageNum,10).toPageInfo());
-        model.addAttribute("searchKey", searchKey);
-        model.addAttribute("searchValue", searchValue);
-        return "admin/subscription";
-    }
-
 
     @RequestMapping("/admin/entry")
     @PreAuthorize("hasAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")

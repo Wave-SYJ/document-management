@@ -133,7 +133,8 @@ public class UserService implements UserDetailsService {
             return;
         List<String> roleNames = roles.stream().map(Role::getName).filter(name -> !name.equals(roleName)).collect(Collectors.toList());
         userMapper.deleteAllRoles(userId);
-        userMapper.bindRoles(userId, roleNames);
+        if (!roleNames.isEmpty())
+            userMapper.bindRoles(userId, roleNames);
     }
 
 
