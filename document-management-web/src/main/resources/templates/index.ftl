@@ -32,24 +32,22 @@
 
         <div class="ui segment">
             <div class="ui header">最新通知</div>
-            <#list announcementPage as announcementItem>
-                <div class="item">
-                    <i class="map marker icon"></i>
-                    <div class="content">
-                        <a href=" " class="header"> ${announcementItem.content} </a>
-                        <div class="time">
-                            ${announcementItem.publishTime!}
-                        </div>
-                        <div class="publish">
-                            ${announcementItem.publisherId!}
+            <div class="ui list">
+                <#list announcementPage as announcementItem>
+                    <div class="item">
+                        <i class="map marker icon"></i>
+                        <div class="content">
+                            <span class="header"> ${announcementItem.publishTime?string('yyyy-MM-dd HH:mm:ss')} </span>
+                            <div class="description">
+                                ${announcementItem.content}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <#if announcementItem_index==4>
-                    <#break>
-                </#if>
-            </#list>
-
+                    <#if announcementItem_index==4>
+                        <#break>
+                    </#if>
+                </#list>
+            </div>
         </div>
 
     </main>
