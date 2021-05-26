@@ -48,11 +48,6 @@ public class DetailController {
         List<UUID> journalIds = entryService.findJournalIds(UUID.fromString(id));
 
         List<Journal> journals =journalIds.stream().map((item)-> journalService.findJournalById(item)).collect(Collectors.toList());
-
-        journals.forEach((item)->{
-            System.out.println(item);
-        });
-
         model.addAttribute("journalData", journals);
         return "/detail/entry";
     }

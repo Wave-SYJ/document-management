@@ -12,7 +12,7 @@
     <link href="https://cdn.bootcdn.net/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     <link rel='stylesheet' type="text/css" href='https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css'/>
 
-    <script type="text/javascript"  src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.slim.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.slim.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
     <script type="text/javascript" src='https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js'></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
@@ -40,7 +40,7 @@
 
 <script>
     NProgress.start();
-    window.onload = function() {
+    window.onload = function () {
         NProgress.done();
     }
 </script>
@@ -52,7 +52,10 @@
                 注册
             </div>
         </h2>
-        <form class="ui large form" action="/auth" method="post">
+        <form id="register-form" class="ui large form ${(error! != '')?then('error', '')}" action="/register" method="post">
+            <div class="ui error message">
+                <p>${error!}</p>
+            </div>
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="ui left icon input">
@@ -67,17 +70,29 @@
                     </div>
                 </div>
 
-                <button class="ui fluid large primary submit button">注册</button>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="repeatPassword" placeholder="重复密码">
+
+                    </div>
+                </div>
+
+                <button type="submit" class="ui fluid large primary submit button">注册</button>
             </div>
-
-            <div class="ui error message"></div>
-
         </form>
+
+        <div class="ui message">
+            已经注册？ <a href="\login">登录</a>
+        </div>
 
 
     </div>
 </div>
 
+<script src="/js/register.js"></script>
+
 </body>
+
 
 </html>

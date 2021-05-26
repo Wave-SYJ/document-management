@@ -2,17 +2,19 @@ package cn.edu.seu.cose.docmanage.controller;
 
 import cn.edu.seu.cose.docmanage.entity.Entry;
 import cn.edu.seu.cose.docmanage.entity.Journal;
-import cn.edu.seu.cose.docmanage.service.EntryService;
-import cn.edu.seu.cose.docmanage.service.JournalService;
-import cn.edu.seu.cose.docmanage.service.PaperService;
-import cn.edu.seu.cose.docmanage.service.SystemService;
+import cn.edu.seu.cose.docmanage.exception.SimpleException;
+import cn.edu.seu.cose.docmanage.mapper.UserMapper;
+import cn.edu.seu.cose.docmanage.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -25,6 +27,29 @@ public class SystemController {
         model.addAttribute("error", error != null);
         return "login";
     }
+
+    @Autowired
+    public UserMapper userMapper;
+
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(String username, String password, String repeatPassword) throws UnsupportedEncodingException {
+        try {
+            userService.register(username, password, repeatPassword);
+        } catch (SimpleException e) {
+            return "redirect:/register?error=" + URLEncoder.encode(e.getMessage(), "utf-8");
+        }
+        return "redirect:/";
+    }
+
+    @RequestMapping("/register")
+    public String toRegister(Model model, String error) {
+        model.addAttribute("error", error);
+        return "/register";
+    }
+
 
     @Autowired
     public PaperService paperService;
