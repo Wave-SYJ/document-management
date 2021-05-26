@@ -38,7 +38,7 @@ public class PaperTester {
 
 
 
-<<<<<<< HEAD
+
     @Test
     void printPaper(){
         paperMapper.findPaperPage("","").forEach((item)->{
@@ -48,10 +48,7 @@ public class PaperTester {
             System.out.println(item);
         });
     }
-=======
 
 
-
-
->>>>>>> scy
+    
 }

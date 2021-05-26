@@ -73,6 +73,7 @@ $('#add-paper-form')
   ;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 $("#add-paper-form input[name='journalTitle']").keyup(async function () {
   $("#submit-insert").attr('disabled',true);
   const title = $(this).val();
@@ -91,6 +92,8 @@ $("#update-paper-form input[name='journalTitle']").keyup(async function () {
     $("#submit-update").attr('disabled',false);
 });
 =======
+=======
+>>>>>>> scy
 
   $('.admin-data-bind')
   .click(async function () {
@@ -103,6 +106,9 @@ $("#update-paper-form input[name='journalTitle']").keyup(async function () {
     $('#bind-entry-modal').modal('show')
   });
 
+<<<<<<< HEAD
+>>>>>>> scy
+=======
 >>>>>>> scy
 
   $('.admin-data-update')
