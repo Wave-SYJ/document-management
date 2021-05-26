@@ -51,4 +51,8 @@
         </foreach>
     </select>
 
+    <select id="findJournalIds" resultType="java.util.UUID">
+        select journal_id from dm_entry_journal
+        where entry_id = #{id}
+    </select>
 </mapper>

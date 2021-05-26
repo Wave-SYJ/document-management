@@ -1,6 +1,7 @@
 package cn.edu.seu.cose.docmanage.mapper;
 
 import cn.edu.seu.cose.docmanage.entity.Entry;
+import cn.edu.seu.cose.docmanage.entity.Journal;
 import com.github.pagehelper.Page;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,6 @@ public interface EntryMapper {
     void updateEntry(Entry entry);
     Entry findEntryById(UUID id);
     Page<Entry> findEntryPage(String searchKey, String searchValue);
-
     List<Entry> findEntriesByNames(List<String> names);
+    List<UUID> findJournalIds(UUID id);
 }
