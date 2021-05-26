@@ -56,11 +56,12 @@ public class AdminController {
 
     @RequestMapping("/admin/user")
     @PreAuthorize("hasAuthority(@Roles.ROLE_USER_ADMIN)")
-    public String toAdminUser(Model model, Integer pageNum, String searchKey, String searchValue) {
+    public String toAdminUser(@CurrentUser User user, Model model, Integer pageNum, String searchKey, String searchValue) {
         pageNum = pageNum != null ? pageNum : 1;
         model.addAttribute("dataPage", userService.findUserPage(pageNum, 10, searchKey, searchValue).toPageInfo());
         model.addAttribute("searchKey", searchKey);
         model.addAttribute("searchValue", searchValue);
+        model.addAttribute("isSystemAdmin", user.getRoles().stream().anyMatch(role -> role.getName().equals(RoleConstants.ROLE_SYSTEM_ADMIN)));
         return "admin/user";
     }
 
@@ -203,5 +204,15 @@ public class AdminController {
     @ResponseBody
     public void deleteAnnouncement(@RequestBody List<UUID> ids) {
         systemService.deleteAnnouncement(ids);
+    }
+
+    @RequestMapping("/admin/role")
+    @PreAuthorize("hasAnyAuthority(@Roles.ROLE_SYSTEM_ADMIN)")
+    public String modifyRole(String userId, String roleName, boolean add) {
+        if (add)
+            userService.insertUserRole(UUID.fromString(userId), roleName);
+        else
+            userService.deleteUserRole(UUID.fromString(userId), roleName);
+        return "redirect:/admin/user";
     }
 }

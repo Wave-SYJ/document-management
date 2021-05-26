@@ -79,7 +79,7 @@ public class SystemController {
         return id.toString();
     }
 
-    @RequestMapping("journal/tile")
+    @RequestMapping("journal/title")
     @ResponseBody
     public String findJournalTitle(String id) {
         Journal journal = journalService.findJournalById(UUID.fromString(id));

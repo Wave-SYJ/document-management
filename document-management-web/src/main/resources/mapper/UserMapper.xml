@@ -41,6 +41,14 @@
         where username = #{username}
     </select>
 
+    <select id="findUserById" resultMap="userResultMap">
+        select du.id       as 'user_id',
+               du.username as 'user_name',
+               du.password as 'user_password'
+        from dm_user du
+        where id = #{userId}
+    </select>
+
     <insert id="insertUser">
         insert dm_user(id, username, password) VALUE (#{id}, #{username}, #{password});
     </insert>
