@@ -33,9 +33,14 @@
                 </div>
                 <input type="text" name="journalId" hidden>
                 <div class="field">
+                    <label>URL</label>
+                    <input type="text" name="url">
+                </div>
+                <div class="field">
                     <label>发表时间</label>
                     <input type="date" name="publishTime">
                 </div>
+
                 <button id="submit-insert" class="ui primary button" type="submit">确定</button>
             </form>
         </div>
@@ -100,6 +105,10 @@
                     <label>所属期刊</label>
                     <input type="text" name="journalTitle">
                 </div>
+                <div class="field">
+                    <label>URL</label>
+                    <input type="text" name="url">
+                </div>
                 <input type="text" name="journalId" hidden>
                 <div class="required field">
                     <label>发表时间</label>
@@ -162,7 +171,13 @@
                 <td data-name="paperAbstract">${dataItem.paperAbstract!}</td>
                 <td data-name="keyword" hidden>${dataItem.keyword!}</td>
                 <td data-name="authorOffice" hidden>${dataItem.authorOffice!}</td>
-                <td data-name="publishTime" hidden>${dataItem.publishTime?string('yyyy-MM-dd')}</td>
+                <td data-name="url" hidden>${dataItem.url!}</td>
+                <td data-name="journalId" hidden>${dataItem.journalId!}</td>
+                <td data-name="publishTime" hidden>
+                    <#if dataItem.publishTime??>
+                        ${dataItem.publishTime?string('yyyy-MM-dd')}
+                    </#if>
+                </td>
                 <td>
                     <button class="ui button admin-data-bind" data-id="${dataItem.id}">绑定词条</button>
                     <button class="ui button admin-data-update" data-id="${dataItem.id}">修改</button>

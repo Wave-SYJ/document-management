@@ -1,5 +1,7 @@
 package cn.edu.seu.cose.docmanage.service;
 
+import cn.edu.seu.cose.docmanage.config.CurrentUser;
+
 import cn.edu.seu.cose.docmanage.entity.Entry;
 import cn.edu.seu.cose.docmanage.entity.Journal;
 import cn.edu.seu.cose.docmanage.entity.Paper;
@@ -79,6 +81,26 @@ public class JournalService {
         return journalMapper.findEntries(journalId);
     }
 
+    public void insertSubscription(UUID userId,UUID journalId) {
+        if (journalId == null)
+            return;
+        if (journalMapper.ifSubscribed(userId, journalId) == null) {
+            UUID id = UUID.randomUUID();
+            journalMapper.insertSubscription(id, userId, journalId);
+            return;
+        }
+    }
+
+    public boolean ifSubscribed(UUID userId,UUID journalId){
+
+        if(journalId==null||userId==null)
+            return false;
+        if(journalMapper.ifSubscribed(userId,journalId)==null)
+            return false;
+        else
+            return true;
+    }
+
     public UUID findJournalIdByTitle(String title) {
         return journalMapper.findJournalIdByTitle(title);
     }
@@ -87,5 +109,4 @@ public class JournalService {
         if (id == null) return null;
         return journalMapper.findJournalById(id);
     }
-
 }

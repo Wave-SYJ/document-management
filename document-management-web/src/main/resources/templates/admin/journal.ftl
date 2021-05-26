@@ -110,7 +110,7 @@
             <th>所属机构</th>
             <th>期刊图片</th>
             <th>ISSN</th>
-            <th style="width: 200px">操作</th>
+            <th style="width: 220px">操作</th>
         </tr>
         </thead>
 

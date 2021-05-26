@@ -25,7 +25,8 @@ import java.util.stream.Collectors;
 public class SystemController {
 
     @RequestMapping("/login")
-    public String toLogin() {
+    public String toLogin(Model model, String error) {
+        model.addAttribute("error", error != null);
         return "login";
     }
 
@@ -67,7 +68,7 @@ public class SystemController {
         model.addAttribute("searchKey", searchKey);
         model.addAttribute("searchValue", searchValue);
         model.addAttribute("dataPage", paperService.findNewPapers());
-        model.addAttribute("announcementPage",systemService.findNewAnnouncement());
+        model.addAttribute("announcementPage", systemService.findNewAnnouncement());
         return "index";
     }
 
@@ -94,6 +95,7 @@ public class SystemController {
         List<Entry> entries = journalService.findEntries(UUID.fromString(id));
         return entries.stream().map(Entry::getName).collect(Collectors.toList());
     }
+
     @RequestMapping("journal/id")
     @ResponseBody
     public String findJournalId(String title) {
@@ -103,7 +105,7 @@ public class SystemController {
         return id.toString();
     }
 
-    @RequestMapping("journal/tile")
+    @RequestMapping("journal/title")
     @ResponseBody
     public String findJournalTitle(String id) {
         Journal journal = journalService.findJournalById(UUID.fromString(id));

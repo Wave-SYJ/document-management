@@ -23,7 +23,8 @@ public class CommonDataBindConfig {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication instanceof AnonymousAuthenticationToken)
             return false;
-        return !((User) authentication.getPrincipal()).getRoles().isEmpty();
+        User user = (User)  authentication.getPrincipal();
+        return !user.getRoles().isEmpty();
     }
 
 }

@@ -12,7 +12,7 @@
     <link href="https://cdn.bootcdn.net/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     <link rel='stylesheet' type="text/css" href='https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css'/>
 
-    <script type="text/javascript"  src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.slim.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.slim.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
     <script type="text/javascript" src='https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js'></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
@@ -40,7 +40,7 @@
 
 <script>
     NProgress.start();
-    window.onload = function() {
+    window.onload = function () {
         NProgress.done();
     }
 </script>
@@ -52,18 +52,22 @@
                 登录
             </div>
         </h2>
-        <form class="ui large form" action="/auth" method="post">
-            <div class="ui stacked segment">
-                <div class="field">
+
+        <div class="ui stacked segment">
+            <form id="login-form" class="ui large form ${error?then('error', '')}" action="/auth" method="post">
+                <div class="ui error message">
+                    <p>用户名或密码错误，请重试</p>
+                </div>
+                <div class="required field">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
-                        <input type="text" name="username" placeholder="用户名">
+                        <input type="text" name="username" placeholder="用户名" />
                     </div>
                 </div>
-                <div class="field">
+                <div class="required field">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="密码">
+                        <input type="password" name="password" placeholder="密码" />
                     </div>
                 </div>
                 <div class="field">
@@ -73,17 +77,17 @@
                     </div>
                 </div>
                 <button class="ui fluid large primary submit button">登录</button>
-            </div>
+            </form>
+        </div>
 
-            <div class="ui error message"></div>
-
-        </form>
 
         <div class="ui message">
-            没有账号？ <a href="\register">注册</a>
+            没有账号？ <a href="/register">注册</a>
         </div>
     </div>
 </div>
+
+<script src="/js/login.js" type="text/javascript"></script>
 
 </body>
 

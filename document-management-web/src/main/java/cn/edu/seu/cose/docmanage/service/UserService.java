@@ -40,6 +40,10 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
+    public User findUserById(UUID userId) {
+        return userMapper.findUserById(userId);
+    }
+
     @Transactional
     public void insertUser(User user) {
         if (user.getId() == null)
@@ -109,6 +113,28 @@ public class UserService implements UserDetailsService {
         if (user.getRoles() == null || user.getRoles().size() == 0)
             return;
         userMapper.bindRoles(user.getId(), user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
+    }
+
+    @Transactional
+    public void insertUserRole(UUID userId, String roleName) {
+        List<Role> roles = userMapper.findRolesByUser(userId);
+        if (roles.stream().anyMatch(role -> role.getName().equals(roleName)))
+            return;
+        List<String> roleNames = roles.stream().map(Role::getName).collect(Collectors.toList());
+        roleNames.add(roleName);
+        userMapper.deleteAllRoles(userId);
+        userMapper.bindRoles(userId, roleNames);
+    }
+
+    @Transactional
+    public void deleteUserRole(UUID userId, String roleName) {
+        List<Role> roles = userMapper.findRolesByUser(userId);
+        if (roles.stream().noneMatch(role -> role.getName().equals(roleName)))
+            return;
+        List<String> roleNames = roles.stream().map(Role::getName).filter(name -> !name.equals(roleName)).collect(Collectors.toList());
+        userMapper.deleteAllRoles(userId);
+        if (!roleNames.isEmpty())
+            userMapper.bindRoles(userId, roleNames);
     }
 
 

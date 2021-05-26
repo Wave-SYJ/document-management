@@ -2,6 +2,7 @@ package cn.edu.seu.cose.docmanage.service;
 
 
 import cn.edu.seu.cose.docmanage.entity.Entry;
+import cn.edu.seu.cose.docmanage.entity.Journal;
 import cn.edu.seu.cose.docmanage.exception.SimpleException;
 import cn.edu.seu.cose.docmanage.mapper.EntryMapper;
 import com.github.pagehelper.Page;
@@ -60,5 +61,10 @@ public class EntryService {
     public Entry findEntryById(UUID id) {
         if (id == null) return null;
         return entryMapper.findEntryById(id);
+    }
+
+    public List<UUID> findJournalIds(UUID id){
+        if(id == null) return null;
+        return entryMapper.findJournalIds(id);
     }
 }
