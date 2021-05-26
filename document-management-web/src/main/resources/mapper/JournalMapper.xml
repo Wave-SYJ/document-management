@@ -66,4 +66,12 @@
         from dm_entry_journal
         where journal_id = #{journalId}
     </delete>
+
+    <insert id="insertSubscription">
+        insert dm_subscription(id,userId,journalId )
+            VALUE (#{id}, #{userId}, #{journalId})
+    </insert>
+
+
+
 </mapper>

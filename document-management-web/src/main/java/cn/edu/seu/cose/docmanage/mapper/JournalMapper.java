@@ -1,5 +1,6 @@
 package cn.edu.seu.cose.docmanage.mapper;
 
+import cn.edu.seu.cose.docmanage.config.CurrentUser;
 import cn.edu.seu.cose.docmanage.entity.Entry;
 import cn.edu.seu.cose.docmanage.entity.Journal;
 import com.github.pagehelper.Page;
@@ -17,4 +18,7 @@ public interface JournalMapper {
     void bindEntry(UUID id, UUID journalId, UUID entryId);
     void removeAllEntries(UUID journalId);
     List<Entry> findEntries(UUID journalId);
+
+    void insertSubscription(UUID id,UUID uerId,UUID journalId);
+    boolean ifSubscribed(UUID userId,UUID journalId);
 }
