@@ -29,8 +29,13 @@ public class UserController {
         return "/user/password";
     }
 
+    @RequestMapping("/user")
+    public String toUser() {
+        return "redirect:/user/collection";
+    }
+
     @RequestMapping("/user/collection")
-    public String findUserCollectionPage(Model model, @CurrentUser User user, Integer pageNum, Integer pageSize,String searchKey, String searchValue) {
+    public String toUserCollection(Model model, @CurrentUser User user, Integer pageNum, Integer pageSize,String searchKey, String searchValue) {
         pageNum = pageNum != null ? pageNum : 1;
         model.addAttribute("dataPage", userService.findUserCollectionPage(user.getId(),pageNum,10).toPageInfo());
         model.addAttribute("searchKey", searchKey);

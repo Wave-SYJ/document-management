@@ -1,10 +1,10 @@
 <#include "/components/user-layout.ftl"/>
 
-<@userLayout currentPage="subscription" title="期刊列表 - 文献搜索和管理系统" css=['/css/admin-subscription.css']>
+<@userLayout currentPage="subscription" title="期刊列表 - 文献搜索和管理系统" css=['/css/user-subscription.css']>
     <div class="admin-data-header">
         <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 取消订阅</button>
 
-        <form class="ui action input" action="/admin/subscription" method="get">
+        <form class="ui action input" action="/user/subscription" method="get">
             <input type="text" name="pageNum" value="${dataPage.pageNum}" hidden>
             <input type="text" name="searchValue" placeholder="搜索..." value="${searchValue!}">
             <select class="ui compact selection dropdown" name="searchKey">
