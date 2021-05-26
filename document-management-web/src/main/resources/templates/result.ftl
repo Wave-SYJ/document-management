@@ -37,7 +37,7 @@
                             <div>
                                 <span class="type">[期刊]</span>
                                 <a class="author"
-                                   href="/result?searchType=paper&searchKey=author_office&searchValue=${dataItem.organizerOffice}">${dataItem.organizerOffice}</a>
+                                   href="/result?searchType=journal&searchKey=organizer_office&searchValue=${dataItem.organizerOffice}">${dataItem.organizerOffice}</a>
                             </div>
                             <div class="language">
                                 语言：${dataItem.language!"无"}

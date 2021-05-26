@@ -104,9 +104,10 @@ $("#update-paper-form input[name='journalTitle']").keyup(async function () {
   $('.admin-data-update')
   .click(async function () {
     const parent = $(this).parent().parent();
-    const data = ["paperAbstract", "title", "keyword", "author", "authorOffice","publishTime"]
+    const data = ["paperAbstract", "title", "keyword", "author", "authorOffice", "url"]
     data.forEach(item => $('#update-paper-modal').find(`*[name='${item}']`).val(parent.find(`td[data-name='${item}']`).text())
     )
+    $('#update-paper-modal').find(`*[name='publishTime']`).val(parent.find(`td[data-name='publishTime']`).text().trim());
     const title = (await axios.get("/journal/title?id=" + parent.find(`td[data-name='journalId']`).text())).data;
     $('#update-paper-modal').find(`*[name='journalTitle']`).val(title)
     $('#update-paper-modal').find(`*[name='id']`).val($(this).data("id"));
