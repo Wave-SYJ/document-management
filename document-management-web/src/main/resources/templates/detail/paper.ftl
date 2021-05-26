@@ -10,13 +10,15 @@
             <h2 style="color: #5a9cd6;fontsize:28px;margin: 4px 0">论文详情</h2>
             <div tabindex="0" style="margin-left: 20px">
                 <#if isCollected==true>
-                    <div class="ui button gery">
-                        <i class="heart icon"></i> 已收藏
-                    </div>
+                    <form action="/detail/paper/cancelCollected" method="get">
+                        <input type="text" name="paper_id" value="${item.id}" hidden>
+                        <button class="ui button gery" type="submit"><i class="heart icon"></i> 已收藏</button>
+                    </form>
                 <#else>
-                    <div class="ui button">
-                        <i class="heart icon"></i> 收藏
-                    </div>
+                    <form action="/detail/paper/collected" method="get">
+                        <input type="text" name="paper_id" value="${item.id}" hidden>
+                        <button class="ui button " type="submit"><i class="heart icon"></i> 收藏</button>
+                    </form>
                 </#if>
 
             </div>

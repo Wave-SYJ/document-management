@@ -10,13 +10,15 @@
             <h2 style="color: #5a9cd6;fontsize:28px;margin: 4px 0">期刊详情</h2>
             <div tabindex="0" style="margin-left: 20px">
                 <#if isSubscribed==true>
-                    <div class="ui button gery" id="CancelSubscribedButton">
-                        <i class="heart icon"></i> 已订阅
-                    </div>
+                    <form action="/detail/journal/cancelSubscribed" method="get">
+                        <input type="text" name="journal_id" value="${item.id}" hidden>
+                        <button class="ui button gery" type="submit"><i class="heart icon"></i> 已订阅</button>
+                    </form>
                 <#else>
-                    <div class="ui button" id="SubscribedButton">
-                        <i class="heart icon"></i> 订阅
-                    </div>
+                    <form action="/detail/journal/subscribed" method="get">
+                        <input type="text" name="journal_id" value="${item.id}" hidden>
+                        <button class="ui button " type="submit"><i class="heart icon"></i> 订阅</button>
+                    </form>
                 </#if>
             </div>
         </div>

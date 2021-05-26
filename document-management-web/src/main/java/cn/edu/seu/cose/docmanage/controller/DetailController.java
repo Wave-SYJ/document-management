@@ -48,13 +48,13 @@ public class DetailController {
     @RequestMapping("detail/paper/collected")
     public String CollectedPaper(String paper_id,@CurrentUser User user){
         userService.addCollection(user.getId(),UUID.fromString(paper_id));
-        return "redirect:/detail/paper";
+        return "redirect:/detail/paper?id=" + paper_id;
     }
 
     @RequestMapping("detail/paper/cancelCollected")
     public String CancelCollectedPaper(String paper_id,@CurrentUser User user){
         userService.deleteCollection(user.getId(),UUID.fromString(paper_id));
-        return "redirect:/detail/paper";
+        return "redirect:/detail/paper?id=" + paper_id;
     }
 
     @RequestMapping("detail/entry")
@@ -84,14 +84,15 @@ public class DetailController {
     @RequestMapping("detail/journal/subscribed")
     public String SubscribedJournal(String journal_id,@CurrentUser User user){
         journalService.insertSubscription(user.getId(),UUID.fromString(journal_id));
-        return "redirect:/detail/journal";
+        return "redirect:/detail/journal?id="+journal_id;
     }
 
     @RequestMapping("detail/journal/cancelSubscribed")
     public String CancelSubscribedJournal(String journal_id,@CurrentUser User user){
-        List<UUID> list= Collections.singletonList(user.getId());
-        userService.deleteSubscriptions(list,UUID.fromString(journal_id));
-        return "redirect:/detail/paper";
+        List<UUID> list= Collections.singletonList(UUID.fromString(journal_id));
+        System.out.println(list);
+        userService.deleteSubscriptions(list,user.getId());
+        return "redirect:/detail/journal?id="+journal_id;
     }
 
 }
