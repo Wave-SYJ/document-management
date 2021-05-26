@@ -51,6 +51,8 @@ public class UserController {
         userService.deleteUsers(ids);
     }
 
+
+
     @DeleteMapping("/collection")
     @ResponseBody
     public void cancelCollection(@CurrentUser User user, @RequestBody List<UUID> paperids) {

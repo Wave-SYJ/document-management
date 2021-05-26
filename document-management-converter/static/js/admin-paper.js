@@ -72,6 +72,8 @@ $('#add-paper-form')
   })
   ;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 $("#add-paper-form input[name='journalTitle']").keyup(async function () {
   $("#submit-insert").attr('disabled',true);
   const title = $(this).val();
@@ -89,6 +91,25 @@ $("#update-paper-form input[name='journalTitle']").keyup(async function () {
   if (id || title === "")
     $("#submit-update").attr('disabled',false);
 });
+=======
+=======
+>>>>>>> scy
+
+  $('.admin-data-bind')
+  .click(async function () {
+    const paperId = $(this).data("id");
+    $('#bind-entry-modal').find(`*[name='id']`).val(paperId);
+    const { data } = await axios({
+      url: '/paper/entry?id=' + paperId
+    });
+    $('#bind-entry-modal').find(`*[name='entries']`).val(data.join("\n"));
+    $('#bind-entry-modal').modal('show')
+  });
+
+<<<<<<< HEAD
+>>>>>>> scy
+=======
+>>>>>>> scy
 
   $('.admin-data-update')
   .click(function () {
