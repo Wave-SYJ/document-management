@@ -18,11 +18,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping({"/user", "/user/basic"})
-    public String toUserBasic() {
-        return "/user/basic";
-    }
-
     @RequestMapping("/user/password")
     public String toUserPassword() {
         return "/user/password";
@@ -34,13 +29,22 @@ public class UserController {
         return "/user/password";
     }
 
-    @RequestMapping("/admin/collection")
+    @RequestMapping("/user/collection")
     public String findUserCollectionPage(Model model, @CurrentUser User user, Integer pageNum, Integer pageSize,String searchKey, String searchValue) {
         pageNum = pageNum != null ? pageNum : 1;
         model.addAttribute("dataPage", userService.findUserCollectionPage(user.getId(),pageNum,10).toPageInfo());
         model.addAttribute("searchKey", searchKey);
         model.addAttribute("searchValue", searchValue);
-        return "admin/collection";
+        return "/user/collection";
+    }
+
+    @RequestMapping("/user/subscription")
+    public String toAdminSubscription(Model model, Integer pageNum,String searchKey, String searchValue,@CurrentUser User user){
+        pageNum = pageNum != null ? pageNum : 1;
+        model.addAttribute("dataPage", userService.findUserSubscriptionPage(user.getId(),pageNum,10).toPageInfo());
+        model.addAttribute("searchKey", searchKey);
+        model.addAttribute("searchValue", searchValue);
+        return "/user/subscription";
     }
 
 
