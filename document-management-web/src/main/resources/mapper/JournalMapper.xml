@@ -73,9 +73,22 @@
         where journal_id = #{journalId}
     </delete>
 
+    <insert id="insertSubscription">
+        insert into dm_subscription(id,user_id,journal_id )
+            VALUE (#{id}, #{userId}, #{journalId})
+    </insert>
+
+    <select id="ifSubscribed" resultType="Journal">
+        select *
+        from dm_subscription dc
+        where user_id = #{userId} and journal_id = #{journalId}
+    </select>
+
+
     <select id="findJournalIdByTitle" resultType="java.util.UUID">
         select id
         from dm_journal
         where title = #{title}
     </select>
+
 </mapper>
