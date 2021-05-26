@@ -5,5 +5,6 @@ cp.exec("npm run convert", (error, stdout, stderr) => {
     return;
   }
   console.log(stdout);
-  console.log("Successfully compiled all scss files.\n")
+  // console.log("Successfully compiled all scss files.\n")
+  console.log(`[${new Date()}] Done. `)
 })
