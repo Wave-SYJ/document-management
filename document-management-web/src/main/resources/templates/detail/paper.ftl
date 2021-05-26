@@ -8,10 +8,19 @@
     <div class="ui divided items segment paper-wrapper" style="margin: 0 auto 20px;font-size: 18px">
         <div style="display: flex;align-items: center">
             <h2 style="color: #5a9cd6;fontsize:28px;margin: 4px 0">论文详情</h2>
-            <div class="ui labeled button" tabindex="0" style="margin-left: 20px">
-                <div class="ui button">
-                    <i class="heart icon"></i> 收藏
-                </div>
+            <div tabindex="0" style="margin-left: 20px">
+                <#if isCollected==true>
+                    <form action="/detail/paper/cancelCollected" method="get">
+                        <input type="text" name="paper_id" value="${item.id}" hidden>
+                        <button class="ui button gery" type="submit"><i class="heart icon"></i> 已收藏</button>
+                    </form>
+                <#else>
+                    <form action="/detail/paper/collected" method="get">
+                        <input type="text" name="paper_id" value="${item.id}" hidden>
+                        <button class="ui button " type="submit"><i class="heart icon"></i> 收藏</button>
+                    </form>
+                </#if>
+
             </div>
         </div>
         <div class="ui divider"></div>
