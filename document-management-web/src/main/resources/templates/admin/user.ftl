@@ -18,7 +18,7 @@
     <table class="ui celled fixed single line table">
         <thead>
         <tr>
-            <th style="width: 60px">
+            <th style="width: 80px">
                 <div class="ui checkbox data-item-checkbox-all">
                     <input type="checkbox" class="hidden">
                     <label>#</label>

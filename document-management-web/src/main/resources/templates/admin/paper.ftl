@@ -144,7 +144,7 @@
     <table class="ui celled table">
         <thead>
         <tr>
-            <th style="width: 60px">
+            <th style="width: 80px">
                 <div class="ui checkbox data-item-checkbox-all">
                     <input type="checkbox" class="hidden">
                     <label>#</label>
@@ -153,7 +153,7 @@
             <th>题名</th>
             <th>作者</th>
             <th>摘要</th>
-            <th style="width: 210px">操作</th>
+            <th style="width: 240px">操作</th>
         </tr>
         </thead>
 
