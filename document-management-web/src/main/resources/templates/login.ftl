@@ -80,7 +80,7 @@
         </form>
 
         <div class="ui message">
-            没有账号？ <a href="#">注册</a>
+            没有账号？ <a href="\register">注册</a>
         </div>
     </div>
 </div>
