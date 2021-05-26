@@ -72,6 +72,13 @@ public class SystemController {
         return entries.stream().map(Entry::getName).collect(Collectors.toList());
     }
 
+    @RequestMapping("paper/entry")
+    @ResponseBody
+    public List<String> findPaperEntries(String id) {
+        List<Entry> entries = paperService.findEntries(UUID.fromString(id));
+        return entries.stream().map(Entry::getName).collect(Collectors.toList());
+    }
+
     @RequestMapping("journal/id")
     @ResponseBody
     public String findJournalId(String title) {
