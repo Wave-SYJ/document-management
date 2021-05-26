@@ -15,7 +15,7 @@
                     <div class="item">
                         <i class="map marker icon"></i>
                         <div class="content">
-                            <a href=" " class="header"> ${dataItem.title} </a>
+                            <a href="/detail/paper?id=${dataItem.id}" class="header"> ${dataItem.title} </a>
                             <div class="description">
                                 ${dataItem.paperAbstract!}
                             </div>
