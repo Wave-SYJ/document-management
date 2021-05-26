@@ -83,12 +83,22 @@ public class JournalService {
 
     public void insertSubscription(UUID userId,UUID journalId) {
         if (journalId == null)
-           return;
-        journalMapper.insertSubscription(UUID.randomUUID(),userId,journalId);
+            return;
+        if (journalMapper.ifSubscribed(userId, journalId) == null) {
+            UUID id = UUID.randomUUID();
+            journalMapper.insertSubscription(id, userId, journalId);
+            return;
+        }
     }
 
-    public boolean ifSubscription(UUID userId,UUID journalId){
-        return journalMapper.ifSubscribed(userId,journalId);
+    public boolean ifSubscribed(UUID userId,UUID journalId){
+
+        if(journalId==null||userId==null)
+            return false;
+        if(journalMapper.ifSubscribed(userId,journalId)==null)
+            return false;
+        else
+            return true;
     }
 
     public UUID findJournalIdByTitle(String title) {

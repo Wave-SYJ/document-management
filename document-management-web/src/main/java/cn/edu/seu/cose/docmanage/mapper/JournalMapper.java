@@ -19,8 +19,9 @@ public interface JournalMapper {
     void removeAllEntries(UUID journalId);
     List<Entry> findEntries(UUID journalId);
 
-    void insertSubscription(UUID id,UUID uerId,UUID journalId);
-    boolean ifSubscribed(UUID userId,UUID journalId);
+    void insertSubscription(UUID id,UUID userId,UUID journalId);
+    Journal ifSubscribed(UUID userId,UUID journalId);
+
     UUID findJournalIdByTitle(String title);
     Journal findJournalById(UUID id);
 
