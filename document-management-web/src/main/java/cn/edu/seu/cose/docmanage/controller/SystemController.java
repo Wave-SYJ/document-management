@@ -2,15 +2,19 @@ package cn.edu.seu.cose.docmanage.controller;
 
 import cn.edu.seu.cose.docmanage.entity.Entry;
 import cn.edu.seu.cose.docmanage.entity.Journal;
+import cn.edu.seu.cose.docmanage.entity.User;
+import cn.edu.seu.cose.docmanage.mapper.UserMapper;
 import cn.edu.seu.cose.docmanage.service.EntryService;
 import cn.edu.seu.cose.docmanage.service.JournalService;
 import cn.edu.seu.cose.docmanage.service.PaperService;
 import cn.edu.seu.cose.docmanage.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -24,6 +28,26 @@ public class SystemController {
     public String toLogin() {
         return "login";
     }
+
+    @Autowired
+    public UserMapper userMapper;
+
+    @RequestMapping(value="/register",method = RequestMethod.POST)
+    public void register(String username,String password){
+        BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
+        User user = new User();
+        user.setId(UUID.randomUUID());
+        user.setUsername(username);
+        user.setPassword(passwordEncoder.encode(password));
+        userMapper.insertUser(user);
+
+    }
+
+    @RequestMapping("/register")
+    public String toRegister() {
+        return "/register";
+    }
+
 
     @Autowired
     public PaperService paperService;

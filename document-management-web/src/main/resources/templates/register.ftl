@@ -52,7 +52,7 @@
                 注册
             </div>
         </h2>
-        <form class="ui large form" action="/auth" method="post">
+        <form class="ui large form" action="/register" method="post">
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="ui left icon input">
@@ -63,21 +63,38 @@
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="密码">
+                        <input type="password" id="pw1"  name="password" placeholder="密码">
                     </div>
                 </div>
 
-                <button class="ui fluid large primary submit button">注册</button>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" id="pw2"  name="repassword" placeholder="重复密码">
+
+                    </div>
+                </div>
+
+                <button type="submit" class="ui fluid large primary submit button" onclick="return submitT()">注册</button>
             </div>
 
             <div class="ui error message"></div>
 
+
+
         </form>
+
+        <div class="ui message">
+            已经注册？ <a href="\login">登录</a>
+        </div>
 
 
     </div>
 </div>
 
+<script src="/js/register.js"></script>
+
 </body>
+
 
 </html>
