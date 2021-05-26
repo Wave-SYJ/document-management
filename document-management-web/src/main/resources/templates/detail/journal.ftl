@@ -7,11 +7,17 @@
 
     <div class="ui divided items segment journal-wrapper" style="margin: 0 auto 20px;">
         <div style="display: flex;align-items: center">
-            <h2 style="color: #5a9cd6;fontsize:28px;margin: 4px 0">论文详情</h2>
-            <div class="ui labeled button" tabindex="0" style="margin-left: 20px">
-                <div class="ui button">
-                    <i class="heart icon"></i> 订阅
-                </div>
+            <h2 style="color: #5a9cd6;fontsize:28px;margin: 4px 0">期刊详情</h2>
+            <div tabindex="0" style="margin-left: 20px">
+                <#if isSubscribed==true>
+                    <div class="ui button gery" id="CancelSubscribedButton">
+                        <i class="heart icon"></i> 已订阅
+                    </div>
+                <#else>
+                    <div class="ui button" id="SubscribedButton">
+                        <i class="heart icon"></i> 订阅
+                    </div>
+                </#if>
             </div>
         </div>
         <div class="ui divider"></div>
