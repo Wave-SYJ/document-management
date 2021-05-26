@@ -29,11 +29,20 @@ public class EntryTester {
         }
     }
 
-    @Test
     public List<Entry> findEntryTest(){
-
+        entryService.findEntryPage(1, 10, "已经修改的","name").forEach((item)->{
+            System.out.println(item);
+        });
         return entryService.findEntryPage(1, 10, "已经修改的","name");
     }
+
+    @Test
+    public void printEntryTest(){
+        entryService.findEntryPage(1, 10, "已经修改的","name").forEach((item)->{
+            System.out.println(item);
+        });
+    }
+
 
     @Test
     public void deleteEntryTest(){
@@ -50,5 +59,10 @@ public class EntryTester {
         for (Entry e:collect) {
             entryService.updateEntry(e);
         }
+    }
+
+    @Test
+    public void findEntryByIdTest(){
+        System.out.println(entryService.findEntryById(UUID.fromString("0036848f-84b3-4a86-9b11-7f333c34ff37")));
     }
 }

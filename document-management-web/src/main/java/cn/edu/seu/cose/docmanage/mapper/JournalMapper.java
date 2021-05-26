@@ -21,4 +21,7 @@ public interface JournalMapper {
 
     void insertSubscription(UUID id,UUID uerId,UUID journalId);
     boolean ifSubscribed(UUID userId,UUID journalId);
+    UUID findJournalIdByTitle(String title);
+    Journal findJournalById(UUID id);
+
 }

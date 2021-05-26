@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -64,6 +65,17 @@ public class UserService implements UserDetailsService {
         if (ids == null || ids.isEmpty())
             return null;
         return userMapper.findUsernameByIds(ids);
+    }
+
+    public String findUsernameById(UUID id) {
+        if (id == null)
+            return null;
+        List<UUID> ids = new ArrayList<>();
+        ids.add(id);
+        List<String> usernames = userMapper.findUsernameByIds(ids);
+        if (usernames == null || usernames.isEmpty())
+            return null;
+        return usernames.get(0);
     }
 
     public void changePassword(User user, String oldPassword, String newPassword, String repeatPassword) {

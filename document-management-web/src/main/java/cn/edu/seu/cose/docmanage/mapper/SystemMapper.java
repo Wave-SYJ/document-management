@@ -12,4 +12,5 @@ public interface SystemMapper {
     Page<Announcement> findAnnouncement();
     void insertAnnouncement(Announcement announcement);
     void deleteAnnouncement(List<UUID> announcementIdList);
+    List<Announcement> findNewAnnouncement();
 }

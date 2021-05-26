@@ -12,7 +12,6 @@
 
             <div class="ui list">
                 <#list dataPage as dataItem>
-
                     <div class="item">
                         <i class="map marker icon"></i>
                         <div class="content">
@@ -22,6 +21,9 @@
                             </div>
                         </div>
                     </div>
+                    <#if dataItem_index==4>
+                        <#break>
+                    </#if>
                 </#list>
             </div>
 
@@ -30,6 +32,24 @@
 
         <div class="ui segment">
             <div class="ui header">最新通知</div>
+            <#list announcementPage as announcementItem>
+                <div class="item">
+                    <i class="map marker icon"></i>
+                    <div class="content">
+                        <a href=" " class="header"> ${announcementItem.content} </a>
+                        <div class="time">
+                            ${announcementItem.publishTime!}
+                        </div>
+                        <div class="publish">
+                            ${announcementItem.publisherId!}
+                        </div>
+                    </div>
+                </div>
+                <#if announcementItem_index==4>
+                    <#break>
+                </#if>
+            </#list>
+
         </div>
 
     </main>

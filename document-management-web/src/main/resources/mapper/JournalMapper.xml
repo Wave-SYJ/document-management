@@ -50,6 +50,12 @@
             #{item}
         </foreach>
     </delete>
+    
+    <select id="findJournalById" resultType="Journal">
+        select *
+        from dm_journal
+        where id = #{id}
+    </select>
 
     <select id="findEntries" resultType="Entry">
         select *
@@ -67,6 +73,7 @@
         where journal_id = #{journalId}
     </delete>
 
+<<<<<<< HEAD
     <insert id="insertSubscription">
         insert dm_subscription(id,userId,journalId )
             VALUE (#{id}, #{userId}, #{journalId})
@@ -74,4 +81,11 @@
 
 
 
+=======
+    <select id="findJournalIdByTitle" resultType="java.util.UUID">
+        select id
+        from dm_journal
+        where title = #{title}
+    </select>
+>>>>>>> master
 </mapper>

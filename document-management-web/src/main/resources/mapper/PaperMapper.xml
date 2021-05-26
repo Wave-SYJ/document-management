@@ -10,7 +10,7 @@
     </insert>
 
     <select id="findPaperById" resultType="Paper">
-        select *
+        select *, abstract as 'paperAbstract'
         from dm_paper
         where id = #{id}
     </select>
@@ -62,8 +62,9 @@
     <select id="findNewPapers" resultType="Paper">
         select dp.title as 'title',
                dp.abstract as 'paperAbstract'
-        from dm_paper dp
+        from dm_paper dp order by dp.publish_time desc
     </select>
+
 
     <select id="findPaperPage" resultType="Paper">
         select *, abstract as 'paperAbstract'
@@ -89,5 +90,11 @@
                 </choose>
             </where>
         </if>
+    </select>
+
+    <select id="findPaperPageByJournalId" resultType="Paper">
+        select *, abstract as 'paperAbstract'
+        from dm_paper
+        where journal_id=#{id}
     </select>
 </mapper>
