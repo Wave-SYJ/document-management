@@ -41,6 +41,36 @@
         </div>
     </div>
 
+
+    <div id="bind-entry-modal" class="ui modal">
+        <div class="header">绑定词条</div>
+        <div class="content">
+            <form id="add-paper-form" class="ui form" method="post" action="/admin/paper/entry">
+                <input name="id" hidden>
+                <div class="field">
+                    <label>词条列表（一行一个）</label>
+                    <textarea name="entries"></textarea>
+                </div>
+                <button class="ui primary button" type="submit">确定</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="bind-entry-modal" class="ui modal">
+        <div class="header">绑定词条</div>
+        <div class="content">
+            <form id="add-paper-form" class="ui form" method="post" action="/admin/paper/entry">
+                <input name="id" hidden>
+                <div class="field">
+                    <label>词条列表（一行一个）</label>
+                    <textarea name="entries"></textarea>
+                </div>
+                <button class="ui primary button" type="submit">确定</button>
+            </form>
+        </div>
+    </div>
+
     <div id="update-paper-modal" class="ui modal">
         <div class="header">修改论文</div>
         <div class="content">

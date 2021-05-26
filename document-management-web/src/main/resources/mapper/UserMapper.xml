@@ -109,6 +109,21 @@
         </foreach>
     </delete>
 
+    <insert id="addCollection">
+        insert into dm_collection(id, user_id, paper_id) VALUE (#{id}, #{userId}, #{paperIds})
+    </insert>
+
+    <delete id="deleteCollection">
+        delete from dm_collection where user_id = #{userId} and paper_id = #{paperIds}
+    </delete>
+
+
+    <select id="isCollected" resultType="Paper">
+        select *
+        from dm_collection dc
+        where user_id = #{userId} and paper_id = #{paperIds}
+    </select>
+
 
     <delete id="deleteSubscriptions">
         delete from dm_subscription where user_id = #{userId} and journal_id in

@@ -183,6 +183,13 @@ public class AdminController {
         return "redirect:/admin/journal";
     }
 
+    @PostMapping("/admin/paper/entry")
+    @PreAuthorize("hasAnyAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
+    public String bindPaperEntry(String id, String entries) {
+        paperService.bindEntries(UUID.fromString(id), Arrays.asList(entries.split("\r\n")));
+        return "redirect:/admin/paper";
+    }
+
 
     @PostMapping("/admin/journal/entry")
     @PreAuthorize("hasAnyAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
