@@ -17,4 +17,5 @@ public interface EntryMapper {
     Page<Entry> findEntryPage(String searchKey, String searchValue);
     List<Entry> findEntriesByNames(List<String> names);
     List<UUID> findJournalIds(UUID id);
+    List<UUID> findPaperIds(UUID id);
 }

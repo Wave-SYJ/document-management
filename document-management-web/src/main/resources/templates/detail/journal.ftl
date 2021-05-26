@@ -31,7 +31,7 @@
                 <h3>期刊名称：${item.title}</h3>
                 <h3>期刊机构：${item.organizerOffice} </h3>
                 <h3>期刊语言：${item.language} </h3>
-                <h3>issn代码：${item.issn} </h3>
+                <h3>ISSN代码：${item.issn} </h3>
             </main>
         </div>
     </div>

@@ -67,4 +67,8 @@ public class EntryService {
         if(id == null) return null;
         return entryMapper.findJournalIds(id);
     }
+    public List<UUID> findPaperIds(UUID id){
+        if(id == null) return null;
+        return entryMapper.findPaperIds(id);
+    }
 }

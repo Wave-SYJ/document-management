@@ -66,6 +66,7 @@ public class DetailController {
         model.addAttribute("searchKey", null);
         model.addAttribute("searchValue", null);
         model.addAttribute("journalData", journals);
+        model.addAttribute("paperData", entryService.findPaperIds(UUID.fromString(id)).stream().map(paperService::findPaperById).collect(Collectors.toList()));
         return "/detail/entry";
     }
 

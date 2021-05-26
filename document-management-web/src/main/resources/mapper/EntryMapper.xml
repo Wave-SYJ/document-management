@@ -55,4 +55,9 @@
         select journal_id from dm_entry_journal
         where entry_id = #{id}
     </select>
+
+    <select id="findPaperIds" resultType="java.util.UUID">
+        select paper_id from dm_entry_paper
+        where entry_id = #{id}
+    </select>
 </mapper>
