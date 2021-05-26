@@ -123,6 +123,37 @@ public class UserService implements UserDetailsService {
         userMapper.cancelCollection(userId, paperIds);
     }
 
+    public void addCollection(UUID userId, UUID paperIds){
+        if(paperIds==null||userId==null)
+            return;
+        if(userMapper.isCollected(userId,paperIds)==null){
+            UUID id=UUID.randomUUID();
+            userMapper.addCollection(id,userId,paperIds);
+            return;
+        }
+    }
+
+    public void deleteCollection(UUID userId, UUID paperIds){
+        if(paperIds==null||userId==null)
+            return;
+        if(userMapper.isCollected(userId,paperIds)!=null){
+            UUID collectId=UUID.randomUUID();
+            userMapper.deleteCollection(userId,paperIds);
+            return;
+        }
+    }
+
+
+
+    public boolean isCollected(UUID userId,UUID paperIds){
+        if(paperIds==null||userId==null)
+            return false;
+        if(userMapper.isCollected(userId,paperIds)==null)
+            return false;
+        else
+            return true;
+    }
+
     public Page<Journal> findUserSubscriptionPage(UUID userId, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         return userMapper.findUserSubscriptionPage(userId);
