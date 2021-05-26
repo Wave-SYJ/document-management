@@ -26,6 +26,11 @@
             </th>
             <th>用户名</th>
             <th>权限</th>
+            <#if isSystemAdmin>
+                <th>
+                    添加权限
+                </th>
+            </#if>
         </tr>
         </thead>
 
@@ -42,17 +47,45 @@
                 <td>
                     <div class="ui blue labels">
                         <#list dataItem.roles as role>
-                            <a class="ui label">${role.description}</a>
+                            <form action="/admin/role">
+                                <input name="userId" value="${dataItem.id}" hidden>
+                                <input name="roleName" value="${role.name}" hidden>
+                                <input name="add" value="false" hidden>
+                                <button class="ui label" type="submit">${role.description}<i class="delete icon"></i></button>
+                            </form>
+
                         </#list>
                     </div>
                 </td>
+                <#if isSystemAdmin>
+                    <td>
+                        <form action="/admin/role">
+                            <input name="userId" value="${dataItem.id}" hidden>
+                            <input name="roleName" value="ROLE_USER_ADMIN" hidden>
+                            <input name="add" value="true" hidden>
+                            <button class="ui button" type="submit">用户管理员 </button>
+                        </form>
+                        <form action="/admin/role">
+                            <input name="userId" value="${dataItem.id}" hidden>
+                            <input name="roleName" value="ROLE_DOCUMENT_ADMIN" hidden>
+                            <input name="add" value="true" hidden>
+                            <button class="ui button" type="submit">文献管理员 </button>
+                        </form>
+                        <form action="/admin/role">
+                            <input name="userId" value="${dataItem.id}" hidden>
+                            <input name="roleName" value="ROLE_SYSTEM_ADMIN" hidden>
+                            <input name="add" value="true" hidden>
+                            <button class="ui button" type="submit">系统管理员 </button>
+                        </form>
+                    </td>
+                </#if>
             </tr>
         </#list>
         </tbody>
 
         <tfoot>
         <tr>
-            <th colspan="3">
+            <th colspan="${isSystemAdmin?then(4, 3)}">
 
                 <div class="ui pagination right floated menu">
 

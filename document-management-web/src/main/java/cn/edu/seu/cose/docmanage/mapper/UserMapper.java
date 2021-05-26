@@ -2,6 +2,7 @@ package cn.edu.seu.cose.docmanage.mapper;
 
 import cn.edu.seu.cose.docmanage.entity.Journal;
 import cn.edu.seu.cose.docmanage.entity.Paper;
+import cn.edu.seu.cose.docmanage.entity.Role;
 import cn.edu.seu.cose.docmanage.entity.User;
 import com.github.pagehelper.Page;
 import org.springframework.stereotype.Repository;
@@ -13,10 +14,11 @@ import java.util.UUID;
 public interface UserMapper {
     User findUserByUsername(String username);
     List<User> findAllUsers();
+    User findUserById(UUID userId);
     Page<User> findUserPage(String searchKey, String searchValue);
     void insertUser(User user);
     void bindRoles(UUID userId, List<String> roleNames);
-    void findRolesByUser(UUID userId);
+    List<Role> findRolesByUser(UUID userId);
     void deleteUsers(List<UUID> userIds);
     void updatePasswordByUserId(UUID userId, String encodedPassword);
     void deleteAllRoles(UUID userId);

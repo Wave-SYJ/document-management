@@ -162,6 +162,7 @@
                 <td data-name="paperAbstract">${dataItem.paperAbstract!}</td>
                 <td data-name="keyword" hidden>${dataItem.keyword!}</td>
                 <td data-name="authorOffice" hidden>${dataItem.authorOffice!}</td>
+                <td data-name="journalId" hidden>${dataItem.journalId!}</td>
                 <td data-name="publishTime" hidden>${dataItem.publishTime?string('yyyy-MM-dd')}</td>
                 <td>
                     <button class="ui button admin-data-bind" data-id="${dataItem.id}">绑定词条</button>

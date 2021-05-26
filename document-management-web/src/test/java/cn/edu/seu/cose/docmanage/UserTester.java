@@ -52,12 +52,12 @@ public class UserTester {
             String name = getRandomString(5);
             List<Role> roles = new ArrayList<>();
             User user = new User(UUID.randomUUID(), name, name, roles);
-            if (random.nextInt(3) == 0)
-                roles.add(new Role(RoleConstants.ROLE_DOCUMENT_ADMIN));
-            if (random.nextInt(3) == 0)
-                roles.add(new Role(RoleConstants.ROLE_USER_ADMIN));
-            if (random.nextInt(3) == 0)
-                roles.add(new Role(RoleConstants.ROLE_SYSTEM_ADMIN));
+//            if (random.nextInt(3) == 0)
+//                roles.add(new Role(RoleConstants.ROLE_DOCUMENT_ADMIN));
+//            if (random.nextInt(3) == 0)
+//                roles.add(new Role(RoleConstants.ROLE_USER_ADMIN));
+//            if (random.nextInt(3) == 0)
+//                roles.add(new Role(RoleConstants.ROLE_SYSTEM_ADMIN));
             userService.insertUser(user);
         }
     }

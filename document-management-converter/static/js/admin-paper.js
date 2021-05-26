@@ -71,9 +71,6 @@ $('#add-paper-form')
     }
   })
   ;
-
-<<<<<<< HEAD
-<<<<<<< HEAD
 $("#add-paper-form input[name='journalTitle']").keyup(async function () {
   $("#submit-insert").attr('disabled',true);
   const title = $(this).val();
@@ -91,9 +88,6 @@ $("#update-paper-form input[name='journalTitle']").keyup(async function () {
   if (id || title === "")
     $("#submit-update").attr('disabled',false);
 });
-=======
-=======
->>>>>>> scy
 
   $('.admin-data-bind')
   .click(async function () {
@@ -106,19 +100,16 @@ $("#update-paper-form input[name='journalTitle']").keyup(async function () {
     $('#bind-entry-modal').modal('show')
   });
 
-<<<<<<< HEAD
->>>>>>> scy
-=======
->>>>>>> scy
 
   $('.admin-data-update')
-  .click(function () {
+  .click(async function () {
     const parent = $(this).parent().parent();
     const data = ["paperAbstract", "title", "keyword", "author", "authorOffice","publishTime"]
     data.forEach(item => $('#update-paper-modal').find(`*[name='${item}']`).val(parent.find(`td[data-name='${item}']`).text())
     )
-
+    const title = (await axios.get("/journal/title?id=" + parent.find(`td[data-name='journalId']`).text())).data;
+    $('#update-paper-modal').find(`*[name='journalTitle']`).val(title)
     $('#update-paper-modal').find(`*[name='id']`).val($(this).data("id"));
-
     $('#update-paper-modal').modal('show')
   });
+

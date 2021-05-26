@@ -33,7 +33,7 @@
 
     .box-wrapper {
       display        : flex;
-      justify-content: space-around;
+      justify-content: start;
 
       .box {
         border-radius   : 10px;
@@ -43,10 +43,10 @@
         transition      : all 0.5s;
         position        : relative;
         top             : 0px;
+        margin: 0 30px;
       }
 
       .box:hover {
-        cursor          : pointer;
         position        : relative;
         top             : -20px;
         background-color: #5e5959d8;
