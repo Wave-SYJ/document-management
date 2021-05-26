@@ -184,7 +184,7 @@ public class AdminController {
 
     @PostMapping("/admin/journal/entry")
     @PreAuthorize("hasAnyAuthority(@Roles.ROLE_DOCUMENT_ADMIN)")
-    public String bindEntry(String id, String entries) {
+    public String bindJournalEntry(String id, String entries) {
         journalService.bindEntries(UUID.fromString(id), Arrays.asList(entries.split("\r\n")));
         return "redirect:/admin/journal";
     }
