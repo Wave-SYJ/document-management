@@ -4,9 +4,9 @@
 
 
     <insert id="insertPaper">
-        insert dm_paper(id, abstract, title, keyword, author, author_office, journal_id, publish_time)
+        insert dm_paper(id, abstract, title, keyword, author, author_office, journal_id, publish_time,url)
             VALUE (#{id}, #{paperAbstract}, #{title}, #{keyword}, #{author}, #{authorOffice}, #{journalId},
-                   #{publishTime});
+                   #{publishTime},#{url});
     </insert>
 
     <select id="findPaperById" resultType="Paper">
@@ -24,7 +24,8 @@
             author        = #{author},
             author_office = #{authorOffice},
             journal_id    = #{journalId},
-            publish_time  = #{publishTime}
+            publish_time  = #{publishTime},
+            url=#{url}
         where id = #{id}
     </update>
 
