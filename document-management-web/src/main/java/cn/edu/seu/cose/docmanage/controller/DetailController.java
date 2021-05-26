@@ -39,26 +39,19 @@ public class DetailController {
     }
 
     @RequestMapping("detail/entry")
-    public String toEntry(String id, Model model, @CurrentUser User user) {
+    public String toEntry(String id, Model model) {
+        List<UUID> journalIds = entryService.findJournalIds(UUID.fromString(id));
+        List<Journal> journals =journalIds.stream().map((item)-> journalService.findJournalById(item)).collect(Collectors.toList());
         model.addAttribute("item", entryService.findEntryById(UUID.fromString(id)));
         model.addAttribute("searchType", "entry");
         model.addAttribute("searchKey", null);
         model.addAttribute("searchValue", null);
-        System.out.println("print out journal");
-        List<UUID> journalIds = entryService.findJournalIds(UUID.fromString(id));
-
-        List<Journal> journals =journalIds.stream().map((item)-> journalService.findJournalById(item)).collect(Collectors.toList());
-
-        journals.forEach((item)->{
-            System.out.println(item);
-        });
-
         model.addAttribute("journalData", journals);
         return "/detail/entry";
     }
 
     @RequestMapping("detail/journal")
-    public String toJournal(String id, Model model) {
+    public String toJournal(String id, Model model, @CurrentUser User user) {
         Journal journal = journalService.findJournalById(UUID.fromString(id));
         model.addAttribute("item", journal);
         model.addAttribute("searchType", "journal");
