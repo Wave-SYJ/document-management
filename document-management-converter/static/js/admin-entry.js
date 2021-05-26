@@ -41,7 +41,7 @@ $('.data-item-checkbox-all')
     onUnchecked() {
       $('.data-item-checkbox-item').checkbox('uncheck')
     }
-  });
+  })
 
 $('#admin-data-delete-selected')
   .click(async function () {

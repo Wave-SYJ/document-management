@@ -1,4 +1,5 @@
 package cn.edu.seu.cose.docmanage.service;
+
 import cn.edu.seu.cose.docmanage.entity.Entry;
 import cn.edu.seu.cose.docmanage.entity.Journal;
 import cn.edu.seu.cose.docmanage.entity.Paper;
@@ -48,13 +49,19 @@ public class JournalService {
         journalMapper.deleteJournals(journalIds);
     }
 
-    public void updateJournal(Journal newJournal){
+    public void updateJournal(Journal newJournal) {
         journalMapper.updateJournal(newJournal);
     }
 
     public Page<Journal> findJournalPage(int pageNum, int pageSize, String searchKey, String searchValue) {
         PageHelper.startPage(pageNum, pageSize);
         return journalMapper.findJournalPage(searchKey, searchValue);
+    }
+
+
+    public Journal findJournalId(UUID id) {
+        if (id == null) return null;
+        return journalMapper.findJournalById(id);
     }
 
     @Transactional
@@ -70,6 +77,15 @@ public class JournalService {
 
     public List<Entry> findEntries(UUID journalId) {
         return journalMapper.findEntries(journalId);
+    }
+
+    public UUID findJournalIdByTitle(String title) {
+        return journalMapper.findJournalIdByTitle(title);
+    }
+
+    public Journal findJournalById(UUID id) {
+        if (id == null) return null;
+        return journalMapper.findJournalById(id);
     }
 
 }

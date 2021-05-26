@@ -1,0 +1,51 @@
+.journal-wrapper {
+  max-width: 60%;
+  .content-wrapper {
+    display        : flex;
+    justify-content: space-around;
+  }
+
+  .main-wrapper {
+
+    .title {
+      font-size: 32px;
+    }
+
+    .description {
+      margin   : 0 30px;
+      font-size: 20px;
+    }
+  }
+
+  .footer-wrapper {
+
+    .title {
+      font-size    : 28px;
+      color        : #4193d5;
+      margin-bottom: 30px;
+    }
+
+    .box-wrapper {
+      display        : flex;
+      justify-content: space-around;
+
+      .box {
+        border-radius   : 10px;
+        flex            : 0 1 20%;
+        background-color: #fff;
+        height          : 350px;
+        transition      : all 0.5s;
+        position        : relative;
+        top             : 0px;
+      }
+
+      .box:hover {
+        cursor          : pointer;
+        position        : relative;
+        top             : -20px;
+        background-color: #5e5959d8;
+      }
+    }
+
+  }
+}

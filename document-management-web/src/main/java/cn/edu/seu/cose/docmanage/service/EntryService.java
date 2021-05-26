@@ -19,29 +19,29 @@ public class EntryService {
     @Autowired
     private EntryMapper entryMapper;
 
-    public void insertEntry(Entry entry){
-        if(entry.getId()==null){
+    public void insertEntry(Entry entry) {
+        if (entry.getId() == null) {
             entry.setId(UUID.randomUUID());
         }
-        if(!StringUtils.hasText(entry.getName())){
+        if (!StringUtils.hasText(entry.getName())) {
             throw new SimpleException("词条名称不能为空");
         }
-        if(!StringUtils.hasText(entry.getDescription())){
+        if (!StringUtils.hasText(entry.getDescription())) {
             throw new SimpleException("词条描述不能为空");
         }
         entryMapper.insertEntry(entry);
     }
 
-    public void deleteEntry(List<UUID> entryIdList){
+    public void deleteEntry(List<UUID> entryIdList) {
         entryMapper.deleteEntry(entryIdList);
     }
 
-    public void updateEntry(Entry entry){
-        if(entry==null)throw new SimpleException("词条内容为空");
-        if(!StringUtils.hasText(entry.getName())){
+    public void updateEntry(Entry entry) {
+        if (entry == null) throw new SimpleException("词条内容为空");
+        if (!StringUtils.hasText(entry.getName())) {
             throw new SimpleException("词条名称不能为空");
         }
-        if(!StringUtils.hasText(entry.getDescription())){
+        if (!StringUtils.hasText(entry.getDescription())) {
             throw new SimpleException("词条描述不能为空");
         }
         entryMapper.updateEntry(entry);
@@ -52,7 +52,13 @@ public class EntryService {
         return entryMapper.findEntryPage(searchKey, searchValue);
     }
 
+
     public List<Entry> findEntryByNames(List<String> names) {
         return entryMapper.findEntriesByNames(names);
+    }
+
+    public Entry findEntryById(UUID id) {
+        if (id == null) return null;
+        return entryMapper.findEntryById(id);
     }
 }

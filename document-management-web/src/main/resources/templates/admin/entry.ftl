@@ -41,9 +41,7 @@
     <div class="admin-data-header">
         <div>
             <button class="green ui button" id="admin-data-insert"><i class="plus icon"></i> 添加</button>
-            <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i>
-                删除选中
-            </button>
+            <button class="red ui button" id="admin-data-delete-selected"><i class="trash alternate outline icon"></i> 删除选中</button>
         </div>
 
         <form class="ui action input" action="/admin/entry" method="get">
@@ -57,7 +55,7 @@
         </form>
     </div>
 
-    <table class="ui celled fixed single line table">
+    <table class="ui single line fixed celled table">
         <thead>
         <tr>
             <th style="width: 60px">
@@ -92,7 +90,7 @@
 
         <tfoot>
         <tr>
-            <th colspan="4">
+            <th colspan="3">
 
                 <div class="ui pagination right floated menu">
 
@@ -103,8 +101,7 @@
                     </a>
 
                     <#if dataPage.pageNum gt 2>
-                        <a class="item"
-                           href="/admin/entry?pageNum=1&searchValue=${searchValue!}&searchKey=${searchKey!}">1</a>
+                        <a class="item" href="/admin/entry?pageNum=1&searchValue=${searchValue!}&searchKey=${searchKey!}">1</a>
                     </#if>
                     <#if dataPage.pageNum gt 3>
                         <span class="item">...</span>

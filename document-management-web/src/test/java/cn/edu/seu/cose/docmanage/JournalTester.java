@@ -36,9 +36,19 @@ public class JournalTester {
 
     @Test
     public void insertTestJournal() {
-        Journal newJournal = new Journal(UUID.randomUUID(),"abab","lr",null,"english","111");
+        Journal newJournal = new Journal(UUID.randomUUID(), "abab", "lr", null, "english", "111");
         journalMapper.insertJournal(newJournal);
     }
 
+    @Test
+    public void printJournal(){
+        journalMapper.findJournalPage("","").forEach((item)->{
+            System.out.println(item);
+        });
+    }
 
+    @Test
+    public void getAJournalById(){
+        System.out.println(journalMapper.findJournalById(UUID.fromString("4929e372-86a1-456c-9541-f6941b0e8965")));
+    }
 }
