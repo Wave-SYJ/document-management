@@ -92,11 +92,19 @@ public class UserService implements UserDetailsService {
         userMapper.updatePasswordByUserId(user.getId(), passwordEncoder.encode(newPassword));
     }
 
-    public void register(User user) {
-        if (!StringUtils.hasText(user.getUsername()))
+    public void register(String username, String password, String repeatPassword) {
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+
+        if (!StringUtils.hasText(username))
             throw new SimpleException("用户名不能为空");
-        if (!StringUtils.hasText(user.getPassword()))
+        if (!StringUtils.hasText(password))
             throw new SimpleException("密码不能为空");
+        if (!password.equals(repeatPassword))
+            throw new SimpleException("密码和重复密码不一致");
+        if (loadUserByUsername(user.getUsername()) != null)
+            throw new SimpleException("用户名已存在");
         insertUser(user);
     }
 
@@ -133,7 +141,8 @@ public class UserService implements UserDetailsService {
             return;
         List<String> roleNames = roles.stream().map(Role::getName).filter(name -> !name.equals(roleName)).collect(Collectors.toList());
         userMapper.deleteAllRoles(userId);
-        userMapper.bindRoles(userId, roleNames);
+        if (!roleNames.isEmpty())
+            userMapper.bindRoles(userId, roleNames);
     }
 
 

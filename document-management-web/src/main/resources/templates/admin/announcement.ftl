@@ -45,7 +45,7 @@
                 </td>
                 <td>${dataItem.content}</td>
                 <td>${usernames[dataItem_index]}</td>
-                <td>${dataItem.publishTime?string('yyyy-MM-dd HH:mm:ss')}</td>
+                <td><#if dataItem.publishTime??>${dataItem.publishTime?string('yyyy-MM-dd HH:mm:ss')}</#if></td>
             </tr>
         </#list>
         </tbody>
