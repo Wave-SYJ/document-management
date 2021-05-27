@@ -116,6 +116,8 @@ public class SystemController {
     @RequestMapping("journal/title")
     @ResponseBody
     public String findJournalTitle(String id) {
+        if (!StringUtils.hasText(id))
+            return "";
         Journal journal = journalService.findJournalById(UUID.fromString(id));
         if (journal == null)
             return "";
