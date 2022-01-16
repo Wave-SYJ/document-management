@@ -14,6 +14,11 @@
 
 数据库：MySQL
 
+## 目录说明
+
+- `document-management-web`：本项目
+- `document-management-converter`：一个小工具，将JS（ES6）和SCSS放在这里，开发时自动拷贝到项目路径内，发布时生成ES5和普通CSS拷贝到项目路径内
+
 ## 功能演示
 
 ### 登录/注册
